@@ -7,34 +7,41 @@ public class Application {
 
 	public void mainLoop() {
 		Quiz quiz = new Quiz();
-		System.out.print("-: ");
-		String userInput = scan.nextLine();
-		int parsedInput = Integer.parseInt(userInput);
+		String userInput = "";
+		int parsedInput = 0;
 		int quizSize = 0;
+
+		System.out.print("-: ");
+		try {
+			userInput = scan.nextLine();
+			parsedInput = Integer.parseInt(userInput);
+		} catch (NumberFormatException e) {
+			System.err.println("Invalid input.");
+		}
+
 		while (parsedInput != 3) {
 			switch (parsedInput) {
 			case 1:
 				System.out.print("Enter the number of questions: ");
 				quizSize = scan.nextInt();
-				quiz.createQuiz(userInput, quizSize);
+				quiz.createQuiz(quizSize, userInput);
 				scan.nextLine();
 				break;
-				
 			case 2:
 				quiz.playQuiz(quizSize);
 				break;
-				
-			default:
-				System.err.println("Invalid Input.");
-				
 			}
-			
+
 			printSeparator();
 			printCommandList();
 			System.out.print("-: ");
-			userInput = scan.nextLine();
-			parsedInput = Integer.parseInt(userInput);
-			
+			try {
+				userInput = scan.nextLine();
+				parsedInput = Integer.parseInt(userInput);
+			} catch (NumberFormatException e) {
+				System.err.println("Invalid input.");
+			}
+
 		}
 
 	}
@@ -48,7 +55,7 @@ public class Application {
 
 	public void printSeparator() {
 		System.out.println("—————————————————————————————————————");
-		
+
 	}
 
 }
