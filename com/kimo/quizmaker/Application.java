@@ -7,7 +7,7 @@ public class Application {
 
 	public void mainLoop() {
 		Quiz quiz = new Quiz();
-		
+
 		String userInput = "";
 		int parsedUserInput = 0;
 		int definedQuizSize = 0;
@@ -30,10 +30,15 @@ public class Application {
 				scan.nextLine(); // Discards scanner buffer of scan.nextInt();
 				break;
 			case 2:
-				quiz.playQuiz(definedQuizSize);
-				break;
+				if (definedQuizSize != 0) {
+					quiz.playQuiz(definedQuizSize);
+					break;
+				}
+				System.err.println("You have made no quizzes yet!");
+			default:
+
 			}
-			
+
 			printSeparator();
 			printCommandList();
 			System.out.print("-: ");
