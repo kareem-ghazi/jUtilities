@@ -8,26 +8,26 @@ public class Application {
 	public void mainLoop() {
 		Quiz quiz = new Quiz();
 
-		String userInput = "";
-		int parsedUserInput = 0;
+		int userInput = 0;
 		int definedQuizSize = 0;
 
 		System.out.print("-: ");
 		try {
-			userInput = scan.nextLine();
-			parsedUserInput = Integer.parseInt(userInput);
-		} catch (NumberFormatException e) {
-			System.err.println("Invalid input.");
-			parsedUserInput = 0;
+			userInput = scan.nextInt();
+		} catch (Exception e) {
+			scan.nextLine();
+			userInput = 0;
+			if (userInput != 0) {
+				System.err.println("Invalid input.");
+			}
 		}
 
-		while (parsedUserInput != 3) {
-			switch (parsedUserInput) {
+		while (userInput != 3) {
+			switch (userInput) {
 			case 1:
 				System.out.print("Enter the number of questions: ");
 				definedQuizSize = scan.nextInt();
 				quiz.createQuiz(definedQuizSize);
-				scan.nextLine(); // Discards scanner buffer of scan.nextInt();
 				break;
 			case 2:
 				if (definedQuizSize != 0) {
@@ -36,18 +36,20 @@ public class Application {
 				}
 				System.err.println("You have made no quizzes yet!");
 			default:
-
+				System.err.println("Invalid input.");
 			}
 
 			printSeparator();
 			printCommandList();
 			System.out.print("-: ");
 			try {
-				userInput = scan.nextLine();
-				parsedUserInput = Integer.parseInt(userInput);
-			} catch (NumberFormatException e) {
-				System.err.println("Invalid input.");
-				parsedUserInput = 0;
+				userInput = scan.nextInt();
+			} catch (Exception e) {
+				scan.nextLine();
+				userInput = 0;
+				if (userInput != 0) {
+					System.err.println("Invalid input.");
+				}
 			}
 
 		}
