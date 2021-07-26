@@ -17,6 +17,7 @@ public class Application {
 			parsedInput = Integer.parseInt(userInput);
 		} catch (NumberFormatException e) {
 			System.err.println("Invalid input.");
+			parsedInput = 0;
 		}
 
 		while (parsedInput != 3) {
@@ -40,6 +41,7 @@ public class Application {
 				parsedInput = Integer.parseInt(userInput);
 			} catch (NumberFormatException e) {
 				System.err.println("Invalid input.");
+				parsedInput = 0;
 			}
 
 		}
