@@ -1,48 +1,57 @@
 package com.kimo.quizmaker;
 
-public class Quiz {
-	private Application app = new Application();
+import java.util.Scanner;
 
+public class Quiz {
+	private Application application = new Application();
+	
+	private Scanner scan = new Scanner(System.in);
 	private String[] questions;
 	private String[][] answers;
 	private Character[] correctAnswers;
+	private char[] answerChoice = { 'A', 'B', 'C', 'D' };
 
-	public void createQuiz(int size, String input) {
+	public void createQuiz(int size) {
 		questions = new String[size];
 		answers = new String[size][4];
 		correctAnswers = new Character[size];
-
+		
+		String userInput = "";
 		int questionCount = 1;
-		int k = 0;
-		char[] answerChoice = { 'A', 'B', 'C', 'D' };
-
-		for (int i = 0; questions[questions.length - 1] == null; i++, questionCount++) {
-			app.printSeparator();
+		int lastQuestion = questions.length - 1;
+		int answerForQuestion = 0;
+		
+		for (int outer = 0; questions[lastQuestion] == null; outer++, questionCount++) {
+			application.printSeparator();
+			
 			System.out.print("Question # " + questionCount + " -: ");
-			input = app.scan.nextLine();
-			questions[i] = input;
-			for (int j = 0; j < answers[i].length; j++) {
-				System.out.print("Choice " + answerChoice[0 + j] + " -: ");
-				input = app.scan.nextLine();
-				answers[i][j] = input;
+			userInput = scan.nextLine();
+			questions[outer] = userInput;
+			
+			for (int inner = 0; inner < answers[outer].length; inner++) {
+				System.out.print("Choice " + answerChoice[0 + inner] + " -: ");
+				userInput = scan.nextLine();
+				answers[outer][inner] = userInput;
 
 			}
 
-			if (correctAnswers[k] == null) {
+			if (correctAnswers[answerForQuestion] == null) {
 				System.out.print("Correct choice (A / B / C / D) -: ");
-				input = app.scan.nextLine();
+				userInput = scan.nextLine();
 				
-				while (Character.toUpperCase(input.charAt(0)) != 'A' && Character.toUpperCase(input.charAt(0)) != 'B'
-						&& Character.toUpperCase(input.charAt(0)) != 'C'
-						&& Character.toUpperCase(input.charAt(0)) != 'D') {
-					System.out.println(input.charAt(0));
+				while (Character.toUpperCase(userInput.charAt(0)) != 'A' && Character.toUpperCase(userInput.charAt(0)) != 'B'
+						&& Character.toUpperCase(userInput.charAt(0)) != 'C'
+						&& Character.toUpperCase(userInput.charAt(0)) != 'D') {
+					
 					System.err.println("Invalid input.");
 					System.out.print("-: ");
-					input = app.scan.nextLine();
+					userInput = scan.nextLine();
 					
 				}
-				correctAnswers[k] = Character.toUpperCase(input.charAt(0));
-				k++;
+				
+				char upperCasedAnswer = Character.toUpperCase(userInput.charAt(0));
+				correctAnswers[answerForQuestion] = upperCasedAnswer;
+				answerForQuestion++;
 
 			}
 
@@ -51,40 +60,43 @@ public class Quiz {
 	}
 
 	public void playQuiz(int size) {
-		char[] answerCount = { 'A', 'B', 'C', 'D' };
-		int i = 0;
+		int outer = 0;
 		int points = 0;
-		for (i = 0; i < questions.length; i++) {
-			app.printSeparator();
-			System.out.println(questions[i]);
+		
+		for (outer = 0; outer < questions.length; outer++) {
+			application.printSeparator();
+			System.out.println(questions[outer]);
 
-			for (int j = 0; j < answers[i].length; j++) {
-				System.out.println(answerCount[0 + j] + " - " + answers[i][j]);
+			for (int inner = 0; inner < answers[outer].length; inner++) {
+				System.out.println(answerChoice[0 + inner] + " - " + answers[outer][inner]);
 
 			}
-
+			
+			char[] userAnswers = new char[size];
 			System.out.print("Type your choice here: ");
-			String input = app.scan.nextLine();
-			char[] answers = new char[size];
+			String userInput = scan.nextLine();
 			
-			while (Character.toUpperCase(input.charAt(0)) != 'A' && Character.toUpperCase(input.charAt(0)) != 'B'
-					&& Character.toUpperCase(input.charAt(0)) != 'C'
-					&& Character.toUpperCase(input.charAt(0)) != 'D') {
+			while (Character.toUpperCase(userInput.charAt(0)) != 'A' && Character.toUpperCase(userInput.charAt(0)) != 'B'
+					&& Character.toUpperCase(userInput.charAt(0)) != 'C'
+					&& Character.toUpperCase(userInput.charAt(0)) != 'D') {
+				
 				System.err.println("Invalid input.");
-				System.out.println("-: ");
-				input = app.scan.nextLine();
+				System.out.print("-: ");
+				userInput = scan.nextLine();
+				
 			}
 			
-			answers[i] = Character.toUpperCase(input.charAt(0));
+			char upperCasedAnswer = Character.toUpperCase(userInput.charAt(0));
+			userAnswers[outer] = upperCasedAnswer;
 			
-			if (answers[i] == correctAnswers[i]) {
+			if (userAnswers[outer] == correctAnswers[outer]) {
 				points++;
 
 			}
 
 		}
 
-		app.printSeparator();
+		application.printSeparator();
 		double percentage = Math.round(((points + 0.0) / questions.length) * 100);
 		System.out.println("Points: " + points + "/" + questions.length + "\nPercentage: " + percentage + "%");
 	}

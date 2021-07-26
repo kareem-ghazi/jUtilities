@@ -7,41 +7,42 @@ public class Application {
 
 	public void mainLoop() {
 		Quiz quiz = new Quiz();
+		
 		String userInput = "";
-		int parsedInput = 0;
-		int quizSize = 0;
+		int parsedUserInput = 0;
+		int definedQuizSize = 0;
 
 		System.out.print("-: ");
 		try {
 			userInput = scan.nextLine();
-			parsedInput = Integer.parseInt(userInput);
+			parsedUserInput = Integer.parseInt(userInput);
 		} catch (NumberFormatException e) {
 			System.err.println("Invalid input.");
-			parsedInput = 0;
+			parsedUserInput = 0;
 		}
 
-		while (parsedInput != 3) {
-			switch (parsedInput) {
+		while (parsedUserInput != 3) {
+			switch (parsedUserInput) {
 			case 1:
 				System.out.print("Enter the number of questions: ");
-				quizSize = scan.nextInt();
-				quiz.createQuiz(quizSize, userInput);
-				scan.nextLine();
+				definedQuizSize = scan.nextInt();
+				quiz.createQuiz(definedQuizSize);
+				scan.nextLine(); // Discards scanner buffer of scan.nextInt();
 				break;
 			case 2:
-				quiz.playQuiz(quizSize);
+				quiz.playQuiz(definedQuizSize);
 				break;
 			}
-
+			
 			printSeparator();
 			printCommandList();
 			System.out.print("-: ");
 			try {
 				userInput = scan.nextLine();
-				parsedInput = Integer.parseInt(userInput);
+				parsedUserInput = Integer.parseInt(userInput);
 			} catch (NumberFormatException e) {
 				System.err.println("Invalid input.");
-				parsedInput = 0;
+				parsedUserInput = 0;
 			}
 
 		}
