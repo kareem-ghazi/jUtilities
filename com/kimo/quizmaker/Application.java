@@ -12,18 +12,19 @@ public class Application {
 		int definedQuizSize = 0;
 		int points = -1;
 
-		System.out.print("-: ");
-		try {
-			userInput = scan.nextInt();
-		} catch (Exception e) {
-			scan.nextLine();
-			userInput = 0;
-			if (userInput != 0) {
-				System.err.println("Invalid input.");
+		do {
+			
+			System.out.print("-: ");
+			try {
+				userInput = scan.nextInt();
+			} catch (Exception e) {
+				scan.nextLine();
+				userInput = 0;
+				if (userInput != 0) {
+					System.err.println("Invalid input.");
+				}
 			}
-		}
-
-		while (true) {
+			
 			switch (userInput) {
 			case 1:
 				System.out.print("Enter the number of questions: ");
@@ -61,19 +62,8 @@ public class Application {
 
 			printSeparator();
 			printCommandList();
-			System.out.print("-: ");
-			try {
-				userInput = scan.nextInt();
-			} catch (Exception e) {
-				scan.nextLine();
-				userInput = 0;
-				if (userInput != 0) {
-					System.err.println("Invalid input.");
-				}
-				
-			}
 
-		}
+		} while (true);
 
 	}
 
