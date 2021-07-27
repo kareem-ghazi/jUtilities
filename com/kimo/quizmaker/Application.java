@@ -23,7 +23,7 @@ public class Application {
 			}
 		}
 
-		while (userInput != 4) {
+		while (true) {
 			switch (userInput) {
 			case 1:
 				System.out.print("Enter the number of questions: ");
@@ -51,6 +51,9 @@ public class Application {
 					
 				}
 				break;
+			case 4:
+				System.out.println("Exited program successfully!");
+				return;
 			default:
 				System.err.println("Invalid input.");
 				
