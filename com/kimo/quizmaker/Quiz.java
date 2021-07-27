@@ -12,7 +12,7 @@ public class Quiz {
 	private Character[] correctAnswers;
 	private char[] answerChoice = { 'A', 'B', 'C', 'D' };
 
-	public void createQuiz(int size) {
+	public void create(int size) {
 		questions = new String[size];
 		answers = new String[size][4];
 		correctAnswers = new Character[size];
@@ -58,7 +58,7 @@ public class Quiz {
 
 	}
 
-	public int playQuiz(int size) {
+	public int play(int size) {
 		int outer = 0;
 		int points = 0;
 

@@ -12,8 +12,7 @@ public class Application {
 		int definedQuizSize = 0;
 		int points = -1;
 
-		do {
-			
+		do {	
 			System.out.print("-: ");
 			try {
 				userInput = scan.nextInt();
@@ -29,11 +28,11 @@ public class Application {
 			case 1:
 				System.out.print("Enter the number of questions: ");
 				definedQuizSize = scan.nextInt();
-				quiz.createQuiz(definedQuizSize);
+				quiz.create(definedQuizSize);
 				break;
 			case 2:
 				if (definedQuizSize != 0) {
-					points = quiz.playQuiz(definedQuizSize);
+					points = quiz.play(definedQuizSize);
 					break;
 				}
 				System.err.println("You have made no quizzes yet!");
