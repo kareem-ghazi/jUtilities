@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class Quiz {
 	private Application application = new Application();
-	
+
 	private Scanner scan = new Scanner(System.in);
+	private String userInput;
 	private String[] questions;
 	private String[][] answers;
 	private Character[] correctAnswers;
@@ -15,19 +16,18 @@ public class Quiz {
 		questions = new String[size];
 		answers = new String[size][4];
 		correctAnswers = new Character[size];
-		
-		String userInput = "";
+
 		int questionCount = 1;
 		int lastQuestion = questions.length - 1;
 		int answerForQuestion = 0;
-		
+
 		for (int outer = 0; questions[lastQuestion] == null; outer++, questionCount++) {
 			application.printSeparator();
-			
+
 			System.out.print("Question # " + questionCount + " -: ");
 			userInput = scan.nextLine();
 			questions[outer] = userInput;
-			
+
 			for (int inner = 0; inner < answers[outer].length; inner++) {
 				System.out.print("Choice " + answerChoice[0 + inner] + " -: ");
 				userInput = scan.nextLine();
@@ -38,19 +38,18 @@ public class Quiz {
 			if (correctAnswers[answerForQuestion] == null) {
 				System.out.print("Correct choice (A / B / C / D) -: ");
 				userInput = scan.nextLine();
-				
-				while (Character.toUpperCase(userInput.charAt(0)) != 'A' && Character.toUpperCase(userInput.charAt(0)) != 'B'
-						&& Character.toUpperCase(userInput.charAt(0)) != 'C'
-						&& Character.toUpperCase(userInput.charAt(0)) != 'D') {
-					
+				char parsedCharInput = Character.toUpperCase(userInput.charAt(0));
+
+				while (parsedCharInput != 'A' && parsedCharInput != 'B' && parsedCharInput != 'C'
+						&& parsedCharInput != 'D') {
+
 					System.err.println("Invalid input.");
 					System.out.print("-: ");
 					userInput = scan.nextLine();
-					
+					parsedCharInput = Character.toUpperCase(userInput.charAt(0));
 				}
-				
-				char upperCasedAnswer = Character.toUpperCase(userInput.charAt(0));
-				correctAnswers[answerForQuestion] = upperCasedAnswer;
+
+				correctAnswers[answerForQuestion] = parsedCharInput;
 				answerForQuestion++;
 
 			}
@@ -59,10 +58,10 @@ public class Quiz {
 
 	}
 
-	public void playQuiz(int size) {
+	public int playQuiz(int size) {
 		int outer = 0;
 		int points = 0;
-		
+
 		for (outer = 0; outer < questions.length; outer++) {
 			application.printSeparator();
 			System.out.println(questions[outer]);
@@ -71,23 +70,22 @@ public class Quiz {
 				System.out.println(answerChoice[0 + inner] + " - " + answers[outer][inner]);
 
 			}
-			
+
 			char[] userAnswers = new char[size];
 			System.out.print("Type your choice here: ");
-			String userInput = scan.nextLine();
-			
-			while (Character.toUpperCase(userInput.charAt(0)) != 'A' && Character.toUpperCase(userInput.charAt(0)) != 'B'
-					&& Character.toUpperCase(userInput.charAt(0)) != 'C'
-					&& Character.toUpperCase(userInput.charAt(0)) != 'D') {
-				
+			userInput = scan.nextLine();
+			char parsedCharInput = Character.toUpperCase(userInput.charAt(0));
+
+			while (parsedCharInput != 'A' && parsedCharInput != 'B' && parsedCharInput != 'C'
+					&& parsedCharInput != 'D') {
+
 				System.err.println("Invalid input.");
 				System.out.print("-: ");
 				userInput = scan.nextLine();
-				
+				parsedCharInput = Character.toUpperCase(userInput.charAt(0));
 			}
-			
-			char upperCasedAnswer = Character.toUpperCase(userInput.charAt(0));
-			userAnswers[outer] = upperCasedAnswer;
+
+			userAnswers[outer] = parsedCharInput;
 			
 			if (userAnswers[outer] == correctAnswers[outer]) {
 				points++;
@@ -97,8 +95,29 @@ public class Quiz {
 		}
 
 		application.printSeparator();
+		System.out.println(getReport(points));
+		return points;
+	}
+
+	public String getReport(int points) {
 		double percentage = Math.round(((points + 0.0) / questions.length) * 100);
-		System.out.println("Points: " + points + "/" + questions.length + "\nPercentage: " + percentage + "%");
+		char grade = 0;
+
+		if (percentage <= 25) {
+			grade = 'F';
+		} else if (percentage <= 60) {
+			grade = 'D';
+		} else if (percentage <= 80) {
+			grade = 'C';
+		} else if (percentage <= 90) {
+			grade = 'B';
+		} else if (percentage >= 90) {
+			grade = 'A';
+		}
+
+		String report = "Points: " + points + "/" + questions.length + "\nGrade: " + grade + "\nPercentage: " + percentage + "%";
+		return report;
+		
 	}
 
 }

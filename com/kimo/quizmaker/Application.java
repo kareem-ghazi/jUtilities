@@ -10,6 +10,7 @@ public class Application {
 
 		int userInput = 0;
 		int definedQuizSize = 0;
+		int points = -1;
 
 		System.out.print("-: ");
 		try {
@@ -22,7 +23,7 @@ public class Application {
 			}
 		}
 
-		while (userInput != 3) {
+		while (userInput != 4) {
 			switch (userInput) {
 			case 1:
 				System.out.print("Enter the number of questions: ");
@@ -31,12 +32,28 @@ public class Application {
 				break;
 			case 2:
 				if (definedQuizSize != 0) {
-					quiz.playQuiz(definedQuizSize);
+					points = quiz.playQuiz(definedQuizSize);
 					break;
 				}
 				System.err.println("You have made no quizzes yet!");
+				break;
+			case 3:
+				if (definedQuizSize == 0) {
+					System.err.println("You have made no quizzes yet!");
+					
+				} else if (definedQuizSize != 0) {
+					if (points == -1) {
+						System.err.println("You haven't played any quizzes yet!");
+					} else {
+						printSeparator();
+						System.out.println(quiz.getReport(points));
+					}
+					
+				}
+				break;
 			default:
 				System.err.println("Invalid input.");
+				
 			}
 
 			printSeparator();
@@ -50,6 +67,7 @@ public class Application {
 				if (userInput != 0) {
 					System.err.println("Invalid input.");
 				}
+				
 			}
 
 		}
@@ -59,7 +77,8 @@ public class Application {
 	public void printCommandList() {
 		System.out.println("1. Create a quiz.");
 		System.out.println("2. Play the quiz.");
-		System.out.println("3. Exit");
+		System.out.println("3. Print out the report of the previous quiz.");
+		System.out.println("4. Exit");
 
 	}
 
