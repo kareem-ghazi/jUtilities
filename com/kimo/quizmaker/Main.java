@@ -1,7 +1,8 @@
 package com.kimo.quizmaker;
 
 public class Main {
-
+	
+	// Main method where the program runs.
 	public static void main(String[] args) {
 		Application application = new Application();
 

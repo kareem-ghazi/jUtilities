@@ -11,7 +11,8 @@ public class Quiz {
 	private String[][] answers;
 	private Character[] correctAnswers;
 	private char[] answerChoice = { 'A', 'B', 'C', 'D' };
-
+	
+	// Creates a quiz with the assigned size.
 	public void create(int size) {
 		questions = new String[size];
 		answers = new String[size][4];
@@ -57,7 +58,8 @@ public class Quiz {
 		}
 
 	}
-
+	
+	// Plays a quiz using the assigned size.
 	public int play(int size) {
 		int outer = 0;
 		int points = 0;
@@ -98,11 +100,12 @@ public class Quiz {
 		System.out.println(getReport(points));
 		return points;
 	}
-
+	
+	// Prints out a score report using the final score.
 	public String getReport(int points) {
 		double percentage = Math.round(((points + 0.0) / questions.length) * 100);
 		char grade = 0;
-
+		
 		if (percentage <= 25) {
 			grade = 'F';
 		} else if (percentage <= 60) {
