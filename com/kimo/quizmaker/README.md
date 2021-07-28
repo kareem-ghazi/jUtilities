@@ -1,4 +1,4 @@
-# QuizMaker - Create quizzes and play them!**
+# QuizMaker - Create quizzes and play them!
 
 ## What is this?
 
