@@ -1,6 +1,6 @@
 # QuizMaker #
 
-Create quizzes and play them
+Create quizzes and play them.
 
 ## What is this? ##
 
