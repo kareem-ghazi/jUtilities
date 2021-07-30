@@ -47,7 +47,7 @@ public class Application {
 	}
 
 	public void printSeparator() {
-		System.out.println("—————————————————————————————————————");
+		System.out.println("--------------------------------------");
 		
 	}
 
