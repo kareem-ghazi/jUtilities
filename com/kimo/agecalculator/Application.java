@@ -44,7 +44,7 @@ public class Application {
 
 	// Prints a separator between program sessions.
 	private void printSeparator() {
-		System.out.println("—————————————————————————————————————");
+		System.out.println("-------------------------------------");
 	}
 
 	// Sends the user a restart prompt.
