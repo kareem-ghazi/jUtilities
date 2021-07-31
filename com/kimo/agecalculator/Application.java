@@ -79,8 +79,8 @@ public class Application {
 		
 		dateDifference = Period.between(today, nextBirthday);
 		
-		return "You are " + dateDifference.getYears()+ " year(s), " + dateDifference.getMonths() + " month(s), "
-				+ dateDifference.getDays() + " day(s) old.";
+		return dateDifference.getYears()+ " year(s), " + dateDifference.getMonths() + " month(s), "
+				+ dateDifference.getDays() + " day(s) remain until your next birthday.";
 
 	}
 }
