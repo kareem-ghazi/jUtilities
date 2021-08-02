@@ -1,16 +1,12 @@
 package com.kimo.agecalculator;
 
-import java.util.Scanner;
-
 public class User {
-	Scanner scan = new Scanner(System.in);
+	private String username;
+	private String nationality;
 	
-	String username = "";
-	String nationality = "";
-	
-	int birthYear = 0;
-	int birthMonth = 0;
-	int birthDay = 0;
+	private int birthYear;
+	private int birthMonth;
+	private int birthDay;
 	
 	public void setName(String username) {
 		this.username = username;
@@ -36,6 +32,21 @@ public class User {
 	
 	public String getNationality() {
 		return nationality;
+		
+	}
+	
+	public int getBirthMonth() {
+		return birthMonth;
+		
+	}
+	
+	public int getBirthYear() {
+		return birthYear;
+		
+	}
+	
+	public int getBirthDay() {
+		return birthDay;
 		
 	}
 	
