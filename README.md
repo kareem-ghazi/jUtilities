@@ -10,7 +10,7 @@
 
 These are currently the **only completed** features of jUtilities.
 
-- Age Calculator - Calculates your current age and other cool things using your birthdate.
+- AgeCalculator - Calculates your current age and other cool things using your birthdate.
 - QuizMaker - Create quizzes, play them, and print out their results.
   
 ## Feedback
