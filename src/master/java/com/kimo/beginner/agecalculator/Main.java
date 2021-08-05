@@ -20,9 +20,10 @@ public class Main {
 	// Prints a brief description about the program.
 	public static void printCommandList() {
 		System.out.println("1. Setup your birthdate.");
-		System.out.println("2. Print out a summary about you using your birthdate.");
+		System.out.println("2. Print out a summary about your birthdate.");
 		System.out.println("3. Print out your age on different planets.");
-		System.out.println("4. Exit.");
+		System.out.println("4. Print out your age in different times.");
+		System.out.println("5. Exit.");
 
 	}
 
@@ -88,6 +89,8 @@ public class Main {
 				case 3:
 
 				case 4:
+
+				case 5:
 					return;
 				default:
 					System.err.println("Invalid input.");

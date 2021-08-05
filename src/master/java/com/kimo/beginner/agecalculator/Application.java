@@ -44,4 +44,12 @@ public class Application {
 		
 	}
 
+	public void ageOnDifferentPlanets(int year, int month, int day) {
+
+	}
+
+	public void ageInDifferentTimes(int year, int month, int day) {
+		
+	}
+
 }
