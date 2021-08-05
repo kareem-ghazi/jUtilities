@@ -75,12 +75,14 @@ public class Main {
 						System.out.println("Nationality: " + user.getNationality());
 						System.out.println("Birthdate: " + user.getBirthYear() + "/" + user.getBirthMonth() + "/"
 								+ user.getBirthDay());
-						System.out.println("Age: ");
-						System.out.println("Time till your next birthday: ");
-						
+						printSeparator();		
+						System.out.println(application.calculateAge(user.getBirthYear(), user.getBirthMonth(),
+								user.getBirthDay()));
+						System.out.println(application.timeTillNextBirthday(user.getBirthYear(), user.getBirthMonth(),
+								user.getBirthDay()));
 					} else {
 						System.err.println("You have not set your information yet.");
-						
+
 					}
 					break;
 				case 3:
