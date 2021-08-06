@@ -41,10 +41,6 @@ public class Application {
 
 	}
 
-	public void ageOnDifferentPlanets(int year, int month, int day) {
-
-	}
-
 	public String calculateAgeInSeconds(LocalDate birthday) {
 		Period ageDateDifference = Period.between(birthday, today);
 		int ageInSeconds = ((ageDateDifference.getYears() * 31536000) + (ageDateDifference.getMonths() * 2628002)

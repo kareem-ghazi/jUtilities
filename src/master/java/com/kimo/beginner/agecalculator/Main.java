@@ -10,7 +10,7 @@ public class Main {
 	// Main method to run application.
 	public static void main(String[] args) {
 		printSeparator();
-		System.out.println("Age Calculator - Calculates your current age using your birthday.");
+		System.out.println("AgeCalculator - Calculates your current age using your birthday.");
 		printCommandList();
 		mainLoop();
 		printSeparator();
@@ -39,7 +39,7 @@ public class Main {
 
 		do {
 			userInput = 0;
-			
+
 			System.out.print("-: ");
 			try {
 				userInput = scan.nextInt();
@@ -47,9 +47,9 @@ public class Main {
 				scan.nextLine();
 			}
 
+			printSeparator();
 			switch (userInput) {
 				case 1:
-					printSeparator();
 					scan.nextLine();
 					System.out.print("Enter your name: ");
 					String username = scan.nextLine();
@@ -73,7 +73,6 @@ public class Main {
 
 					break;
 				case 2:
-					printSeparator();
 					if (user.getUsername() != null) {
 						System.out.println("Name: " + user.getUsername());
 						System.out.println("Nationality: " + user.getNationality());
@@ -88,19 +87,20 @@ public class Main {
 					}
 					break;
 				case 3:
-					printSeparator();
 					if (user.getUsername() != null) {
-
+						System.out.println();
 					} else {
 						System.err.println("You have not set your information yet.");
 					}
 					break;
 				case 4:
-					printSeparator();
 					if (user.getUsername() != null) {
-						System.out.println("Your age in seconds is: " + application.calculateAgeInSeconds(user.getBirthdate()));
-						System.out.println("Your age in hours is: " + application.calculateAgeInHours(user.getBirthdate()));
-						System.out.println("Your age in days is: " + application.calculateAgeInDays(user.getBirthdate()));
+						System.out.println(
+								"Your age in seconds is: " + application.calculateAgeInSeconds(user.getBirthdate()));
+						System.out.println(
+								"Your age in hours is: " + application.calculateAgeInHours(user.getBirthdate()));
+						System.out
+								.println("Your age in days is: " + application.calculateAgeInDays(user.getBirthdate()));
 					} else {
 						System.err.println("You have not set your information yet.");
 					}
