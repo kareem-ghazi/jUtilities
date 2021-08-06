@@ -35,9 +35,11 @@ public class Main {
 
 	// Prints out the calculated age using the specified input values.
 	public static void mainLoop() {
-		int userInput = 0;
+		int userInput;
 
 		do {
+			userInput = 0;
+			
 			System.out.print("-: ");
 			try {
 				userInput = scan.nextInt();
