@@ -1,5 +1,7 @@
 package com.kimo.beginner.agecalculator;
 
+import java.time.LocalDate;
+
 public class User {
 	private String username;
 	private String nationality;
@@ -7,6 +9,8 @@ public class User {
 	private int birthYear;
 	private int birthMonth;
 	private int birthDay;
+
+	private LocalDate birthday;
 	
 	public void setName(String username) {
 		this.username = username;
@@ -23,6 +27,7 @@ public class User {
 		this.birthMonth = birthMonth;
 		this.birthDay = birthDay;
 		
+		birthday = LocalDate.of(birthYear, birthMonth, birthDay);
 	}
 	
 	public String getUsername() {
@@ -35,6 +40,11 @@ public class User {
 		
 	}
 	
+	public LocalDate getBirthdate() {
+		return birthday;
+
+	}
+
 	public int getBirthMonth() {
 		return birthMonth;
 		
