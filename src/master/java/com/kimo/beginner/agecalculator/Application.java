@@ -42,7 +42,7 @@ public class Application {
 
 	public String calculateAgeInSeconds(LocalDate birthday) {
 		Period ageDateDifference = Period.between(birthday, today);
-		int ageInSeconds = ((ageDateDifference.getYears() * 31536000) + (ageDateDifference.getMonths() * 2628002)
+		long ageInSeconds = ((ageDateDifference.getYears() * 31536000L) + (ageDateDifference.getMonths() * 2628002)
 				+ (ageDateDifference.getDays() * 86400));
 
 		return numberFormat.format(ageInSeconds);
@@ -50,7 +50,7 @@ public class Application {
 
 	public String calculateAgeInHours(LocalDate birthday) {
 		Period ageDateDifference = Period.between(birthday, today);
-		int ageInHours = ((ageDateDifference.getYears() * 31536000) + (ageDateDifference.getMonths() * 2628002)
+		long ageInHours = ((ageDateDifference.getYears() * 31536000L) + (ageDateDifference.getMonths() * 2628002)
 				+ (ageDateDifference.getDays() * 86400)) / 3600;
 
 		return numberFormat.format(ageInHours);
@@ -58,8 +58,8 @@ public class Application {
 
 	public String calculateAgeInDays(LocalDate birthday) {
 		Period ageDateDifference = Period.between(birthday, today);
-		int ageInDays = ((ageDateDifference.getYears() * 31536000) + (ageDateDifference.getMonths() * 2628002)
-				+ (ageDateDifference.getDays() * 86400)) / 86400;
+		long ageInDays = (((ageDateDifference.getYears() * 31536000L) + (ageDateDifference.getMonths() * 2628002)
+				+ (ageDateDifference.getDays() * 86400)) / 86400);
 
 		return numberFormat.format(ageInDays);
 	}
