@@ -50,30 +50,11 @@ public class Main {
 			printSeparator();
 			switch (userInput) {
 				case 1:
-					scan.nextLine();
-					System.out.print("Enter your name: ");
-					String username = scan.nextLine();
-
-					System.out.print("Enter your nationality: ");
-					String nationality = scan.nextLine();
-
-					System.out.print("Enter your birth year: ");
-					int birthYear = scan.nextInt();
-
-					System.out.print("Enter your birth month: ");
-					int birthMonth = scan.nextInt();
-
-					System.out.print("Enter your birth day: ");
-					int birthDay = scan.nextInt();
-					scan.nextLine();
-
-					user.setName(username);
-					user.setNationality(nationality);
-					user.setBirthdate(birthYear, birthMonth, birthDay);
-
+					scan.nextLine(); // Discard previous scanner.
+					user.createUser();
 					break;
 				case 2:
-					if (user.getUsername() != null) {
+					if (!user.isNull()) {
 						System.out.println("Name: " + user.getUsername());
 						System.out.println("Nationality: " + user.getNationality());
 						System.out.println("Birthdate: " + user.getBirthYear() + "/" + user.getBirthMonth() + "/"
@@ -83,18 +64,17 @@ public class Main {
 						System.out.println(application.timeTillNextBirthday(user.getBirthdate()));
 					} else {
 						System.err.println("You have not set your information yet.");
-
 					}
 					break;
 				case 3:
-					if (user.getUsername() != null) {
-						System.out.println();
+					if (!user.isNull()) {
+						application.calculateAgeOnPlanets(user.getBirthdate());
 					} else {
 						System.err.println("You have not set your information yet.");
 					}
 					break;
 				case 4:
-					if (user.getUsername() != null) {
+					if (!user.isNull()) {
 						System.out.println(
 								"Your age in seconds is: " + application.calculateAgeInSeconds(user.getBirthdate()));
 						System.out.println(

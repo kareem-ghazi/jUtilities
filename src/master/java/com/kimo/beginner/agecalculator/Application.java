@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Application {
 	Scanner scan = new Scanner(System.in);
 	LocalDate today = LocalDate.now(); // Today's date
-	LocalDate birthday;
 	NumberFormat numberFormat = NumberFormat.getInstance();
 
 	// Calculates the age of a user.
@@ -63,6 +62,33 @@ public class Application {
 				+ (ageDateDifference.getDays() * 86400)) / 86400;
 
 		return numberFormat.format(ageInDays);
+	}
+
+	public void calculateAgeOnPlanets(LocalDate birthday) {
+		Period ageDateDifference = Period.between(birthday, today);
+
+		double earthAge = ageDateDifference.getYears();
+		double mercuryAge = (earthAge * 365) / 88;
+		double venusAge = (earthAge * 365) / 225;
+		double marsAge = (earthAge * 365) / 687;
+
+		double jupiterAge = earthAge / 12;
+		double saturnAge = earthAge / 29.5;
+		double uranusAge = earthAge / 84;
+		double neptuneAge = earthAge / 165;
+		double plutoAge = earthAge / 248;
+
+		System.out.println("Your age in years on different planets:");
+		System.out.println();
+		System.out.println("Mercury - " + Math.round(mercuryAge * 100.0) / 100.0 + " year(s)");
+		System.out.println("Earth - " + Math.round(earthAge * 100.0) / 100.0 + " year(s)");
+		System.out.println("Venus - " + Math.round(venusAge * 100.0) / 100.0 + " year(s)");
+		System.out.println("Mars - " + Math.round(marsAge * 100.0) / 100.0 + " year(s)");
+		System.out.println("Jupiter - " + Math.round(jupiterAge * 100.0) / 100.0 + " year(s)");
+		System.out.println("Saturn - " + Math.round(saturnAge * 100.0) / 100.0 + " year(s)");
+		System.out.println("Uranus - " + Math.round(uranusAge * 100.0) / 100.0 + " year(s)");
+		System.out.println("Neptune - " + Math.round(neptuneAge * 100.0) / 100.0 + " year(s)");
+		System.out.println("Pluto - " + Math.round(plutoAge * 100.0) / 100.0 + " year(s)");
 	}
 
 }
