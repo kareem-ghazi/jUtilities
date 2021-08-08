@@ -13,7 +13,6 @@ public class Main {
 		System.out.println("AgeCalculator - Calculates your current age using your birthday.");
 		printCommandList();
 		mainLoop();
-		printSeparator();
 
 	}
 
@@ -57,8 +56,8 @@ public class Main {
 					if (!user.isNull()) {
 						System.out.println("Name: " + user.getUsername());
 						System.out.println("Nationality: " + user.getNationality());
-						System.out.println("Birthdate: " + user.getBirthYear() + "/" + user.getBirthMonth() + "/"
-								+ user.getBirthDay());
+						System.out.println("Birthdate: " + user.getBirthDay() + "/" + user.getBirthMonth() + "/"
+								+ user.getBirthYear());
 						printSeparator();
 						System.out.println(application.calculateAge(user.getBirthdate()));
 						System.out.println(application.timeTillNextBirthday(user.getBirthdate()));
@@ -87,6 +86,7 @@ public class Main {
 					break;
 				case 5:
 					System.out.println("Exited program successfully.");
+					printSeparator();
 					return;
 				default:
 					System.err.println("Invalid input.");

@@ -89,6 +89,7 @@ public class User {
 
 	public boolean isNull() {
 		return getUsername() == null;
+		
 	}
 
 	public String getUsername() {
