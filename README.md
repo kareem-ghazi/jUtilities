@@ -8,10 +8,10 @@
 
 ## Features
 
-These are currently the **only completed** features of jUtilities.
+These are currently the **only completed** features of jUtilities (ordered from **oldest** to **newest**).
 
-- AgeCalculator - Calculates your current age and other cool things using your birthdate.
 - QuizMaker - Create quizzes, play them, and print out their results.
+- AgeCalculator - Calculates your current age and other cool things using your birthdate.
   
 ## Feedback
 
