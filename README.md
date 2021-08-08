@@ -23,7 +23,9 @@
 <h1></h1>
 
 <p align="center">
-  <b>jUtilities</b> is a collection of various utilities and projects made with Java.
+  <font size="5">
+    <b>jUtilities</b> is a collection of various utilities and projects made with Java.
+  </font>
 </p>
 
 ## Features
