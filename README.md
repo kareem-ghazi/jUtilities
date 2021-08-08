@@ -22,7 +22,9 @@
 
 <h1></h1>
 
-**jUtilities** is a collection of various utilities and projects made with Java.
+<p align="center">
+  <b>jUtilities</b> is a collection of various utilities and projects made with Java.
+</p>
 
 ## Features
 
