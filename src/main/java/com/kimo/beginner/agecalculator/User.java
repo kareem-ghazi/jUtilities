@@ -7,13 +7,10 @@ public class User {
 	private String username;
 	private String nationality;
 
-	private int birthYear;
-	private int birthMonth;
-	private int birthDay;
-
-	private LocalDate birthday;
+	private LocalDate birthdate;
 	private Scanner scan = new Scanner(System.in);
 
+	// Interface for creating a user.
 	public void createUser() {
 		int birthYear = 0;
 		int birthMonth = 0;
@@ -26,6 +23,7 @@ public class User {
 		String nationality = scan.nextLine();
 
 		System.out.print("Enter your birth year: ");
+		// Try-catch statements for invalid input.
 		do {
 			try {
 				birthYear = scan.nextInt();
@@ -69,24 +67,24 @@ public class User {
 		setBirthdate(birthYear, birthMonth, birthDay);
 	}
 
+	// Sets user's name.
 	public void setName(String username) {
 		this.username = username;
 
 	}
 
+	// Sets user's nationality.
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 
 	}
 
+	// Set user's birthdate.
 	public void setBirthdate(int birthYear, int birthMonth, int birthDay) {
-		this.birthYear = birthYear;
-		this.birthMonth = birthMonth;
-		this.birthDay = birthDay;
-
-		birthday = LocalDate.of(birthYear, birthMonth, birthDay);
+		birthdate = LocalDate.of(birthYear, birthMonth, birthDay);
 	}
 
+	// Checks if the username for the user is null.
 	public boolean isNull() {
 		return getUsername() == null;
 		
@@ -103,22 +101,7 @@ public class User {
 	}
 
 	public LocalDate getBirthdate() {
-		return birthday;
-
-	}
-
-	public int getBirthMonth() {
-		return birthMonth;
-
-	}
-
-	public int getBirthYear() {
-		return birthYear;
-
-	}
-
-	public int getBirthDay() {
-		return birthDay;
+		return birthdate;
 
 	}
 
