@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/EKmRMjU.png">
+<img src="https://i.imgur.com/EKmRMjU.png" width="464" height="261">
 
 <p align="center">
   <a href="https://www.codacy.com/gh/kareem-ghazi/jUtilities/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kareem-ghazi/jUtilities&amp;utm_campaign=Badge_Grade">
