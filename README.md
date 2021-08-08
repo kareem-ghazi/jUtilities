@@ -10,13 +10,22 @@
 
 These are currently the **only completed** features of jUtilities (ordered from **oldest** to **newest**).
 
-- QuizMaker - Create quizzes, play them, and print out their results.
-- AgeCalculator - Calculates your current age and other cool things using your birthdate.
+  - QuizMaker - Create quizzes, play them, and print out their results.
+  - AgeCalculator - Calculates your current age and other cool things using your birthdate.
+
+## Installation
+
+You can install this project in **two** ways.
+
+  - Clone using git: `git clone https://github.com/kareem-ghazi/jUtilities.git`
+  - Open in gitpod: 
   
+    [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/kareem-ghazi/jUtilities)
+
 ## Feedback
 
 If you have any feedback or code suggestions, please reach out to k.ghazi2005@gmail.com or open an issue request.
 
 ## Authors
 
-- [@kareem-ghazi](https://www.github.com/kareem-ghazi)
+  - [@kareem-ghazi](https://www.github.com/kareem-ghazi)
