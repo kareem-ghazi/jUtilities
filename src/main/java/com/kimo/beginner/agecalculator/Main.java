@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 	private static Scanner scan = new Scanner(System.in);
 	private static Application application = new Application();
-	private static User user = new User();
+	private static User user;
 
 	// Main method to run application.
 	public static void main(String[] args) {
@@ -49,8 +49,61 @@ public class Main {
 			printSeparator();
 			switch (userInput) {
 				case 1:
+					int birthYear;
+					int birthMonth;
+					int birthDay;
+
+					String username;
+					String nationality;
+
 					scan.nextLine(); // Discard previous scanner.
-					user.createUser();
+					System.out.print("Enter your name: ");
+					username = scan.nextLine();
+
+					System.out.print("Enter your nationality: ");
+					nationality = scan.nextLine();
+
+					System.out.print("Enter your birth year: ");
+					// Try-catch statements for invalid input.
+					do {
+						try {
+							birthYear = scan.nextInt();
+							break;
+						} catch (Exception e) {
+							scan.nextLine();
+							System.out.println("Invalid input.");
+							System.out.print("-: ");
+						}
+					} while (true);
+					scan.nextLine();
+
+					System.out.print("Enter your birth month: ");
+					do {
+						try {
+							birthMonth = scan.nextInt();
+							break;
+						} catch (Exception e) {
+							scan.nextLine();
+							System.out.println("Invalid input.");
+							System.out.print("-: ");
+						}
+					} while (true);
+					scan.nextLine();
+
+					System.out.print("Enter your birth day: ");
+					do {
+						try {
+							birthDay = scan.nextInt();
+							break;
+						} catch (Exception e) {
+							scan.nextLine();
+							System.out.println("Invalid input.");
+							System.out.print("-: ");
+						}
+					} while (true);
+					scan.nextLine();
+
+					user = new User(username, nationality, birthYear, birthMonth, birthDay);
 					break;
 				case 2:
 					if (!user.isNull()) {
@@ -74,9 +127,12 @@ public class Main {
 					break;
 				case 4:
 					if (!user.isNull()) {
-						System.out.println("Your age in seconds is: " + application.calculateAgeInSeconds(user.getBirthdate()));
-						System.out.println("Your age in hours is: " + application.calculateAgeInHours(user.getBirthdate()));
-						System.out.println("Your age in days is: " + application.calculateAgeInDays(user.getBirthdate()));
+						System.out.println(
+								"Your age in seconds is: " + application.calculateAgeInSeconds(user.getBirthdate()));
+						System.out.println(
+								"Your age in hours is: " + application.calculateAgeInHours(user.getBirthdate()));
+						System.out
+								.println("Your age in days is: " + application.calculateAgeInDays(user.getBirthdate()));
 					} else {
 						System.err.println("You have not set your information yet.");
 					}
