@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/EKmRMjU.png" width="464" height="261" alt="jUtilities Banner">
+  <img src="https://i.imgur.com/EKmRMjU.png" width="384" height="216" alt="jUtilities Banner">
 </p>
 
 <p align="center">
@@ -17,6 +17,12 @@
   <img
       src="https://img.shields.io/badge/Status-Active-brightgreen"
       alt="Repository Status"/>
+  </a>
+  </br>
+  <a href="https://java.com/">
+  <img
+      src="https://img.shields.io/badge/java-critical.svg?style=for-the-badge&logo=java&logoColor=white"
+      alt="Java badge"/>
   </a>
 </p>
 
