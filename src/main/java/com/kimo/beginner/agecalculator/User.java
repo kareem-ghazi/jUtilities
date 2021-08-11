@@ -15,12 +15,6 @@ public class User {
 		birthdate = LocalDate.of(birthYear, birthMonth, birthDay);
 	}
 
-	// Checks if the username for the user is null.
-	public boolean isNull() {
-		return getUsername() == null;
-
-	}
-
 	public String getUsername() {
 		return username;
 

@@ -9,9 +9,9 @@ public class OptionMenu {
 
     // Creates a new user.
     public void createUser() {
-        int birthYear;
-        int birthMonth;
-        int birthDay;
+        int birthYear = 0;
+        int birthMonth = 0;
+        int birthDay = 0;
 
         String username;
         String nationality;
@@ -23,44 +23,13 @@ public class OptionMenu {
         nationality = scan.nextLine();
 
         System.out.print("Enter your birth year: ");
-        // Try-catch statements for invalid input.
-        do {
-            try {
-                birthYear = scan.nextInt();
-                break;
-            } catch (Exception e) {
-                scan.nextLine();
-                System.out.println("Invalid input.");
-                System.out.print("-: ");
-            }
-        } while (true);
-        scan.nextLine();
+        birthYear = catchInputError(birthYear);
 
         System.out.print("Enter your birth month: ");
-        do {
-            try {
-                birthMonth = scan.nextInt();
-                break;
-            } catch (Exception e) {
-                scan.nextLine();
-                System.out.println("Invalid input.");
-                System.out.print("-: ");
-            }
-        } while (true);
-        scan.nextLine();
+        birthMonth = catchInputError(birthMonth);
 
         System.out.print("Enter your birth day: ");
-        do {
-            try {
-                birthDay = scan.nextInt();
-                break;
-            } catch (Exception e) {
-                scan.nextLine();
-                System.out.println("Invalid input.");
-                System.out.print("-: ");
-            }
-        } while (true);
-        scan.nextLine();
+        birthDay = catchInputError(birthDay);
 
         user = new User(username, nationality, birthYear, birthMonth, birthDay);
     }
@@ -114,6 +83,23 @@ public class OptionMenu {
     public void printExitMessage() {
         System.out.println("Exited program successfully.");
         System.out.println("-------------------------------------");
+    }
+
+    // Try-catch statements for invalid input.
+    private int catchInputError(int input) {
+        do {
+            try {
+                input = scan.nextInt();
+                break;
+            } catch (Exception e) {
+                scan.nextLine();
+                System.out.println("Invalid input.");
+                System.out.print("-: ");
+            }
+        } while (true);
+        scan.nextLine();
+
+        return input;
     }
 
 }
