@@ -4,6 +4,7 @@ public class Shape {
     protected double height;
     protected double width;
     protected String definition;
+    protected String name;
 
     public Shape(double height, double width) {
         this.height = height;
@@ -22,5 +23,10 @@ public class Shape {
         definition = "This shape has no definitions yet.";
 
         return definition;
+    }
+
+    public void dump() {
+        System.out.println("This shape has no summary's yet.");
+
     }
 }

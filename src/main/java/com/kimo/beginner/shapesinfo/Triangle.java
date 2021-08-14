@@ -1,33 +1,27 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Square extends Shape {
+public class Triangle extends Shape {
 
-    public Square(double sideLength) {
-        super(sideLength, sideLength);
+    public Triangle(double height, double base) {
+        super(height, base);
     }
 
     public double getArea() {
-        double area = getWidth() * getHeight();
+        double area = (0.5 * getHeight() * getWidth());
 
         return area;
     }
 
-    public double getPerimeter() {
-        double perimeter = (getWidth() * 2) + (getHeight() * 2);
-
-        return perimeter;
-    }
-
     @Override
     public String getDefinition() {
-        definition = "A square is a regular quadrilateral with four equal straight sides and four right angles.";
+        definition = "A triangle is a polygon with three edges and three vertices.";
 
         return definition;
     }
 
     @Override
     public String toString() {
-        name = "Square";
+        name = "Triangle";
 
         return name;
     }
@@ -38,10 +32,8 @@ public class Square extends Shape {
         System.out.println("Shape's Name: " + toString());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
-        System.out.println("Shape's Perimter: " + getPerimeter());
-        System.out.println("Shape's Width: " + getWidth());
+        System.out.println("Shape's Base: " + getWidth());
         System.out.println("Shape's Height: " + getHeight());
         System.out.println("-----------------------------------------");
     }
-
 }
