@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/EKmRMjU.png" width="384" height="216" alt="jUtilities Banner">
+  <img src="https://i.imgur.com/gBoNYUS.png" width="384" height="216" alt="jUtilities Banner">
 </p>
 
 <p align="center">
