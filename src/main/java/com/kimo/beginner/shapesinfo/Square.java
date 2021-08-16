@@ -6,15 +6,17 @@ public class Square extends Shape {
         super(sideLength, sideLength);
     }
 
+    @Override
     public double getArea() {
-        double area = getWidth() * getHeight();
+        area = getWidth() * getHeight();
 
         return area;
     }
 
+    @Override
     public double getPerimeter() {
-        double perimeter = (getWidth() * 2) + (getHeight() * 2);
-
+        perimeter = (getWidth() * 2) + (getHeight() * 2);
+        
         return perimeter;
     }
 
@@ -26,16 +28,16 @@ public class Square extends Shape {
     }
 
     @Override
-    public String toString() {
-        name = "Square";
+    public String getType() {
+        type = "SQUARE";
 
-        return name;
+        return type;
     }
 
     @Override
     public void dump() {
         System.out.println("-----------------------------------------");
-        System.out.println("Shape's Name: " + toString());
+        System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
         System.out.println("Shape's Perimter: " + getPerimeter());

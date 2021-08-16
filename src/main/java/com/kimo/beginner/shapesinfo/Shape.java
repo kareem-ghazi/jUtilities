@@ -1,10 +1,14 @@
 package com.kimo.beginner.shapesinfo;
 
 public class Shape {
-    protected double height;
-    protected double width;
+    private double height;
+    private double width;
+
+    protected double area;
+    protected double perimeter;
+    
     protected String definition;
-    protected String name;
+    protected String type;
 
     public Shape(double height, double width) {
         this.height = height;
@@ -20,13 +24,23 @@ public class Shape {
     }
 
     public String getDefinition() {
-        definition = "This shape has no definitions yet.";
-
         return definition;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public double getPerimeter() {
+        return perimeter;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public void dump() {
         System.out.println("This shape has no summary's yet.");
-
     }
+
 }

@@ -1,28 +1,35 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Triangle extends Shape {
+public class Rectangle extends Shape {
 
-    public Triangle(double height, double base) {
-        super(height, base);
+    public Rectangle(double height, double width) {
+        super(height, width);
     }
-
+    
     @Override
     public double getArea() {
-        area = (0.5 * getHeight() * getWidth());
+        area = getHeight() * getWidth();
 
         return area;
     }
 
     @Override
+    public double getPerimeter() {
+        perimeter = (2 * getHeight()) + (2 * getWidth());
+
+        return perimeter;
+    }
+
+    @Override
     public String getDefinition() {
-        definition = "A triangle is a polygon with three edges and three vertices.";
+        definition = "A rectangle is a quadrilateral with four right angles.";
 
         return definition;
     }
 
     @Override
     public String getType() {
-        type = "TRIANGLE";
+        type = "RECTANGLE";
 
         return type;
     }
@@ -33,8 +40,10 @@ public class Triangle extends Shape {
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
-        System.out.println("Shape's Base: " + getWidth());
+        System.out.println("Shape's Perimter: " + getPerimeter());
+        System.out.println("Shape's Width: " + getWidth());
         System.out.println("Shape's Height: " + getHeight());
         System.out.println("-----------------------------------------");
     }
+    
 }
