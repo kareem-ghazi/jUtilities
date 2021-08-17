@@ -1,8 +1,9 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Shape {
-    private double height;
-    private double width;
+public class TwoDShape {
+    protected double height;
+    protected double width;
+    protected double radius;
 
     protected double area;
     protected double perimeter;
@@ -10,9 +11,16 @@ public class Shape {
     protected String definition;
     protected String type;
 
-    public Shape(double height, double width) {
+    public void setHeight(double height) {
         this.height = height;
+    }
+
+    public void setWidth(double width) {
         this.width = width;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
     }
 
     public double getHeight() {
@@ -21,6 +29,10 @@ public class Shape {
 
     public double getWidth() {
         return width;
+    }
+
+    public double getRadius() {
+        return radius;
     }
 
     public String getDefinition() {

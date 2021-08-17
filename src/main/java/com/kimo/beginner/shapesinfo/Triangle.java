@@ -1,9 +1,10 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Triangle extends Shape {
+public class Triangle extends TwoDShape {
 
     public Triangle(double height, double base) {
-        super(height, base);
+        setHeight(height);
+        setWidth(base);
     }
 
     @Override

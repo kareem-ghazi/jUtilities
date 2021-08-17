@@ -1,9 +1,10 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Rectangle extends Shape {
+public class Rectangle extends TwoDShape {
 
     public Rectangle(double height, double width) {
-        super(height, width);
+        setHeight(height);
+        setWidth(width);
     }
     
     @Override
@@ -45,5 +46,4 @@ public class Rectangle extends Shape {
         System.out.println("Shape's Height: " + getHeight());
         System.out.println("-----------------------------------------");
     }
-    
 }

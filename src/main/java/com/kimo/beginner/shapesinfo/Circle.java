@@ -1,36 +1,35 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Parallelogram extends TwoDShape {
+public class Circle extends TwoDShape {
 
-    public Parallelogram(double height, double base) {
-        setHeight(height);
-        setWidth(base);
+    public Circle(double radius) {
+        setRadius(radius);
     }
 
     @Override
     public double getArea() {
-        area = (getWidth() * getHeight());
+        area = (Math.PI * Math.pow(radius, 2));
 
         return area;
     }
 
     @Override
     public double getPerimeter() {
-        perimeter = (getWidth() * 2) + (getHeight() * 2);
+        perimeter = (2 * Math.PI * radius);
 
         return perimeter;
     }
 
     @Override
     public String getType() {
-        type = "PARALLELOGRAM";
+        type = "CIRCLE";
 
         return type;
     }
 
     @Override
     public String getDefinition() {
-        definition = "A parallelogram is a simple quadrilateral with two pairs of parallel sides.";
+        definition = "A circle is a shape consisting of all points in a plane that are at a given distance from a given point";
 
         return definition;
     }
@@ -40,10 +39,9 @@ public class Parallelogram extends TwoDShape {
         System.out.println("-----------------------------------------");
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
-        System.out.println("Shape's Area: " + getArea());
-        System.out.println("Shape's Perimeter: " + getPerimeter());
-        System.out.println("Shape's Base: " + getWidth());
-        System.out.println("Shape's Height: " + getHeight());
+        System.out.println("Shape's Area: " + Math.round(getArea() * 100.0) / 100.0);
+        System.out.println("Shape's Perimeter: " + Math.round(getPerimeter() * 100.0) / 100.0);
+        System.out.println("Shape's Radius: " + getRadius());
         System.out.println("-----------------------------------------");
     }
 }

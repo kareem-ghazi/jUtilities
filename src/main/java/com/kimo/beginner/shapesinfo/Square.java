@@ -1,9 +1,10 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Square extends Shape {
+public class Square extends TwoDShape {
 
     public Square(double sideLength) {
-        super(sideLength, sideLength);
+        setHeight(sideLength);
+        setWidth(sideLength);
     }
 
     @Override
@@ -45,5 +46,4 @@ public class Square extends Shape {
         System.out.println("Shape's Height: " + getHeight());
         System.out.println("-----------------------------------------");
     }
-
 }
