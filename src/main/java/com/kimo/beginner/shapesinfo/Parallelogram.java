@@ -1,10 +1,28 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Parallelogram extends TwoDShape {
+public class Parallelogram extends Shape {
+    private double height;
+    private double base;
 
     public Parallelogram(double height, double base) {
         setHeight(height);
         setWidth(base);
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWidth() {
+        return base;
+    }
+
+    public void setWidth(double width) {
+        this.base = width;
     }
 
     @Override

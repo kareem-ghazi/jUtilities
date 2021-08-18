@@ -1,15 +1,33 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Triangle extends TwoDShape {
+public class Triangle extends Shape {
+    private double height;
+    private double base;
 
     public Triangle(double height, double base) {
         setHeight(height);
-        setWidth(base);
+        setBase(base);
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getBase() {
+        return base;
+    }
+
+    public void setBase(double base) {
+        this.base = base;
     }
 
     @Override
     public double getArea() {
-        area = (0.5 * getHeight() * getWidth());
+        area = (0.5 * getHeight() * getBase());
 
         return area;
     }
@@ -34,7 +52,7 @@ public class Triangle extends TwoDShape {
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
-        System.out.println("Shape's Base: " + getWidth());
+        System.out.println("Shape's Base: " + getBase());
         System.out.println("Shape's Height: " + getHeight());
         System.out.println("-----------------------------------------");
     }

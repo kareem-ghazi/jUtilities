@@ -1,10 +1,10 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Circle extends Shape {
+public class Sphere extends Shape {
     private double radius;
-
-    public Circle(double radius) {
-        setRadius(radius);;
+    
+    public Sphere(double radius) {
+        setRadius(radius);
     }
 
     public double getRadius() {
@@ -16,29 +16,29 @@ public class Circle extends Shape {
     }
 
     @Override
-    public double getArea() {
-        area = (Math.PI * Math.pow(radius, 2));
+    public double getVolume() {
+        volume = (Math.PI * Math.pow(getRadius(), 3) * 4) / 3;
 
-        return area;
+        return volume;
     }
 
     @Override
-    public double getPerimeter() {
-        perimeter = (2 * Math.PI * radius);
+    public double getSurfaceArea() {
+        surfaceArea = (4 * Math.PI * Math.pow(getRadius(), 2));
 
-        return perimeter;
+        return surfaceArea;
     }
 
     @Override
     public String getType() {
-        type = "CIRCLE";
+        type = "SPHERE";
 
         return type;
     }
 
     @Override
     public String getDefinition() {
-        definition = "A circle is a shape consisting of all points in a plane that are at a given distance from a given point";
+        definition = "A sphere is a geometrical object in three-dimensional space that is the surface of a ball.";
 
         return definition;
     }
@@ -48,8 +48,8 @@ public class Circle extends Shape {
         System.out.println("-----------------------------------------");
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
-        System.out.println("Shape's Area: " + Math.round(getArea() * 100.0) / 100.0);
-        System.out.println("Shape's Perimeter: " + Math.round(getPerimeter() * 100.0) / 100.0);
+        System.out.println("Shape's Volume: " + Math.round(getVolume() * 100.0) / 100.0);
+        System.out.println("Shape's Surface Area: " + Math.round(getSurfaceArea() * 100.0) / 100.0);
         System.out.println("Shape's Radius: " + getRadius());
         System.out.println("-----------------------------------------");
     }
