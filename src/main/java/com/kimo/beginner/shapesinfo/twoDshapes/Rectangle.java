@@ -1,12 +1,14 @@
-package com.kimo.beginner.shapesinfo;
+package com.kimo.beginner.shapesinfo.twoDshapes;
 
-public class Triangle extends Shape {
+import com.kimo.beginner.shapesinfo.Shape;
+
+public class Rectangle extends Shape {
     private double height;
-    private double base;
+    private double width;
 
-    public Triangle(double height, double base) {
+    public Rectangle(double height, double width) {
         setHeight(height);
-        setBase(base);
+        setWidth(width);
     }
 
     public double getHeight() {
@@ -17,31 +19,38 @@ public class Triangle extends Shape {
         this.height = height;
     }
 
-    public double getBase() {
-        return base;
+    public double getWidth() {
+        return width;
     }
 
-    public void setBase(double base) {
-        this.base = base;
+    public void setWidth(double width) {
+        this.width = width;
     }
-
+    
     @Override
     public double getArea() {
-        area = (0.5 * getHeight() * getBase());
+        area = getHeight() * getWidth();
 
         return area;
     }
 
     @Override
+    public double getPerimeter() {
+        perimeter = (2 * getHeight()) + (2 * getWidth());
+
+        return perimeter;
+    }
+
+    @Override
     public String getDefinition() {
-        definition = "A triangle is a polygon with three edges and three vertices.";
+        definition = "A rectangle is a quadrilateral with four right angles.";
 
         return definition;
     }
 
     @Override
     public String getType() {
-        type = "TRIANGLE";
+        type = "RECTANGLE";
 
         return type;
     }
@@ -52,7 +61,8 @@ public class Triangle extends Shape {
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
-        System.out.println("Shape's Base: " + getBase());
+        System.out.println("Shape's Perimter: " + getPerimeter());
+        System.out.println("Shape's Width: " + getWidth());
         System.out.println("Shape's Height: " + getHeight());
         System.out.println("-----------------------------------------");
     }

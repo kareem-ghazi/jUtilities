@@ -1,8 +1,10 @@
-package com.kimo.beginner.shapesinfo;
+package com.kimo.beginner.shapesinfo.threeDshapes;
+
+import com.kimo.beginner.shapesinfo.Shape;
 
 public class Sphere extends Shape {
     private double radius;
-    
+
     public Sphere(double radius) {
         setRadius(radius);
     }

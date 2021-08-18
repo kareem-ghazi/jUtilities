@@ -1,4 +1,6 @@
-package com.kimo.beginner.shapesinfo;
+package com.kimo.beginner.shapesinfo.twoDshapes;
+
+import com.kimo.beginner.shapesinfo.Shape;
 
 public class Circle extends Shape {
     private double radius;
