@@ -1,5 +1,7 @@
 package com.kimo.beginner.shapesinfo;
 
+import java.util.Scanner;
+
 import com.kimo.beginner.shapesinfo.threeDshapes.Cone;
 import com.kimo.beginner.shapesinfo.threeDshapes.Cube;
 import com.kimo.beginner.shapesinfo.threeDshapes.Cuboid;
@@ -13,6 +15,8 @@ import com.kimo.beginner.shapesinfo.twoDshapes.Square;
 import com.kimo.beginner.shapesinfo.twoDshapes.Triangle;
 
 public class Main {
+	static ShapeMenu shapeMenu = new ShapeMenu();
+	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		Shape square = new Square(5);
@@ -28,18 +32,60 @@ public class Main {
 		Shape cube = new Cube(5);
 		Shape cuboid = new Cuboid(10, 10, 10);
 
-		square.dump();
-		triangle.dump();
-		parallelogram.dump();
-		rectangle.dump();
-		circle.dump();
-		ellipse.dump();
-
-		sphere.dump();
-		cylinder.dump();
-		cone.dump();
-		cube.dump();
-		cuboid.dump();
+		printSeparator();
+		System.out.println("ShapesInfo - Gets info about the shape using its attributes.");
+		mainLoop();
 	}
 
+	public static void mainLoop() {
+		int userInput = 0;
+
+		do {
+			printSeparator();
+			printCommandList();
+
+			userInput = 0;
+
+			System.out.print("-: ");
+			try {
+				userInput = scan.nextInt();
+			} catch (Exception e) {
+				scan.nextLine();
+			}
+
+			selectShapeType(userInput);
+		} while (true);
+	}
+
+	public static void printSeparator() {
+		System.out.println("-------------------------------");
+	}
+
+	public static void printCommandList() {
+		System.out.println("### Shape Types ###");
+		printSeparator();
+		System.out.println("1. 2D Shapes");
+		System.out.println("2. 3D Shapes");
+		System.out.println("3. Exit");
+	}
+
+	public static void selectShapeType(int userInput) {
+		switch (userInput) {
+			case 1:
+				shapeMenu.get2DShapeMenu();
+				break;
+			case 2:
+				printSeparator();
+				shapeMenu.get3DShapeMenu();
+				break;
+			case 3:
+				System.out.println("Exited program successfully.");
+				printSeparator();
+				System.exit(0);
+				break;
+			default:
+				printSeparator();
+				System.out.println("Invalid input.");
+		}
+	}
 }
