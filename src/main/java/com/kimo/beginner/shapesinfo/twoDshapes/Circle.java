@@ -1,6 +1,7 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
 
 public class Circle extends Shape {
     private double radius;
@@ -47,12 +48,12 @@ public class Circle extends Shape {
 
     @Override
     public void dump() {
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + Math.round(getArea() * 100.0) / 100.0);
         System.out.println("Shape's Perimeter: " + Math.round(getPerimeter() * 100.0) / 100.0);
         System.out.println("Shape's Radius: " + getRadius());
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
     }
 }

@@ -1,6 +1,7 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
 
 public class Square extends Shape {
     private double sideLength;
@@ -47,13 +48,13 @@ public class Square extends Shape {
 
     @Override
     public void dump() {
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
         System.out.println("Shape's Perimter: " + getPerimeter());
         System.out.println("Shape's Width: " + getSideLength());
         System.out.println("Shape's Height: " + getSideLength());
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
     }
 }

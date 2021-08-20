@@ -1,13 +1,14 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
 
 public class Rectangle extends Shape {
     private double height;
     private double width;
 
-    public Rectangle(double height, double width) {
-        setHeight(height);
+    public Rectangle(double length, double width) {
+        setHeight(length);
         setWidth(width);
     }
 
@@ -57,13 +58,13 @@ public class Rectangle extends Shape {
 
     @Override
     public void dump() {
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
         System.out.println("Shape's Perimter: " + getPerimeter());
         System.out.println("Shape's Width: " + getWidth());
         System.out.println("Shape's Height: " + getHeight());
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
     }
 }

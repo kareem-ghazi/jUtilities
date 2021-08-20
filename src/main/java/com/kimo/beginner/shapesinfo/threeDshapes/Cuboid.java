@@ -1,6 +1,7 @@
 package com.kimo.beginner.shapesinfo.threeDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
 
 public class Cuboid extends Shape {
     private double length;
@@ -75,7 +76,7 @@ public class Cuboid extends Shape {
 
     @Override
     public void dump() {
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Volume: " + Math.round(getVolume() * 100.0) / 100.0);
@@ -84,7 +85,7 @@ public class Cuboid extends Shape {
         System.out.println("Shape's Length: " + getLength());
         System.out.println("Shape's Width: " + getWidth());
         System.out.println("Shape's Height: " + getHeight());
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
     }
 
 }

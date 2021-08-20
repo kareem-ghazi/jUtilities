@@ -1,6 +1,7 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
 
 public class Triangle extends Shape {
     private double height;
@@ -50,12 +51,12 @@ public class Triangle extends Shape {
 
     @Override
     public void dump() {
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
         System.out.println("Shape's Base: " + getBase());
         System.out.println("Shape's Height: " + getHeight());
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
     }
 }

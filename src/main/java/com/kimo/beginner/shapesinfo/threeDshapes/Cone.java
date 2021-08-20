@@ -1,6 +1,7 @@
 package com.kimo.beginner.shapesinfo.threeDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
 
 public class Cone extends Shape {
     private double height;
@@ -75,7 +76,7 @@ public class Cone extends Shape {
 
     @Override
     public void dump() {
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Volume: " + Math.round(getVolume() * 100.0) / 100.0);
@@ -84,7 +85,7 @@ public class Cone extends Shape {
         System.out.println("Shape's Radius: " + getRadius());
         System.out.println("Shape's Height: " + getHeight());
         System.out.println("Shape's Slanted Height: " + Math.round(getSlantedHeight() * 100.0) / 100.0);
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
     }
 
 }

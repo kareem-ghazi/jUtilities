@@ -1,6 +1,7 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
 
 public class Parallelogram extends Shape {
     private double height;
@@ -57,13 +58,13 @@ public class Parallelogram extends Shape {
 
     @Override
     public void dump() {
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
         System.out.println("Shape's Perimeter: " + getPerimeter());
         System.out.println("Shape's Base: " + getWidth());
         System.out.println("Shape's Height: " + getHeight());
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
     }
 }

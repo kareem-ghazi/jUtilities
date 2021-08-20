@@ -1,6 +1,7 @@
 package com.kimo.beginner.shapesinfo.threeDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
 
 public class Cube extends Shape {
     private double sideLength;
@@ -54,7 +55,7 @@ public class Cube extends Shape {
 
     @Override
     public void dump() {
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Volume: " + Math.round(getVolume() * 100.0) / 100.0);
@@ -62,6 +63,6 @@ public class Cube extends Shape {
         System.out.println("Shape's Lateral Surface Area: " + Math.round(getLateralSurfaceArea() * 100.0) / 100.0);
         System.out.println("Shape's Height: " + getSideLength());
         System.out.println("Shape's Width: " + getSideLength());
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
     }
 }

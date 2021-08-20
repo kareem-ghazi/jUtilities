@@ -1,6 +1,8 @@
 package com.kimo.beginner.shapesinfo;
 
-public class Shape {
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+
+public class Shape implements PrintUtils {
     protected double area;
     protected double perimeter;
     protected double volume;    

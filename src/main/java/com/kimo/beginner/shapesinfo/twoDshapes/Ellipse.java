@@ -1,6 +1,7 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
+import com.kimo.beginner.shapesinfo.utils.PrintUtils;
 
 public class Ellipse extends Shape {
     private double axisA;
@@ -50,13 +51,13 @@ public class Ellipse extends Shape {
 
     @Override
     public void dump() {
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + Math.round(getArea() * 100.0) / 100.0);
         System.out.println("Shape's Axis A: " + getAxisA());
         System.out.println("Shape's Axis B: " + getAxisB());
-        System.out.println("-----------------------------------------");
+        PrintUtils.printSeparator();
     }
     
 }
