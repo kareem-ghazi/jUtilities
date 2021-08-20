@@ -1,12 +1,10 @@
-<p align="center">
-  <img src="https://i.imgur.com/gBoNYUS.png" width="384" height="216" alt="jUtilities Banner">
-</p>
+<h1 align="center">jUtilities</h1>
 
 <p align="center">
-  <a href="https://www.codacy.com/gh/kareem-ghazi/jUtilities/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kareem-ghazi/jUtilities&amp;utm_campaign=Badge_Grade">
+  <a href="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities">
   <img
-      src="https://app.codacy.com/project/badge/Grade/4d03276c339f404988e2e03a3e85f0ef"
-      alt="Codacy Badge"/>
+    src="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities/badge"
+    alt="CodeFactor"/>
   </a>
   <a href="https://opensource.org/licenses/MIT">
   <img
@@ -26,11 +24,15 @@
   </a>
 </p>
 
-<h1></h1>
-
 <p align="center">
-  <b>jUtilities</b> is a collection of various utilities and projects made with Java.
+  <b>jUtilities</b> is a collection of various utilities and projects made with core Java. This is a personal project made to document my progress in Java by applying ideas with it. Hence, it's a collection of utilities (tools) and projects. I separated the projects into three categories:
+  
+  - <strong>Beginner</strong> - Easy to create and take short time.
+  - <strong>Intermediate</strong> - Somewhat hard to implement and takes a fair bit of time.
+  - <strong>Advanced</strong> - Hard to implement and takes a long time. These are projects I'm proud of.  
 </p>
+
+<h1></h1>
 
 ## Features
 
@@ -50,7 +52,7 @@ You can install this project in **two** ways.
 
 ## Feedback
 
-If you have any feedback or code suggestions, please reach out to k.ghazi2005@gmail.com or open an issue request.
+Unfortunately, this project isn't really open for contribution as it's only for my learning purposes and that's it. However, if you have any feedback or project suggestions, please reach out to k.ghazi2005@gmail.com or open an issue request :).
 
 ## Authors
 
