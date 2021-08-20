@@ -86,13 +86,13 @@ public class ShapeMenu implements PrintUtils {
                     shapeOption.getCubeOption();
                     break;
                 case 3:
-                    shapeOption.getCuboidOption();;
+                    shapeOption.getCuboidOption();
                     break;
                 case 4:
-                    shapeOption.getCylinderOption();;
+                    shapeOption.getCylinderOption();
                     break;
                 case 5:
-                    shapeOption.getSphereOption();;
+                    shapeOption.getSphereOption();
                     break;
                 case 6:
                     return;
