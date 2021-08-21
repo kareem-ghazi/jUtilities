@@ -1,18 +1,38 @@
 package com.kimo.beginner.shapesinfo;
 
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
-public class Shape implements PrintUtils {
-    protected double area;
-    protected double perimeter;
-    protected double volume;    
-    protected double surfaceArea;
+public abstract class Shape implements PrintInterface {
+    private double area;
+    private double perimeter;
+    private double volume;
+    private double surfaceArea;
 
-    protected String definition;
-    protected String type;
+    private String definition;
+    private String type;
 
-    public String getDefinition() {
-        return definition;
+    protected void setArea(double area) {
+        this.area = area;
+    }
+
+    protected void setPerimeter(double perimeter) {
+        this.perimeter = perimeter;
+    }
+
+    protected void setVolume(double volume) {
+        this.volume = volume;
+    }
+
+    protected void setSurfaceArea(double surfaceArea) {
+        this.surfaceArea = surfaceArea;
+    }
+
+    protected void setDefinition(String definition) {
+        this.definition = definition;
+    }
+
+    protected void setType(String type) {
+        this.type = type;
     }
 
     public double getArea() {
@@ -31,11 +51,13 @@ public class Shape implements PrintUtils {
         return surfaceArea;
     }
 
+    public String getDefinition() {
+        return definition;
+    }
+
     public String getType() {
         return type;
     }
 
-    public void dump() {
-        System.out.println("This shape has no summaries yet.");
-    }
+    public abstract void dump();
 }

@@ -1,7 +1,7 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
 public class Rectangle extends Shape {
     private double height;
@@ -10,6 +10,10 @@ public class Rectangle extends Shape {
     public Rectangle(double length, double width) {
         setHeight(length);
         setWidth(width);
+        setArea(getHeight() * getWidth());
+        setPerimeter((2 * getHeight()) + (2 * getWidth()));
+        setType("RECTANGLE");
+        setDefinition("A rectangle is a quadrilateral with four right angles.");
     }
 
     public double getHeight() {
@@ -27,44 +31,16 @@ public class Rectangle extends Shape {
     public void setWidth(double width) {
         this.width = width;
     }
-    
-    @Override
-    public double getArea() {
-        area = getHeight() * getWidth();
-
-        return area;
-    }
-
-    @Override
-    public double getPerimeter() {
-        perimeter = (2 * getHeight()) + (2 * getWidth());
-
-        return perimeter;
-    }
-
-    @Override
-    public String getDefinition() {
-        definition = "A rectangle is a quadrilateral with four right angles.";
-
-        return definition;
-    }
-
-    @Override
-    public String getType() {
-        type = "RECTANGLE";
-
-        return type;
-    }
 
     @Override
     public void dump() {
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
         System.out.println("Shape's Perimter: " + getPerimeter());
         System.out.println("Shape's Width: " + getWidth());
         System.out.println("Shape's Height: " + getHeight());
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
     }
 }

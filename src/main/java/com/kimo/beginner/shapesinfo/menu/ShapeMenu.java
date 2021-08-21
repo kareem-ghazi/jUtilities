@@ -2,11 +2,11 @@ package com.kimo.beginner.shapesinfo.menu;
 
 import java.util.Scanner;
 
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
-public class ShapeMenu implements PrintUtils {
-    ShapeOption shapeOption = new ShapeOption();
-    Scanner scan = new Scanner(System.in);
+public class ShapeMenu implements PrintInterface {
+    private ShapeOption shapeOption = new ShapeOption();
+    private Scanner scan = new Scanner(System.in);
 
     public void get2DShapeMenu() {
         int userInput = 0;
@@ -44,7 +44,7 @@ public class ShapeMenu implements PrintUtils {
                 case 7:
                     return;
                 default:
-                    PrintUtils.printSeparator();
+                    PrintInterface.printSeparator();
                     System.out.println("Invalid input.");
             }
 
@@ -54,7 +54,7 @@ public class ShapeMenu implements PrintUtils {
 
     public void print2DShapeCommandList() {
         System.out.println(">>> 2D Shapes <<<");
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("1. Get attributes of a Circle.");
         System.out.println("2. Get attributes of an Ellipse.");
         System.out.println("3. Get attributes of a Parallelogram.");
@@ -97,7 +97,7 @@ public class ShapeMenu implements PrintUtils {
                 case 6:
                     return;
                 default:
-                    PrintUtils.printSeparator();
+                    PrintInterface.printSeparator();
                     System.out.println("Invalid input.");
             }
 
@@ -106,7 +106,7 @@ public class ShapeMenu implements PrintUtils {
 
     public void print3DShapeCommandList() {
         System.out.println(">>> 3D Shapes <<<");
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("1. Get attributes of a Cone.");
         System.out.println("2. Get attributes of an Cube.");
         System.out.println("3. Get attributes of a Cuboid.");

@@ -1,13 +1,17 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
 public class Square extends Shape {
     private double sideLength;
 
     public Square(double sideLength) {
         setSideLength(sideLength);
+        setArea(Math.pow(getSideLength(), 2));
+        setPerimeter((getSideLength() * 2) + (getSideLength() * 2));
+        setType("SQUARE");
+        setDefinition("A square is a regular quadrilateral with four equal straight sides and four right angles.");
     }
 
     public double getSideLength() {
@@ -19,42 +23,14 @@ public class Square extends Shape {
     }
 
     @Override
-    public double getArea() {
-        area = Math.pow(getSideLength(), 2);
-
-        return area;
-    }
-
-    @Override
-    public double getPerimeter() {
-        perimeter = (getSideLength() * 2) + (getSideLength() * 2);
-        
-        return perimeter;
-    }
-
-    @Override
-    public String getDefinition() {
-        definition = "A square is a regular quadrilateral with four equal straight sides and four right angles.";
-
-        return definition;
-    }
-
-    @Override
-    public String getType() {
-        type = "SQUARE";
-
-        return type;
-    }
-
-    @Override
     public void dump() {
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
         System.out.println("Shape's Perimter: " + getPerimeter());
         System.out.println("Shape's Width: " + getSideLength());
         System.out.println("Shape's Height: " + getSideLength());
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
     }
 }

@@ -1,7 +1,7 @@
 package com.kimo.beginner.shapesinfo.threeDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
 public class Cylinder extends Shape {
     private double radius;
@@ -10,6 +10,11 @@ public class Cylinder extends Shape {
     public Cylinder(double radius, double height) {
         setRadius(radius);
         setHeight(height);
+        setVolume(Math.PI * Math.pow(getRadius(), 2) * getHeight());
+        setSurfaceArea(2 * Math.PI * getRadius() * (getRadius() + getHeight()));
+        setType("CYLINDER");
+        setDefinition(
+                "A cylinder is a three-dimensional solid that holds two parallel bases joined by a curved surface, at a fixed distance.");
     }
 
     public double getRadius() {
@@ -29,42 +34,14 @@ public class Cylinder extends Shape {
     }
 
     @Override
-    public double getVolume() {
-        volume = (Math.PI * Math.pow(getRadius(), 2) * getHeight());
-
-        return volume;
-    }
-
-    @Override
-    public double getSurfaceArea() {
-        surfaceArea = (2 * Math.PI * getRadius() * (getRadius() + getHeight()));
-
-        return surfaceArea;
-    }
-
-    @Override
-    public String getDefinition() {
-        definition = "A cylinder is a three-dimensional solid that holds two parallel bases joined by a curved surface, at a fixed distance.";
-
-        return definition;
-    }
-
-    @Override
-    public String getType() {
-        type = "CYLINDER";
-
-        return type;
-    }
-
-    @Override
     public void dump() {
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Volume: " + Math.round(getVolume() * 100.0) / 100.0);
         System.out.println("Shape's Surface Area: " + Math.round(getSurfaceArea() * 100.0) / 100.0);
         System.out.println("Shape's Radius: " + getRadius());
         System.out.println("Shape's Height: " + getHeight());
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
     }
 }

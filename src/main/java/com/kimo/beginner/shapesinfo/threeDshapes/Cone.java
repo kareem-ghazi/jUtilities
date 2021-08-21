@@ -1,7 +1,7 @@
 package com.kimo.beginner.shapesinfo.threeDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
 public class Cone extends Shape {
     private double height;
@@ -14,6 +14,11 @@ public class Cone extends Shape {
         setHeight(height);
         setRadius(radius);
         setSlantedHeight(Math.sqrt(Math.pow(height, 2) + Math.pow(radius, 2)));
+        setSurfaceArea((Math.PI * getRadius() * (getSlantedHeight() + getRadius())));
+        setCurvedSurfaceArea((Math.PI * getRadius() * getSlantedHeight()));
+        setVolume((Math.PI * Math.pow(getRadius(), 2) * getHeight()) / 3);
+        setType("CONE");
+        setDefinition("A cone is a three-dimensional geometric shape that tapers smoothly from a flat base to a point called the apex or vertex.");
     }
 
     public double getHeight() {
@@ -41,42 +46,16 @@ public class Cone extends Shape {
     }
 
     public double getCurvedSurfaceArea() {
-        curvedSurfaceArea = (Math.PI * getRadius() * getSlantedHeight());
-
         return curvedSurfaceArea;
     }
 
-    @Override
-    public double getVolume() {
-        volume = (Math.PI * Math.pow(getRadius(), 2) * getHeight()) / 3;
-
-        return volume;
-    }
-
-    @Override
-    public double getSurfaceArea() {
-        surfaceArea = (Math.PI * getRadius() * (getSlantedHeight() + getRadius()));
-
-        return surfaceArea;
-    }
-
-    @Override
-    public String getDefinition() {
-        definition = "A cone is a three-dimensional geometric shape that tapers smoothly from a flat base to a point called the apex or vertex.";
-
-        return definition;
-    }
-
-    @Override
-    public String getType() {
-        type = "CONE";
-
-        return type;
+    public void setCurvedSurfaceArea(double curvedSurfaceArea) {
+        this.curvedSurfaceArea = curvedSurfaceArea;
     }
 
     @Override
     public void dump() {
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Volume: " + Math.round(getVolume() * 100.0) / 100.0);
@@ -85,7 +64,7 @@ public class Cone extends Shape {
         System.out.println("Shape's Radius: " + getRadius());
         System.out.println("Shape's Height: " + getHeight());
         System.out.println("Shape's Slanted Height: " + Math.round(getSlantedHeight() * 100.0) / 100.0);
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
     }
 
 }

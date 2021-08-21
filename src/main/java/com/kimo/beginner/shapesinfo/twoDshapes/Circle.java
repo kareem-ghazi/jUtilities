@@ -1,13 +1,18 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
 public class Circle extends Shape {
     private double radius;
 
     public Circle(double radius) {
         setRadius(radius);
+        setArea(Math.PI * Math.pow(radius, 2));
+        setPerimeter(2 * Math.PI * radius);
+        setType("CIRCLE");
+        setDefinition(
+                "A circle is a shape consisting of all points in a plane that are at a given distance from a given point.");
     }
 
     public double getRadius() {
@@ -19,41 +24,13 @@ public class Circle extends Shape {
     }
 
     @Override
-    public double getArea() {
-        area = (Math.PI * Math.pow(radius, 2));
-
-        return area;
-    }
-
-    @Override
-    public double getPerimeter() {
-        perimeter = (2 * Math.PI * radius);
-
-        return perimeter;
-    }
-
-    @Override
-    public String getType() {
-        type = "CIRCLE";
-
-        return type;
-    }
-
-    @Override
-    public String getDefinition() {
-        definition = "A circle is a shape consisting of all points in a plane that are at a given distance from a given point";
-
-        return definition;
-    }
-
-    @Override
     public void dump() {
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + Math.round(getArea() * 100.0) / 100.0);
         System.out.println("Shape's Perimeter: " + Math.round(getPerimeter() * 100.0) / 100.0);
         System.out.println("Shape's Radius: " + getRadius());
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
     }
 }

@@ -1,7 +1,7 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
 public class Parallelogram extends Shape {
     private double height;
@@ -9,7 +9,11 @@ public class Parallelogram extends Shape {
 
     public Parallelogram(double height, double base) {
         setHeight(height);
-        setWidth(base);
+        setBase(base);
+        setArea((getBase() * getHeight()));
+        setPerimeter((getBase() * 2) + (getHeight() * 2));
+        setType("PARALLELOGRAM");
+        setDefinition("A parallelogram is a simple quadrilateral with two pairs of parallel sides.");
     }
 
     public double getHeight() {
@@ -20,51 +24,23 @@ public class Parallelogram extends Shape {
         this.height = height;
     }
 
-    public double getWidth() {
+    public double getBase() {
         return base;
     }
 
-    public void setWidth(double width) {
+    public void setBase(double width) {
         this.base = width;
     }
 
     @Override
-    public double getArea() {
-        area = (getWidth() * getHeight());
-
-        return area;
-    }
-
-    @Override
-    public double getPerimeter() {
-        perimeter = (getWidth() * 2) + (getHeight() * 2);
-
-        return perimeter;
-    }
-
-    @Override
-    public String getType() {
-        type = "PARALLELOGRAM";
-
-        return type;
-    }
-
-    @Override
-    public String getDefinition() {
-        definition = "A parallelogram is a simple quadrilateral with two pairs of parallel sides.";
-
-        return definition;
-    }
-
-    @Override
     public void dump() {
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
         System.out.println("Shape's Perimeter: " + getPerimeter());
-        System.out.println("Shape's Base: " + getWidth());
+        System.out.println("Shape's Base: " + getBase());
         System.out.println("Shape's Height: " + getHeight());
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
     }
 }

@@ -1,13 +1,17 @@
 package com.kimo.beginner.shapesinfo.threeDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
 public class Sphere extends Shape {
     private double radius;
 
     public Sphere(double radius) {
         setRadius(radius);
+        setVolume((Math.PI * Math.pow(getRadius(), 3) * 4) / 3);
+        setSurfaceArea(4 * Math.PI * Math.pow(getRadius(), 2));
+        setType("SPHERE");
+        setDefinition("A sphere is a geometrical object in three-dimensional space that is the surface of a ball.");
     }
 
     public double getRadius() {
@@ -19,41 +23,13 @@ public class Sphere extends Shape {
     }
 
     @Override
-    public double getVolume() {
-        volume = (Math.PI * Math.pow(getRadius(), 3) * 4) / 3;
-
-        return volume;
-    }
-
-    @Override
-    public double getSurfaceArea() {
-        surfaceArea = (4 * Math.PI * Math.pow(getRadius(), 2));
-
-        return surfaceArea;
-    }
-
-    @Override
-    public String getType() {
-        type = "SPHERE";
-
-        return type;
-    }
-
-    @Override
-    public String getDefinition() {
-        definition = "A sphere is a geometrical object in three-dimensional space that is the surface of a ball.";
-
-        return definition;
-    }
-
-    @Override
     public void dump() {
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Volume: " + Math.round(getVolume() * 100.0) / 100.0);
         System.out.println("Shape's Surface Area: " + Math.round(getSurfaceArea() * 100.0) / 100.0);
         System.out.println("Shape's Radius: " + getRadius());
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
     }
 }

@@ -1,7 +1,7 @@
 package com.kimo.beginner.shapesinfo.threeDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
 public class Cuboid extends Shape {
     private double length;
@@ -14,6 +14,11 @@ public class Cuboid extends Shape {
         setHeight(height);
         setWidth(width);
         setLength(length);
+        setVolume(getHeight() * getWidth() * getLength());
+        setSurfaceArea(2 * ((getLength() * getWidth()) + (getWidth() * getHeight()) + (getLength() * getHeight())));
+        setLateralSurfaceArea(2 * getHeight() * (getWidth() + getLength()));
+        setType("CUBOID");
+        setDefinition("A cuboid is a solid shape with six rectangular surfaces or four rectangular and two square surfaces.");
     }
 
     public double getLength() {
@@ -41,42 +46,16 @@ public class Cuboid extends Shape {
     }
 
     public double getLateralSurfaceArea() {
-        lateralSurfaceArea = 2 * getHeight() * (getWidth() + getLength());
-
         return lateralSurfaceArea;
     }
 
-    @Override
-    public double getVolume() {
-        volume = getHeight() * getWidth() * getLength();
-
-        return volume;
-    }
-
-    @Override
-    public double getSurfaceArea() {
-        surfaceArea = 2 * ((getLength() * getWidth()) + (getWidth() * getHeight()) + (getLength() * getHeight()));
-
-        return surfaceArea;
-    }
-
-    @Override
-    public String getDefinition() {
-        definition = "A cuboid is a solid shape with six rectangular surfaces or four rectangular and two square surfaces.";
-
-        return definition;
-    }
-
-    @Override
-    public String getType() {
-        type = "CUBOID";
-
-        return type;
+    public void setLateralSurfaceArea(double lateralSurfaceArea) {
+        this.lateralSurfaceArea = lateralSurfaceArea;
     }
 
     @Override
     public void dump() {
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Volume: " + Math.round(getVolume() * 100.0) / 100.0);
@@ -85,7 +64,7 @@ public class Cuboid extends Shape {
         System.out.println("Shape's Length: " + getLength());
         System.out.println("Shape's Width: " + getWidth());
         System.out.println("Shape's Height: " + getHeight());
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
     }
 
 }

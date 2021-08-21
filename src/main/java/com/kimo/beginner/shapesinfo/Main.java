@@ -3,14 +3,14 @@ package com.kimo.beginner.shapesinfo;
 import java.util.Scanner;
 
 import com.kimo.beginner.shapesinfo.menu.ShapeMenu;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
-public class Main implements PrintUtils {
-	static ShapeMenu shapeMenu = new ShapeMenu();
-	static Scanner scan = new Scanner(System.in);
+public class Main implements PrintInterface {
+	private static ShapeMenu shapeMenu = new ShapeMenu();
+	private static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		PrintUtils.printSeparator();
+		PrintInterface.printSeparator();
 		System.out.println("ShapesInfo - Gets info about the shape using its attributes.");
 		mainLoop();
 	}
@@ -19,7 +19,7 @@ public class Main implements PrintUtils {
 		int userInput = 0;
 
 		do {
-			PrintUtils.printSeparator();
+			PrintInterface.printSeparator();
 			printCommandList();
 
 			userInput = 0;
@@ -37,7 +37,7 @@ public class Main implements PrintUtils {
 
 	public static void printCommandList() {
 		System.out.println(">>> Shape Types <<<");
-		PrintUtils.printSeparator();
+		PrintInterface.printSeparator();
 		System.out.println("1. 2D Shapes");
 		System.out.println("2. 3D Shapes");
 		System.out.println("3. Exit");
@@ -46,20 +46,20 @@ public class Main implements PrintUtils {
 	public static void selectShapeMenu(int userInput) {
 		switch (userInput) {
 			case 1:
-				PrintUtils.printSeparator();
+				PrintInterface.printSeparator();
 				shapeMenu.get2DShapeMenu();
 				break;
 			case 2:
-				PrintUtils.printSeparator();
+				PrintInterface.printSeparator();
 				shapeMenu.get3DShapeMenu();
 				break;
 			case 3:
 				System.out.println("Exited program successfully.");
-				PrintUtils.printSeparator();
+				PrintInterface.printSeparator();
 				System.exit(0);
 				break;
 			default:
-				PrintUtils.printSeparator();
+				PrintInterface.printSeparator();
 				System.out.println("Invalid input.");
 		}
 	}

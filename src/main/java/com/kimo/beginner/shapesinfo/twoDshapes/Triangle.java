@@ -1,7 +1,7 @@
 package com.kimo.beginner.shapesinfo.twoDshapes;
 
 import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintUtils;
+import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 
 public class Triangle extends Shape {
     private double height;
@@ -10,6 +10,9 @@ public class Triangle extends Shape {
     public Triangle(double height, double base) {
         setHeight(height);
         setBase(base);
+        setArea((0.5 * getHeight() * getBase()));
+        setType("TRIANGLE");
+        setDefinition("A triangle is a polygon with three edges and three vertices.");
     }
 
     public double getHeight() {
@@ -29,34 +32,13 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public double getArea() {
-        area = (0.5 * getHeight() * getBase());
-
-        return area;
-    }
-
-    @Override
-    public String getDefinition() {
-        definition = "A triangle is a polygon with three edges and three vertices.";
-
-        return definition;
-    }
-
-    @Override
-    public String getType() {
-        type = "TRIANGLE";
-
-        return type;
-    }
-
-    @Override
     public void dump() {
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
         System.out.println("Shape's Type: " + getType());
         System.out.println("Shape's Definition: " + getDefinition());
         System.out.println("Shape's Area: " + getArea());
         System.out.println("Shape's Base: " + getBase());
         System.out.println("Shape's Height: " + getHeight());
-        PrintUtils.printSeparator();
+        PrintInterface.printSeparator();
     }
 }
