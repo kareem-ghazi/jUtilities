@@ -7,11 +7,16 @@ public class Rectangle extends Shape {
     private double height;
     private double width;
 
+    /**
+     * Main constructor for the Rectangle class. Takes in length and width of a rectangle as parameters.
+     * @param length - Length of a rectangle.
+     * @param width - Width of a rectangle.
+     */
     public Rectangle(double length, double width) {
         setHeight(length);
         setWidth(width);
-        setArea(getHeight() * getWidth());
-        setPerimeter((2 * getHeight()) + (2 * getWidth()));
+        setArea(height * width);
+        setPerimeter((2 * height) + (2 * width));
         setType("RECTANGLE");
         setDefinition("A rectangle is a quadrilateral with four right angles.");
     }

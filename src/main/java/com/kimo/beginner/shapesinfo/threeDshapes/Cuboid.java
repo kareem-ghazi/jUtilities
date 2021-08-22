@@ -10,13 +10,19 @@ public class Cuboid extends Shape {
 
     private double lateralSurfaceArea;
 
+    /**
+     * Main constructor for the Cuboid class. Takes in length, width, and height of a cuboid as parameters.
+     * @param length - Length of a cuboid.
+     * @param width - Width of a cuboid.
+     * @param height - Height of a cuboid.
+     */
     public Cuboid(double length, double width, double height) {
         setHeight(height);
         setWidth(width);
         setLength(length);
-        setVolume(getHeight() * getWidth() * getLength());
-        setSurfaceArea(2 * ((getLength() * getWidth()) + (getWidth() * getHeight()) + (getLength() * getHeight())));
-        setLateralSurfaceArea(2 * getHeight() * (getWidth() + getLength()));
+        setVolume(height * width * length);
+        setSurfaceArea(2 * ((length * width) + (width * height) + (length * height)));
+        setLateralSurfaceArea(2 * height * (width + length));
         setType("CUBOID");
         setDefinition("A cuboid is a solid shape with six rectangular surfaces or four rectangular and two square surfaces.");
     }

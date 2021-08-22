@@ -7,10 +7,15 @@ public class Triangle extends Shape {
     private double height;
     private double base;
 
+    /**
+     * Main constructor for the Triangle class. Takes in height and base of a triangle as parameters.
+     * @param height - Height of a triangle.
+     * @param base - Base of a triangle.
+     */
     public Triangle(double height, double base) {
         setHeight(height);
         setBase(base);
-        setArea((0.5 * getHeight() * getBase()));
+        setArea((0.5 * height * base));
         setType("TRIANGLE");
         setDefinition("A triangle is a polygon with three edges and three vertices.");
     }

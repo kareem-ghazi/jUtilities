@@ -15,6 +15,9 @@ public class Main implements PrintInterface {
 		mainLoop();
 	}
 
+	/**
+	 * Main program loop for handling user input and printing commands list.
+	 */
 	public static void mainLoop() {
 		int userInput = 0;
 
@@ -43,6 +46,11 @@ public class Main implements PrintInterface {
 		System.out.println("3. Exit");
 	}
 
+	/**
+	 * Main selection menu for the program.
+	 * 2D Shapes, 3D Shapes, and Exit are currently the only existing options.
+	 * @param userInput - Passed in user's choice.
+	 */
 	public static void selectShapeMenu(int userInput) {
 		switch (userInput) {
 			case 1:

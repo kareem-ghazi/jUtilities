@@ -6,6 +6,10 @@ import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 public class Circle extends Shape {
     private double radius;
 
+    /**
+     * Main constructor for the Circle class. Takes in radius of a circle as a parameter.
+     * @param radius - Radius of a circle.
+     */
     public Circle(double radius) {
         setRadius(radius);
         setArea(Math.PI * Math.pow(radius, 2));

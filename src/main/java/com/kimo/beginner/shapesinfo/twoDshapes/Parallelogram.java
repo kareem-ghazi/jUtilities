@@ -7,11 +7,16 @@ public class Parallelogram extends Shape {
     private double height;
     private double base;
 
+    /**
+     * Main constructor for the Parellogram class. Takes in height and base of a parallelogram as parameters.
+     * @param height - Height of a parallelogram.
+     * @param base - Base of a parallelogram.
+     */
     public Parallelogram(double height, double base) {
         setHeight(height);
         setBase(base);
-        setArea((getBase() * getHeight()));
-        setPerimeter((getBase() * 2) + (getHeight() * 2));
+        setArea((base * height));
+        setPerimeter((base * 2) + (height * 2));
         setType("PARALLELOGRAM");
         setDefinition("A parallelogram is a simple quadrilateral with two pairs of parallel sides.");
     }

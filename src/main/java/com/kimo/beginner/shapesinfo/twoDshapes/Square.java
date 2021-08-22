@@ -6,10 +6,14 @@ import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 public class Square extends Shape {
     private double sideLength;
 
+    /**
+     * Main constructor for the Square class. Takes in side length of a square as a parameter.
+     * @param sideLength - Side length of a square.
+     */
     public Square(double sideLength) {
         setSideLength(sideLength);
-        setArea(Math.pow(getSideLength(), 2));
-        setPerimeter((getSideLength() * 2) + (getSideLength() * 2));
+        setArea(Math.pow(sideLength, 2));
+        setPerimeter((sideLength * 2) + (sideLength * 2));
         setType("SQUARE");
         setDefinition("A square is a regular quadrilateral with four equal straight sides and four right angles.");
     }

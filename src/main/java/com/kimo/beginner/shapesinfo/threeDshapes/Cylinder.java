@@ -7,11 +7,16 @@ public class Cylinder extends Shape {
     private double radius;
     private double height;
 
+    /**
+     * Main constructor for the Cylinder class. Takes in radius and height of a cylinder as parameters.
+     * @param radius - Radius of a cylinder.
+     * @param height - Height of a cylinder.
+     */
     public Cylinder(double radius, double height) {
         setRadius(radius);
         setHeight(height);
-        setVolume(Math.PI * Math.pow(getRadius(), 2) * getHeight());
-        setSurfaceArea(2 * Math.PI * getRadius() * (getRadius() + getHeight()));
+        setVolume(Math.PI * Math.pow(radius, 2) * height);
+        setSurfaceArea(2 * Math.PI * radius * (radius + height));
         setType("CYLINDER");
         setDefinition(
                 "A cylinder is a three-dimensional solid that holds two parallel bases joined by a curved surface, at a fixed distance.");

@@ -1,5 +1,6 @@
 package com.kimo.beginner.shapesinfo.menu;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.kimo.beginner.shapesinfo.threeDshapes.Cone;
@@ -16,14 +17,18 @@ import com.kimo.beginner.shapesinfo.twoDshapes.Triangle;
 
 public class ShapeOption {
     private Scanner scan = new Scanner(System.in);
-    
-    // 2D SHAPES SECTION
-    // 2D SHAPES SECTION
-    // 2D SHAPES SECTION
+
+    /**
+     * -----------------
+     * 2D Shapes Section
+     * -----------------
+     * All 2D Shape options included in the 2D Shape menu.
+     * -----------------
+     */
 
     public void getCircleOption() {
         System.out.print("Enter a radius: ");
-        int radius = scan.nextInt();
+        int radius = getCaughtInput();
 
         Circle circle = new Circle(radius);
         circle.dump();
@@ -31,10 +36,10 @@ public class ShapeOption {
 
     public void getEllipseOption() {
         System.out.print("Enter Axis A: ");
-        int axisA = scan.nextInt();
+        int axisA = getCaughtInput();
 
         System.out.print("Enter Axis B: ");
-        int axisB = scan.nextInt();
+        int axisB = getCaughtInput();
 
         Ellipse ellipse = new Ellipse(axisA, axisB);
         ellipse.dump();
@@ -42,10 +47,10 @@ public class ShapeOption {
 
     public void getParallelogramOption() {
         System.out.print("Enter height: ");
-        int height = scan.nextInt();
+        int height = getCaughtInput();
 
         System.out.print("Enter base: ");
-        int base = scan.nextInt();
+        int base = getCaughtInput();
 
         Parallelogram parallelogram = new Parallelogram(height, base);
         parallelogram.dump();
@@ -53,10 +58,10 @@ public class ShapeOption {
 
     public void getRectangleOption() {
         System.out.print("Enter length: ");
-        int length = scan.nextInt();
+        int length = getCaughtInput();
 
         System.out.print("Enter width: ");
-        int width = scan.nextInt();
+        int width = getCaughtInput();
 
         Rectangle rectangle = new Rectangle(length, width);
         rectangle.dump();
@@ -64,7 +69,7 @@ public class ShapeOption {
 
     public void getSquareOption() {
         System.out.print("Enter side length: ");
-        int sideLength = scan.nextInt();
+        int sideLength = getCaughtInput();
 
         Square square = new Square(sideLength);
         square.dump();
@@ -72,25 +77,29 @@ public class ShapeOption {
 
     public void getTriangleOption() {
         System.out.print("Enter height: ");
-        int height = scan.nextInt();
+        int height = getCaughtInput();
 
         System.out.print("Enter base: ");
-        int base = scan.nextInt();
+        int base = getCaughtInput();
 
         Triangle triangle = new Triangle(height, base);
         triangle.dump();
     }
 
-    // 3D SHAPES SECTION
-    // 3D SHAPES SECTION
-    // 3D SHAPES SECTION
+    /**
+     * -----------------
+     * 3D Shapes Section
+     * -----------------
+     * All 3D Shape options included in the 3D Shape menu.
+     * -----------------
+     */
 
     public void getConeOption() {
         System.out.print("Enter radius: ");
-        int radius = scan.nextInt();
+        int radius = getCaughtInput();
 
         System.out.print("Enter height: ");
-        int height = scan.nextInt();
+        int height = getCaughtInput();
 
         Cone cone = new Cone(radius, height);
         cone.dump();
@@ -98,7 +107,7 @@ public class ShapeOption {
 
     public void getCubeOption() {
         System.out.print("Enter sidelength: ");
-        int sideLength = scan.nextInt();
+        int sideLength = getCaughtInput();
 
         Cube cube = new Cube(sideLength);
         cube.dump();
@@ -106,13 +115,13 @@ public class ShapeOption {
 
     public void getCuboidOption() {
         System.out.print("Enter length: ");
-        int length = scan.nextInt();
+        int length = getCaughtInput();
 
         System.out.print("Enter width: ");
-        int width = scan.nextInt();
+        int width = getCaughtInput();
 
         System.out.print("Enter height: ");
-        int height = scan.nextInt();
+        int height = getCaughtInput();
 
         Cuboid cuboid = new Cuboid(length, width, height);
         cuboid.dump();
@@ -120,10 +129,10 @@ public class ShapeOption {
 
     public void getCylinderOption() {
         System.out.print("Enter radius: ");
-        int radius = scan.nextInt();
+        int radius = getCaughtInput();
 
         System.out.print("Enter height: ");
-        int height = scan.nextInt();
+        int height = getCaughtInput();
 
         Cylinder cylinder = new Cylinder(radius, height);
         cylinder.dump();
@@ -131,9 +140,36 @@ public class ShapeOption {
 
     public void getSphereOption() {
         System.out.print("Enter radius: ");
-        int radius = scan.nextInt();
+        int radius = getCaughtInput();
 
         Sphere sphere = new Sphere(radius);
         sphere.dump();
     }
+
+    /**
+     * -----------------
+     * Helper methods Section
+     * -----------------
+     */
+
+    /**
+     * Method to catch scanner errors and loop the scanner until it gets valid input.
+     * @return - Returns valid input after it runs through the try-catch check.
+     */
+    public int getCaughtInput() {
+        int input = 0;
+
+        do {
+            try {
+                input = scan.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                scan.nextLine();
+                System.out.println("Invalid input.");
+                System.out.print("-: ");
+            }
+        } while (true);
+
+        return input;
+    } 
 }

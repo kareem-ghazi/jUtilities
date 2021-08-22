@@ -6,10 +6,14 @@ import com.kimo.beginner.shapesinfo.utils.PrintInterface;
 public class Sphere extends Shape {
     private double radius;
 
+    /**
+     * Main constructor for the Sphere class. Takes in radius of a sphere1 as a parameter.
+     * @param radius - Radius of a sphere.
+     */
     public Sphere(double radius) {
         setRadius(radius);
-        setVolume((Math.PI * Math.pow(getRadius(), 3) * 4) / 3);
-        setSurfaceArea(4 * Math.PI * Math.pow(getRadius(), 2));
+        setVolume((Math.PI * Math.pow(radius, 3) * 4) / 3);
+        setSurfaceArea(4 * Math.PI * Math.pow(radius, 2));
         setType("SPHERE");
         setDefinition("A sphere is a geometrical object in three-dimensional space that is the surface of a ball.");
     }

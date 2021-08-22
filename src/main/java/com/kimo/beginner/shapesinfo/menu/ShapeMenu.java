@@ -8,6 +8,9 @@ public class ShapeMenu implements PrintInterface {
     private ShapeOption shapeOption = new ShapeOption();
     private Scanner scan = new Scanner(System.in);
 
+    /**
+     * The option menu for 2D Shapes.
+     */
     public void get2DShapeMenu() {
         int userInput = 0;
 
@@ -64,6 +67,9 @@ public class ShapeMenu implements PrintInterface {
         System.out.println("7. Exit.");
     }
 
+    /**
+     * The option menu for 3D Shapes.
+     */
     public void get3DShapeMenu() {
         int userInput = 0;
 

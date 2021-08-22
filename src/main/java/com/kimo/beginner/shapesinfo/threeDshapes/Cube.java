@@ -7,11 +7,15 @@ public class Cube extends Shape {
     private double sideLength;
     private double lateralSurfaceArea;
 
+    /**
+     * Main constructor for the Cube class. Takes in side length of a cube as a parameter.
+     * @param sideLength - Side length of a cube.
+     */
     public Cube(double sideLength) {
         setSideLength(sideLength);
-        setVolume(Math.pow(getSideLength(), 3));
-        setSurfaceArea(6 * Math.pow(getSideLength(), 2));
-        setLateralSurfaceArea(4 * Math.pow(getSideLength(), 2));
+        setVolume(Math.pow(sideLength, 3));
+        setSurfaceArea(6 * Math.pow(sideLength, 2));
+        setLateralSurfaceArea(4 * Math.pow(sideLength, 2));
         setType("CUBE");
         setDefinition(
                 "A cube is a three-dimensional solid object bounded by six square faces, facets or sides, with three meeting at each vertex.");

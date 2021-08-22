@@ -10,13 +10,18 @@ public class Cone extends Shape {
     private double slantedHeight;
     private double curvedSurfaceArea;
 
+    /**
+     * Main constructor for the Cone class. Takes in radius and height of a cone as parameters.
+     * @param radius - Radius of a cone.
+     * @param height - Height of a cone.
+     */
     public Cone(double radius, double height) {
         setHeight(height);
         setRadius(radius);
         setSlantedHeight(Math.sqrt(Math.pow(height, 2) + Math.pow(radius, 2)));
-        setSurfaceArea((Math.PI * getRadius() * (getSlantedHeight() + getRadius())));
-        setCurvedSurfaceArea((Math.PI * getRadius() * getSlantedHeight()));
-        setVolume((Math.PI * Math.pow(getRadius(), 2) * getHeight()) / 3);
+        setSurfaceArea((Math.PI * radius * (slantedHeight + radius)));
+        setCurvedSurfaceArea((Math.PI * radius * slantedHeight));
+        setVolume((Math.PI * Math.pow(radius, 2) * height) / 3);
         setType("CONE");
         setDefinition("A cone is a three-dimensional geometric shape that tapers smoothly from a flat base to a point called the apex or vertex.");
     }
