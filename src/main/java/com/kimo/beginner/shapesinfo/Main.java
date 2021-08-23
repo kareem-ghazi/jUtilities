@@ -11,7 +11,7 @@ public class Main implements PrintInterface {
 
 	public static void main(String[] args) {
 		PrintInterface.printSeparator();
-		System.out.println("ShapesInfo - Gets info about the shape using its attributes.");
+		System.out.println("ShapesInfo - Gets info about a shape using its attributes.");
 		mainLoop();
 	}
 
@@ -54,11 +54,9 @@ public class Main implements PrintInterface {
 	public static void selectShapeMenu(int userInput) {
 		switch (userInput) {
 			case 1:
-				PrintInterface.printSeparator();
 				shapeMenu.get2DShapeMenu();
 				break;
 			case 2:
-				PrintInterface.printSeparator();
 				shapeMenu.get3DShapeMenu();
 				break;
 			case 3:
@@ -67,7 +65,6 @@ public class Main implements PrintInterface {
 				System.exit(0);
 				break;
 			default:
-				PrintInterface.printSeparator();
 				System.out.println("Invalid input.");
 		}
 	}

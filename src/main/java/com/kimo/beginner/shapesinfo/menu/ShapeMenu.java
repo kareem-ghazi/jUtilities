@@ -15,6 +15,7 @@ public class ShapeMenu implements PrintInterface {
         int userInput = 0;
 
         do {
+            PrintInterface.printSeparator();
             print2DShapeCommandList();
             System.out.print("-: ");
             userInput = 0;
@@ -47,7 +48,6 @@ public class ShapeMenu implements PrintInterface {
                 case 7:
                     return;
                 default:
-                    PrintInterface.printSeparator();
                     System.out.println("Invalid input.");
             }
 
@@ -74,6 +74,7 @@ public class ShapeMenu implements PrintInterface {
         int userInput = 0;
 
         do {
+            PrintInterface.printSeparator();
             print3DShapeCommandList();
             System.out.print("-: ");
             userInput = 0;
@@ -103,7 +104,6 @@ public class ShapeMenu implements PrintInterface {
                 case 6:
                     return;
                 default:
-                    PrintInterface.printSeparator();
                     System.out.println("Invalid input.");
             }
 
