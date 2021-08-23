@@ -1,29 +1,27 @@
-# jUtilities
+# jUtilities 
 
-<p>
-  <a href="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities">
+<a href="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities">
   <img
     src="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities/badge"
     alt="CodeFactor"/>
-  </a>
-  <a href="https://opensource.org/licenses/MIT">
+</a>
+<a href="https://opensource.org/licenses/MIT">
   <img
-      src="https://img.shields.io/badge/License-MIT-red.svg"
-      alt="MIT License"/>
-  </a>
-  <a href="https://github.com/kareem-ghazi/jUtilities">
+    src="https://img.shields.io/badge/License-MIT-red.svg"
+    alt="MIT License"/>
+</a>
+<a href="https://github.com/kareem-ghazi/jUtilities">
   <img
-      src="https://img.shields.io/badge/Status-Active-brightgreen"
-      alt="Repository Status"/>
-  </a>
-  <a href="https://java.com/">
+    src="https://img.shields.io/badge/Status-Active-brightgreen"
+    alt="Repository Status"/>
+</a>
+<a href="https://java.com/">
   <img
-      src="https://img.shields.io/badge/java-critical.svg?style=for-the-badge&logo=java&logoColor=white"
-      alt="Java badge"/>
-  </a>
-</p>
+    src="https://img.shields.io/badge/java-critical.svg?style=for-the-badge&logo=java&logoColor=white"
+    alt="Java badge"/>
+</a>
 
-<p>
+<p align="center">
   <b>jUtilities</b> is a collection of various utilities and projects made with core Java. This is a personal project made to document my progress in Java by applying ideas with it. Hence, it's a collection of utilities (tools) and projects. I separated the projects into three categories:
   
   - <strong>Beginner</strong> - Easy to create and take short time.
