@@ -1,10 +1,6 @@
-<div align="center">
-
 # jUtilities
 
-</div>
-
-<p align="center">
+<p>
   <a href="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities">
   <img
     src="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities/badge"
@@ -20,7 +16,6 @@
       src="https://img.shields.io/badge/Status-Active-brightgreen"
       alt="Repository Status"/>
   </a>
-  </br>
   <a href="https://java.com/">
   <img
       src="https://img.shields.io/badge/java-critical.svg?style=for-the-badge&logo=java&logoColor=white"
@@ -28,7 +23,7 @@
   </a>
 </p>
 
-<p align="center">
+<p>
   <b>jUtilities</b> is a collection of various utilities and projects made with core Java. This is a personal project made to document my progress in Java by applying ideas with it. Hence, it's a collection of utilities (tools) and projects. I separated the projects into three categories:
   
   - <strong>Beginner</strong> - Easy to create and take short time.
