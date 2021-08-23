@@ -1,4 +1,8 @@
-<h1 align="center">jUtilities</h1>
+<div align="center">
+
+# jUtilities
+
+</div>
 
 <p align="center">
   <a href="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities">
@@ -32,14 +36,18 @@
   - <strong>Advanced</strong> - Hard to implement and takes a long time. These are projects I'm proud of.  
 </p>
 
-<h1></h1>
-
 ## Features
 
 These are currently the **only completed** features of jUtilities (ordered from **oldest** to **newest**).
+### **Beginner**
+- QuizMaker - Create quizzes, play them, and print out their results.
+  
+### **Intermediate**
+- AgeCalculator - Calculates your current age and other cool things using your birthdate.
+- ShapesInfo - Gets info about the shape using its attributes.
 
-  - QuizMaker - Create quizzes, play them, and print out their results.
-  - AgeCalculator - Calculates your current age and other cool things using your birthdate.
+### **Advanced**
+- Empty for now...
 
 ## Installation
 
