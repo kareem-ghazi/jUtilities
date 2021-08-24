@@ -1,45 +1,28 @@
-# jUtilities 
+# <img src="java-icon.png" alt="banner" width="24"/> jUtilities 
 
-<a href="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities">
-  <img
-    src="https://www.codefactor.io/repository/github/kareem-ghazi/jutilities/badge"
-    alt="CodeFactor"/>
-</a>
-<a href="https://opensource.org/licenses/MIT">
-  <img
-    src="https://img.shields.io/badge/License-MIT-red.svg"
-    alt="MIT License"/>
-</a>
-<a href="https://github.com/kareem-ghazi/jUtilities">
-  <img
-    src="https://img.shields.io/badge/Status-Active-brightgreen"
-    alt="Repository Status"/>
-</a>
-<a href="https://java.com/">
-  <img
-    src="https://img.shields.io/badge/java-critical.svg?style=for-the-badge&logo=java&logoColor=white"
-    alt="Java badge"/>
-</a>
+[![CodeFactor](https://www.codefactor.io/repository/github/kareem-ghazi/jutilities/badge)](https://www.codefactor.io/repository/github/kareem-ghazi/jutilities)
+[![MIT License](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+[![Repository Status](https://img.shields.io/badge/Status-Active-brightgreen)](https://github.com/kareem-ghazi/jUtilities)
+[![Powered by Java](https://img.shields.io/badge/powered_by_java-critical.svg?style=for-the-badge&logo=java&logoColor=white)](https://java.com)
 
-<p align="center">
-  <b>jUtilities</b> is a collection of various utilities and projects made with core Java. This is a personal project made to document my progress in Java by applying ideas with it. Hence, it's a collection of utilities (tools) and projects. I separated the projects into three categories:
+**jUtilities** is a collection of various utilities and projects made with core Java. This is a personal project made to document my progress in Java by applying ideas with it. Hence, it's a collection of utilities (tools) and projects. I separated the projects into three categories:
   
-  - <strong>Beginner</strong> - Easy to create and take short time.
-  - <strong>Intermediate</strong> - Somewhat hard to implement and takes a fair bit of time.
-  - <strong>Advanced</strong> - Hard to implement and takes a long time. These are projects I'm proud of.  
-</p>
+- **Beginner** - Easy to create and take short time.
+- **Intermediate** - Somewhat hard to implement and takes a fair bit of time.
+- **Advanced** - Hard to implement and takes a long time. These are projects I'm proud of.  
+
 
 ## Features
 
 These are currently the **only completed** features of jUtilities (ordered from **oldest** to **newest**).
-### **Beginner**
+### > **Beginner**
 - QuizMaker - Create quizzes, play them, and print out their results.
   
-### **Intermediate**
+### > **Intermediate**
 - AgeCalculator - Calculates your current age and other cool things using your birthdate.
 - ShapesInfo - Gets info about the shape using its attributes.
 
-### **Advanced**
+### > **Advanced**
 - Empty for now...
 
 ## Installation
