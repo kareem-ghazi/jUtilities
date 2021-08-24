@@ -1,4 +1,4 @@
-package com.kimo.beginner.shapesinfo.utils;
+package com.kimo.intermediate.shapesinfo.utils;
 
 public interface PrintInterface {
 	/**

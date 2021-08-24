@@ -1,4 +1,4 @@
-package com.kimo.beginner.agecalculator;
+package com.kimo.intermediate.agecalculator;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;

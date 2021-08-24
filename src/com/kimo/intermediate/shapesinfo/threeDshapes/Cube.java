@@ -1,7 +1,7 @@
-package com.kimo.beginner.shapesinfo.threeDshapes;
+package com.kimo.intermediate.shapesinfo.threeDshapes;
 
-import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintInterface;
+import com.kimo.intermediate.shapesinfo.Shape;
+import com.kimo.intermediate.shapesinfo.utils.PrintInterface;
 
 public class Cube extends Shape {
     private double sideLength;

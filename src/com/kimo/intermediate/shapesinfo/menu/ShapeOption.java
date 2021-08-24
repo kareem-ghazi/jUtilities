@@ -1,19 +1,19 @@
-package com.kimo.beginner.shapesinfo.menu;
+package com.kimo.intermediate.shapesinfo.menu;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.kimo.beginner.shapesinfo.threeDshapes.Cone;
-import com.kimo.beginner.shapesinfo.threeDshapes.Cube;
-import com.kimo.beginner.shapesinfo.threeDshapes.Cuboid;
-import com.kimo.beginner.shapesinfo.threeDshapes.Cylinder;
-import com.kimo.beginner.shapesinfo.threeDshapes.Sphere;
-import com.kimo.beginner.shapesinfo.twoDshapes.Circle;
-import com.kimo.beginner.shapesinfo.twoDshapes.Ellipse;
-import com.kimo.beginner.shapesinfo.twoDshapes.Parallelogram;
-import com.kimo.beginner.shapesinfo.twoDshapes.Rectangle;
-import com.kimo.beginner.shapesinfo.twoDshapes.Square;
-import com.kimo.beginner.shapesinfo.twoDshapes.Triangle;
+import com.kimo.intermediate.shapesinfo.threeDshapes.Cone;
+import com.kimo.intermediate.shapesinfo.threeDshapes.Cube;
+import com.kimo.intermediate.shapesinfo.threeDshapes.Cuboid;
+import com.kimo.intermediate.shapesinfo.threeDshapes.Cylinder;
+import com.kimo.intermediate.shapesinfo.threeDshapes.Sphere;
+import com.kimo.intermediate.shapesinfo.twoDshapes.Circle;
+import com.kimo.intermediate.shapesinfo.twoDshapes.Ellipse;
+import com.kimo.intermediate.shapesinfo.twoDshapes.Parallelogram;
+import com.kimo.intermediate.shapesinfo.twoDshapes.Rectangle;
+import com.kimo.intermediate.shapesinfo.twoDshapes.Square;
+import com.kimo.intermediate.shapesinfo.twoDshapes.Triangle;
 
 public class ShapeOption {
     private Scanner scan = new Scanner(System.in);

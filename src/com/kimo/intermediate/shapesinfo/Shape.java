@@ -1,6 +1,6 @@
-package com.kimo.beginner.shapesinfo;
+package com.kimo.intermediate.shapesinfo;
 
-import com.kimo.beginner.shapesinfo.utils.PrintInterface;
+import com.kimo.intermediate.shapesinfo.utils.PrintInterface;
 
 public abstract class Shape implements PrintInterface {
     private double area;

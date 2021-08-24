@@ -1,9 +1,9 @@
-package com.kimo.beginner.shapesinfo;
+package com.kimo.intermediate.shapesinfo;
 
 import java.util.Scanner;
 
-import com.kimo.beginner.shapesinfo.menu.ShapeMenu;
-import com.kimo.beginner.shapesinfo.utils.PrintInterface;
+import com.kimo.intermediate.shapesinfo.menu.ShapeMenu;
+import com.kimo.intermediate.shapesinfo.utils.PrintInterface;
 
 public class Main implements PrintInterface {
 	private static ShapeMenu shapeMenu = new ShapeMenu();

@@ -1,7 +1,7 @@
-package com.kimo.beginner.shapesinfo.twoDshapes;
+package com.kimo.intermediate.shapesinfo.twoDshapes;
 
-import com.kimo.beginner.shapesinfo.Shape;
-import com.kimo.beginner.shapesinfo.utils.PrintInterface;
+import com.kimo.intermediate.shapesinfo.Shape;
+import com.kimo.intermediate.shapesinfo.utils.PrintInterface;
 
 public class Square extends Shape {
     private double sideLength;
