@@ -6,4 +6,7 @@ public class PrintUtils {
         System.out.println("-------------------------------");
     }
     
+    public static String getSeparator() {
+        return "-------------------------------";
+    }
 }
