@@ -18,7 +18,7 @@ import com.kimo.intermediate.shapesinfo.twoDshapes.Triangle;
 public class ShapeOption {
     private Scanner scan = new Scanner(System.in);
 
-    /**
+    /*
      * -----------------
      * 2D Shapes Section
      * -----------------
@@ -86,7 +86,7 @@ public class ShapeOption {
         triangle.dump();
     }
 
-    /**
+    /*
      * -----------------
      * 3D Shapes Section
      * -----------------
@@ -146,7 +146,7 @@ public class ShapeOption {
         sphere.dump();
     }
 
-    /**
+    /*
      * -----------------
      * Helper methods Section
      * -----------------
@@ -154,7 +154,7 @@ public class ShapeOption {
 
     /**
      * Method to catch scanner errors and loop the scanner until it gets valid input.
-     * @return - Returns valid input after it runs through the try-catch check.
+     * @return Returns valid input after it runs through the try-catch check.
      */
     public int getCaughtInput() {
         int input = 0;
