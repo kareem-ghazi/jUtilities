@@ -3,34 +3,46 @@ package com.kimo.beginner.coinflipsimulator;
 import java.util.Random;
 import java.util.Scanner;
 
-public class CoinFlipSimulator {
-	static Scanner scan = new Scanner(System.in);
-	
+public class CoinflipSimulator {
+	private static Scanner scan = new Scanner(System.in);
+
 	public static void main(String[] args) {
+		System.out.println("----------------------------");
 		System.out.print("Enter the amount of coin flip iterations: ");
-		double userInput = scan.nextDouble();
-		int heads = 0;
+		double userInput = scan.nextInt();
+
+		printCoinflipResult(userInput);
+	}
+
+	public static void printCoinflipResult(double iterations) {
+	    int heads = 0;
 		int tails = 0;
-		
-		for (int i = 0; i < userInput; i++) {
-			Random rand = new Random();
-			int coinFlip = rand.nextInt(2);
+
+		Random rand = new Random();
+		int coinflip;
+
+		long start = System.currentTimeMillis(); // Starts a timer
+		for (int i = 0; i < iterations; i++) { // Loops through the iterations each time with a random value. 0 for heads, 1 for tails.
+			coinflip = rand.nextInt(2);
 			
-			if (coinFlip == 0) {
+			if (coinflip == 0) {
 				heads++;
-			} else if (coinFlip == 1) {
+			} else if (coinflip == 1) {
 				tails++;
 			}
 			
 		}
-		
-		double headPercentage = Math.round((heads * 100 / userInput) * 1000.0) / 1000.0;
-		double tailPercentage = Math.round((tails * 100 / userInput) * 1000.0) / 1000.0;
-		
-		System.out.println("Results of " + Math.round(userInput) + " iterations: ");
-		System.out.println("Heads: " + heads + " � " + headPercentage + "%");
-		System.out.println("Tails: " + tails + " � " + tailPercentage + "%");
-		
-	}
 
+		// Calculates percentages
+		double headPercentage = Math.round((heads * 100 / iterations) * 1000.0) / 1000.0;
+		double tailPercentage = Math.round((tails * 100 / iterations) * 1000.0) / 1000.0;
+		
+		System.out.println("----------------------------");
+		System.out.println("Results of " + iterations + " iterations: ");
+		System.out.println("Heads: " + heads + " - " + headPercentage + "%");
+		System.out.println("Tails: " + tails + " - " + tailPercentage + "%");
+		System.out.println("----------------------------");
+		System.out.println("TIME TAKEN: " + (System.currentTimeMillis() - start) + "ms");
+		System.out.println("----------------------------");
+	}
 }

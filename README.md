@@ -15,8 +15,9 @@
 ## Features
 
 These are currently the **only completed** features of jUtilities (ordered from **oldest** to **newest**).
+
 ### - **Beginner**
-- Empty for now...
+- CoinflipSimulator - Simulates a number of defined coin flips.
 
 ### - **Intermediate**
 - AgeCalculator - Calculates your current age and other cool things using your birthdate.
