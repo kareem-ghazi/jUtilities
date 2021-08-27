@@ -1,4 +1,4 @@
-package com.kimo.beginner.quizmaker;
+package com.kimo.intermediate.quizmaker;
 
 import java.util.Scanner;
 
