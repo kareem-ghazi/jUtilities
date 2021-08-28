@@ -9,17 +9,18 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class SalesSearcher {
-    private static ArrayList<String> regions = new ArrayList<>();
-    private static ArrayList<String> countries = new ArrayList<>();
-    private static ArrayList<String> itemTypes = new ArrayList<>();
-    private static ArrayList<String> orderDates = new ArrayList<>();
-    private static ArrayList<Integer> orderIDs = new ArrayList<>();
-    private static ArrayList<Integer> unitsSold = new ArrayList<>();
-    private static ArrayList<Double> unitsPrice = new ArrayList<>();
-    private static ArrayList<Double> totalRevenues = new ArrayList<>();
+    private ArrayList<String> regions = new ArrayList<>();
+    private ArrayList<String> countries = new ArrayList<>();
+    private ArrayList<String> itemTypes = new ArrayList<>();
+    private ArrayList<String> orderDates = new ArrayList<>();
+    private ArrayList<Integer> orderIDs = new ArrayList<>();
+    private ArrayList<Integer> unitsSold = new ArrayList<>();
+    private ArrayList<Double> unitsPrice = new ArrayList<>();
+    private ArrayList<Double> totalRevenues = new ArrayList<>();
     
-    private static NumberFormat numberFormat = NumberFormat.getInstance(Locale.US);
+    private NumberFormat numberFormat = NumberFormat.getInstance(Locale.US);
 
+    // Reads the file and filters the data into lists.
     public void readFile(File file) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
@@ -43,6 +44,7 @@ public class SalesSearcher {
         }
     }
 
+    // Gets and prints out order details using an order ID.
     public void printOrderDetails(String orderID) {
         if (orderIDs.isEmpty()) {
             System.out.println("----------------------------");

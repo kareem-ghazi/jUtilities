@@ -18,6 +18,7 @@ These are currently the **only completed** features of jUtilities (ordered from 
 
 ### - **Beginner**
 - CoinflipSimulator - Simulates a number of defined coin flips.
+- SalesSearcher - Searches through sales data and prints out the order details.
 
 ### - **Intermediate**
 - AgeCalculator - Calculates your current age and other cool things using your birthdate.
