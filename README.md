@@ -21,9 +21,9 @@ These are currently the **only completed** features of jUtilities (ordered from 
 - SalesSearcher - Searches through sales data and prints out the order details.
 
 ### - **Intermediate**
+- QuizMaker - Create quizzes, play them, and print out their results.
 - AgeCalculator - Calculates your current age and other cool things using your birthdate.
 - ShapesInfo - Gets info about the shape using its attributes.
-- QuizMaker - Create quizzes, play them, and print out their results.
 
 ### - **Advanced**
 - Empty for now...
