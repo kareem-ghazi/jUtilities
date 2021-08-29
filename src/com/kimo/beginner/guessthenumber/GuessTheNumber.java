@@ -21,6 +21,7 @@ public class GuessTheNumber {
 		guesses = 0;
 		System.out.println("Guess a number between " + minimumGuessRange + " and " + maximumGuessRange);
 
+		// Guessing loop that ends when the user guesses correctly. Otherwise, it will give hints like higher or lower depending on the guess.
 		while (true) {
 			System.out.print("-: ");
 			int userGuess = InputUtils.getCaughtInput();
@@ -35,7 +36,7 @@ public class GuessTheNumber {
 				break;
 			}
 
-			guesses++;
+			guesses++; // Increment the count of guesses.
 		}
 
 	}
@@ -46,6 +47,7 @@ public class GuessTheNumber {
 	}
 
 	public void printLastSession() {
+		// Checks if the user has played or not.
 		if (hasPlayed) {
 			System.out.println("Number of Guesses: " + guesses);
 			System.out.println("Correct number: " + correctNumber);

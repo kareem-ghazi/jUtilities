@@ -19,6 +19,7 @@ These are currently the **only completed** features of jUtilities (ordered from 
 ### - **Beginner**
 - CoinflipSimulator - Simulates a number of defined coin flips.
 - SalesSearcher - Searches through sales data and prints out the order details.
+- GuessTheNumber - Guess a number between a specified range.
 
 ### - **Intermediate**
 - QuizMaker - Create quizzes, play them, and print out their results.
