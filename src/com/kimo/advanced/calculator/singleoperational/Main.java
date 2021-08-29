@@ -8,6 +8,7 @@ import com.kimo.advanced.calculator.singleoperational.utils.PrintUtils;
 
 public class Main {
     private static Scanner scan = new Scanner(System.in);
+    private static Calculator calculator = new Calculator();
 
     public static void main(String[] args) throws IOException {
         PrintUtils.printSeparator();
@@ -17,8 +18,6 @@ public class Main {
     }
 
     public static void mainLoop() throws IOException {
-        Calculator calculator = new Calculator();
-
         do {
             int userInput = 0;
             printCommandList();
@@ -32,20 +31,10 @@ public class Main {
                     calculator.calculationMode();
                     break;
                 case 2:
-                    if (!calculator.hasDumped) {
-                        calculator.dump();
-                    } else {
-                        System.out.println("You have already dumped the previous session to the file.");
-                    }
+                    calculator.dump();
                     break;
                 case 3:
-                    if (calculator.file.exists()) {
-                        calculator.file.delete();
-                        calculator.hasDumped = false;
-                        System.out.println("File has been successfully deleted.");
-                    } else if (!calculator.file.exists()) {
-                        System.out.println("File does not exist.");
-                    }
+                    calculator.deleteDumpFile();
                     break;
                 case 4:
                     System.out.println("Exited program successfully.");

@@ -10,7 +10,7 @@ import com.kimo.advanced.calculator.singleoperational.utils.MathUtils;
 import com.kimo.advanced.calculator.singleoperational.utils.PrintUtils;
 
 public class Calculator {
-    Scanner scan = new Scanner(System.in);
+    private Scanner scan = new Scanner(System.in);
     File file = new File("src/com/kimo/advanced/calculator/singleoperational/dump.txt");
     ArrayList<String> resultLog = new ArrayList<>();
     boolean hasDumped = false;
@@ -94,25 +94,46 @@ public class Calculator {
     }
 
     public void dump() throws IOException {
-        FileWriter myWriter = new FileWriter(file, true);
-        
-        if (!file.exists()) {
-            file.createNewFile();
+        if (!file.exists() && resultLog.isEmpty()) {
+            System.out.println("You have not done a calculation session yet.");
+            return;
         }
+        
+        if (hasDumped()) {
+            System.out.println("You have already dumped the previous session to the file.");
+            return;    
+        }
+
+        FileWriter fileWriter = new FileWriter(file, true);
 
         for (String string : resultLog) {
 
             try {
-                myWriter.write(string + "\n");
+                fileWriter.write(string + "\n");
             } catch (IOException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
         }
 
-        myWriter.write(PrintUtils.getSeparator() + "\n");
+        fileWriter.write(PrintUtils.getSeparator() + "\n");
         System.out.println("Successfully dumped to the file.");
         hasDumped = true;
-        myWriter.close();
+        fileWriter.close();
     }
+
+    public void deleteDumpFile() {
+        if (file.exists()) {
+            file.delete();
+            hasDumped = false;
+            System.out.println("File has been successfully deleted.");
+        } else if (!file.exists()) {
+            System.out.println("File does not exist.");
+        }
+    }
+
+    public boolean hasDumped() {
+        return hasDumped;
+    }
+
 }
