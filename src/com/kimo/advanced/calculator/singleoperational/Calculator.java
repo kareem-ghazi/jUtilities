@@ -11,9 +11,9 @@ import com.kimo.advanced.calculator.singleoperational.utils.PrintUtils;
 
 public class Calculator {
     private Scanner scan = new Scanner(System.in);
-    File file = new File("src/com/kimo/advanced/calculator/singleoperational/dump.txt");
-    ArrayList<String> resultLog = new ArrayList<>();
-    boolean hasDumped = false;
+    private File file = new File("src/com/kimo/advanced/calculator/singleoperational/dump.txt");
+    private ArrayList<String> resultLog = new ArrayList<>();
+    private boolean hasDumped = false;
 
     public void calculationMode() {
         String userInput = "";
@@ -99,7 +99,7 @@ public class Calculator {
             return;
         }
         
-        if (hasDumped()) {
+        if (hasDumped) {
             System.out.println("You have already dumped the previous session to the file.");
             return;    
         }
@@ -131,9 +131,4 @@ public class Calculator {
             System.out.println("File does not exist.");
         }
     }
-
-    public boolean hasDumped() {
-        return hasDumped;
-    }
-
 }
