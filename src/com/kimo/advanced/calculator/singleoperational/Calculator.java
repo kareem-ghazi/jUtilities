@@ -32,8 +32,9 @@ public class Calculator {
             if (userInput.equals("!q")) {
                 break;
             }
-
-            Collections.addAll(parsedInput, userInput.split(" "));
+            
+            Collections.addAll(parsedInput, userInput.replaceAll("\\s|[A-Za-z]", "").split("((?<=-)|(?=-))|((?<=\\+)|(?=\\+))|((?<=\\/)|(?=\\/))|((?<=\\*)|(?=\\*))|((?<=\\^)|(?=\\^))"));
+            System.out.println(parsedInput);
 
             System.out.println(calculateInput(parsedInput));
         }
@@ -92,6 +93,7 @@ public class Calculator {
                 j--;
             }
 
+            System.out.println(numbers);
         }
 
         return result;
