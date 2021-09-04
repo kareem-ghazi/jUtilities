@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.Scanner;
 
 import com.kimo.advanced.calculator.singleoperational.utils.MathUtils;
-import com.kimo.advanced.calculator.singleoperational.utils.PrintUtils;
 
 public class Calculator {
     private Scanner scan = new Scanner(System.in);
@@ -16,12 +15,14 @@ public class Calculator {
     private ArrayList<String> resultLog = new ArrayList<>();
 
     private boolean hasDumped = false;
+    private int sessionID = 0;
 
     public void calculationMode() {
         String userInput = "";
 
         resultLog = new ArrayList<>();
         hasDumped = false;
+        sessionID++;
 
         while (true) {
             ArrayList<String> parsedInput = new ArrayList<>();
@@ -32,9 +33,9 @@ public class Calculator {
             if (userInput.equals("!q")) {
                 break;
             }
-            
-            Collections.addAll(parsedInput, userInput.replaceAll("\\s|[A-Za-z]", "").split("((?<=-)|(?=-))|((?<=\\+)|(?=\\+))|((?<=\\/)|(?=\\/))|((?<=\\*)|(?=\\*))|((?<=\\^)|(?=\\^))"));
-            System.out.println(parsedInput);
+
+            Collections.addAll(parsedInput, userInput.replaceAll("\\s|[A-Za-z]", "").split(
+                    "((?<=%)|(?=%))|((?<=-)|(?=-))|((?<=\\+)|(?=\\+))|((?<=\\/)|(?=\\/))|((?<=\\*)|(?=\\*))|((?<=\\^)|(?=\\^))"));
 
             System.out.println(calculateInput(parsedInput));
         }
@@ -44,21 +45,17 @@ public class Calculator {
     private double calculateInput(ArrayList<String> parsedInput) {
         double result = 0;
         double oldResult = 0;
-        ArrayList<Double> numbers = new ArrayList<>();
-        char operand = ' ';
 
-        boolean isAddition;
-        boolean isSubtraction;
-        boolean isMultiplication;
-        boolean isDivision;
-        boolean isPower;
+        ArrayList<Double> numbers = new ArrayList<>();
+        String currentOperand = "";
 
         for (int i = 0, j = 0; i < parsedInput.size(); i++, j++) {
-            isAddition = parsedInput.get(i).equals("+");
-            isSubtraction = parsedInput.get(i).equals("-");
-            isMultiplication = parsedInput.get(i).equals("*");
-            isDivision = parsedInput.get(i).equals("/");
-            isPower = parsedInput.get(i).equals("^");
+            boolean isAddition = parsedInput.get(i).equals("+");
+            boolean isSubtraction = parsedInput.get(i).equals("-");
+            boolean isMultiplication = parsedInput.get(i).equals("*");
+            boolean isDivision = parsedInput.get(i).equals("/");
+            boolean isPower = parsedInput.get(i).equals("^");
+            boolean isModulus = parsedInput.get(i).equals("%");
 
             if (MathUtils.isNumeric(parsedInput.get(i))) {
                 numbers.add(Double.parseDouble(parsedInput.get(i)));
@@ -67,33 +64,39 @@ public class Calculator {
                     result = numbers.get(0);
                 }
 
-                if (operand == '*') {
-                    oldResult = result;
-                    result *= numbers.get(j);
-                    resultLog.add(oldResult + " x " + numbers.get(j) + " = " + result);
-                } else if (operand == '/') {
-                    oldResult = result;
-                    result /= numbers.get(j);
-                    resultLog.add(oldResult + " / " + numbers.get(j) + " = " + result);
-                } else if (operand == '+') {
-                    oldResult = result;
-                    result += numbers.get(j);
-                    resultLog.add(oldResult + " + " + numbers.get(j) + " = " + result);
-                } else if (operand == '-') {
-                    oldResult = result;
-                    result -= numbers.get(j);
-                    resultLog.add(oldResult + " - " + numbers.get(j) + " = " + result);
-                } else if (operand == '^') {
-                    oldResult = result;
-                    result = Math.pow(result, numbers.get(j));
-                    resultLog.add(oldResult + " ^ " + numbers.get(j) + " = " + result);
+                oldResult = result;
+
+                switch (currentOperand) {
+                    case "*":
+                        result *= numbers.get(j);
+                        resultLog.add(oldResult + " x " + numbers.get(j) + " = " + result);
+                        break;
+                    case "/":
+                        result /= numbers.get(j);
+                        resultLog.add(oldResult + " / " + numbers.get(j) + " = " + result);
+                        break;
+                    case "+":
+                        result += numbers.get(j);
+                        resultLog.add(oldResult + " + " + numbers.get(j) + " = " + result);
+                        break;
+                    case "-":
+                        result -= numbers.get(j);
+                        resultLog.add(oldResult + " - " + numbers.get(j) + " = " + result);
+                        break;
+                    case "^":
+                        result = Math.pow(result, numbers.get(j));
+                        resultLog.add(oldResult + " ^ " + numbers.get(j) + " = " + result);
+                        break;
+                    case "%":
+                        result %= numbers.get(j);
+                        resultLog.add(oldResult + " % " + numbers.get(j) + " = " + result);
+                        break;
                 }
-            } else if (isAddition || isSubtraction || isMultiplication || isDivision || isPower) {
-                operand = parsedInput.get(i).charAt(0);
+
+            } else if (isAddition || isSubtraction || isMultiplication || isDivision || isPower || isModulus) {
+                currentOperand = parsedInput.get(i);
                 j--;
             }
-
-            System.out.println(numbers);
         }
 
         return result;
@@ -111,9 +114,9 @@ public class Calculator {
         }
 
         FileWriter fileWriter = new FileWriter(file, true);
+        fileWriter.write("--------------" + " (SESSION ID: " + sessionID + ") ---------------" + "\n");
 
         for (String string : resultLog) {
-
             try {
                 fileWriter.write(string + "\n");
             } catch (IOException e) {
@@ -122,7 +125,6 @@ public class Calculator {
             }
         }
 
-        fileWriter.write(PrintUtils.getSeparator() + "\n");
         System.out.println("Successfully dumped to the file.");
         hasDumped = true;
         fileWriter.close();
