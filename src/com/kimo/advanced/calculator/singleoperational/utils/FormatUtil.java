@@ -1,6 +1,6 @@
 package com.kimo.advanced.calculator.singleoperational.utils;
 
-public class PrintUtils {
+public class FormatUtil {
     
     public static void printSeparator() {
         System.out.println("-------------------------------");

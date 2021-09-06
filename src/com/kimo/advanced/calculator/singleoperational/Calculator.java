@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-import com.kimo.advanced.calculator.singleoperational.utils.MathUtils;
+import com.kimo.advanced.calculator.singleoperational.utils.MathUtil;
 
 public class Calculator {
     private Scanner scan = new Scanner(System.in);
     private File file = new File("src/com/kimo/advanced/calculator/singleoperational/dump.txt");
-    private ArrayList<String> resultLog = new ArrayList<>();
+    private ArrayList<String> operationLog = new ArrayList<>();
 
     private boolean hasDumped = false;
     private int sessionID = 0;
@@ -20,9 +20,7 @@ public class Calculator {
     public void calculationMode() {
         String userInput = "";
 
-        resultLog = new ArrayList<>();
-        hasDumped = false;
-        sessionID++;
+        operationLog = new ArrayList<>();
 
         while (true) {
             ArrayList<String> parsedInput = new ArrayList<>();
@@ -40,27 +38,27 @@ public class Calculator {
             System.out.println(calculateInput(parsedInput));
         }
 
+        if (!operationLog.isEmpty()) {
+            sessionID++;
+            hasDumped = false;
+        }
+
     }
 
     private double calculateInput(ArrayList<String> parsedInput) {
         double result = 0;
         double oldResult = 0;
+        int j = 0;
 
         ArrayList<Double> numbers = new ArrayList<>();
         String currentOperand = "";
+        
+        // Add j++; after it knows it is a numeric.
+        for (String string : parsedInput) {
+            if (MathUtil.isNumeric(string)) {
+                numbers.add(Double.parseDouble(string));
 
-        for (int i = 0, j = 0; i < parsedInput.size(); i++, j++) {
-            boolean isAddition = parsedInput.get(i).equals("+");
-            boolean isSubtraction = parsedInput.get(i).equals("-");
-            boolean isMultiplication = parsedInput.get(i).equals("*");
-            boolean isDivision = parsedInput.get(i).equals("/");
-            boolean isPower = parsedInput.get(i).equals("^");
-            boolean isModulus = parsedInput.get(i).equals("%");
-
-            if (MathUtils.isNumeric(parsedInput.get(i))) {
-                numbers.add(Double.parseDouble(parsedInput.get(i)));
-
-                if (j == 0) {
+                if (numbers.size() == 1) {
                     result = numbers.get(0);
                 }
 
@@ -69,33 +67,33 @@ public class Calculator {
                 switch (currentOperand) {
                     case "*":
                         result *= numbers.get(j);
-                        resultLog.add(oldResult + " x " + numbers.get(j) + " = " + result);
+                        operationLog.add(oldResult + " x " + numbers.get(j) + " = " + result);
                         break;
                     case "/":
                         result /= numbers.get(j);
-                        resultLog.add(oldResult + " / " + numbers.get(j) + " = " + result);
+                        operationLog.add(oldResult + " / " + numbers.get(j) + " = " + result);
                         break;
                     case "+":
                         result += numbers.get(j);
-                        resultLog.add(oldResult + " + " + numbers.get(j) + " = " + result);
+                        operationLog.add(oldResult + " + " + numbers.get(j) + " = " + result);
                         break;
                     case "-":
                         result -= numbers.get(j);
-                        resultLog.add(oldResult + " - " + numbers.get(j) + " = " + result);
+                        operationLog.add(oldResult + " - " + numbers.get(j) + " = " + result);
                         break;
                     case "^":
                         result = Math.pow(result, numbers.get(j));
-                        resultLog.add(oldResult + " ^ " + numbers.get(j) + " = " + result);
+                        operationLog.add(oldResult + " ^ " + numbers.get(j) + " = " + result);
                         break;
                     case "%":
                         result %= numbers.get(j);
-                        resultLog.add(oldResult + " % " + numbers.get(j) + " = " + result);
+                        operationLog.add(oldResult + " % " + numbers.get(j) + " = " + result);
                         break;
                 }
-
-            } else if (isAddition || isSubtraction || isMultiplication || isDivision || isPower || isModulus) {
-                currentOperand = parsedInput.get(i);
-                j--;
+                
+                j++;
+            } else if (MathUtil.isOperand(string)) {
+                currentOperand = string;
             }
         }
 
@@ -103,8 +101,8 @@ public class Calculator {
     }
 
     public void dump() throws IOException {
-        if (!file.exists() && resultLog.isEmpty()) {
-            System.out.println("You have not done a calculation session yet.");
+        if (operationLog.isEmpty()) {
+            System.out.println("You have not done a valid calculation session yet.");
             return;
         }
 
@@ -116,9 +114,9 @@ public class Calculator {
         FileWriter fileWriter = new FileWriter(file, true);
         fileWriter.write("--------------" + " (SESSION ID: " + sessionID + ") ---------------" + "\n");
 
-        for (String string : resultLog) {
+        for (String operation : operationLog) {
             try {
-                fileWriter.write(string + "\n");
+                fileWriter.write(operation + "\n");
             } catch (IOException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
