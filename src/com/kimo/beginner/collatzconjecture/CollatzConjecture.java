@@ -22,11 +22,9 @@ public class CollatzConjecture {
 			}
 
 			i = 0;
-			int steps = 0;
 
 			if (isNumeric(userInput) && Integer.parseInt(userInput) != 0) {
-				steps = collatzConjecture(Integer.parseInt(userInput));
-				System.out.println("Amount of steps to reach 1: " + steps);
+				System.out.println("Amount of steps to reach 1: " + collatzConjecture(Integer.parseInt(userInput)));
 			} else {
 				System.out.println("Invalid input.");
 			}
