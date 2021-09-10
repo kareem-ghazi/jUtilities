@@ -102,6 +102,10 @@ public class Bank {
         return uuid;
     }
     
+    /**
+     * Adds an account.
+     * @param account The account to be added.
+     */
     public void addAccount(Account account) {
         this.accounts.add(account);
     }
@@ -124,6 +128,12 @@ public class Bank {
         return user;
     }
 
+    /**
+     * User login validation.
+     * @param uuid The entered uuid.
+     * @param pin The entered pin.
+     * @return Whether the user login is valid or not.
+     */
     public User userLogin(String uuid, String pin) {
         for (User user : this.users) {
             if (user.getUUID().compareTo(uuid) == 0 && user.validatePin(pin)) {
@@ -134,6 +144,10 @@ public class Bank {
         return null;
     }
 
+    /**
+     * Gets the name of the bank.
+     * @return The bank's name.
+     */
     public String getName() {
         return name;
     }

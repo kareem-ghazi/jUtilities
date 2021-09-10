@@ -76,6 +76,10 @@ public class User {
         this.accounts.add(account);
     }
 
+    /**
+     * Gets the uuid of the user.
+     * @return The uuid of the user.
+     */
     public String getUUID() {
         return this.uuid;
     }
@@ -99,10 +103,17 @@ public class User {
         return false;
     }
 
+    /**
+     * Gets the first name of the user.
+     * @return
+     */
     public String getFirstName() {
         return this.firstName;
     }
 
+    /**
+     * Prints an summary about all existing accounts for the user.
+     */
     public void printAccountsSummary() {
         System.out.printf("\n\n%s's accounts summary\n", this.firstName);
         
@@ -113,34 +124,76 @@ public class User {
         System.out.println();
     }
 
+    /**
+     * Gets the number of accounts for the user.
+     * @return The number of accounts for the user.
+     */
     public int getNumberOfAccounts() {
         return this.accounts.size();
     }
 
+    /**
+     * Prints the account's transaction history.
+     * @param accountIndex The account index (the account).
+     */
     public void printAccountTransactionHistory(int accountIndex) {
         this.accounts.get(accountIndex).printTransactionHistory();
     }
 
+    /**
+     * Gets the accounts balance.
+     * @param account The account.
+     * @return The balance of the account.
+     */
     public double getAccountBalance(int account) {
         return this.accounts.get(account).getBalance();
     }
 
+    /**
+     * Gets the uuid of the account.
+     * @param account The account.
+     * @return The uuid of the account.
+     */
     public String getAccountUUID(int account) {
         return this.accounts.get(account).getUUID();
     }
 
+    /**
+     * Adds a transaction to an account.
+     * @param account The account to add the transaction.
+     * @param amount The amount for the transaction.
+     * @param memo The memo for the transaction.
+     */
     public void addAccountTransaction(int account, double amount, String memo) {
         this.accounts.get(account).addTransaction(amount, memo);
     }
     
+    /**
+     * Deposits an amount of money.
+     * @param toAccount The account to deposit to.
+     * @param amount The amount to deposit.
+     * @param memo The memo for the transaction.
+     */
     public void deposit(int toAccount, double amount, String memo) {
         this.addAccountTransaction(toAccount, amount, memo);
     }
 
+    /**
+     * Withdraws an amount of money.
+     * @param fromAccount The account to withdraw from.
+     * @param amount The amount to withdraw.
+     * @param memo The memo for the transaction.
+     */
     public void withdraw(int fromAccount, double amount, String memo) {
         this.addAccountTransaction(fromAccount, amount * -1, memo);
     }
 
+    /**
+     * Transfers an amount from one account to the other.
+     * @param fromAccount The account to transfer from.
+     * @param toAccount The account to transfer to.
+     * @param amount The amount to transfer.
+     */
     public void transfer(int fromAccount, int toAccount, double amount) {
         this.addAccountTransaction(fromAccount, amount * -1,
                 String.format("Transfer to account %s", this.getAccountUUID(toAccount)));

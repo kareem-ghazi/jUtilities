@@ -51,10 +51,18 @@ public class Transaction {
         this.memo = memo;
     }
 
+    /**
+     * Gets the amount of the transaction.
+     * @return The transaction amount.
+     */
     public double getAmount() {
         return this.amount;
     }
 
+    /**
+     * Gets the summary line of the transaction.
+     * @return The summary line of the transaction.
+     */
     public String getSummaryLine() {
         if (this.amount >= 0) {
             return String.format("%s : $%.02f : %s", this.timeStamp.toString(), this.amount, this.memo);

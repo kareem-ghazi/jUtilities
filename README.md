@@ -26,6 +26,7 @@ These are currently the **only completed** features of jUtilities (ordered from 
 - QuizMaker - Create quizzes, play them, and print out their results.
 - AgeCalculator - Calculates your current age and other cool things using your birthdate.
 - ShapesInfo - Gets info about the shape using its attributes.
+- ATM - Automated Teller Machine.
 
 ### - **Advanced**
 - Empty for now...

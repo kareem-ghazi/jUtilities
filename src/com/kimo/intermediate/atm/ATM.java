@@ -6,15 +6,17 @@ public class ATM {
     private static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+        // Example values.
         Bank drausin = new Bank("Bank of Drausin");
         User kareem = drausin.addUser("Kareem", "Ghazi", "0000");
         Account checking = new Account("Checking", kareem, drausin);
-
+        
         kareem.addAccount(checking);
         drausin.addAccount(checking);
 
         User currentUser;
 
+        // Main menu loop.
         while (true) {
             currentUser = mainMenuPrompt(drausin);
             getUserMenu(currentUser);
@@ -32,6 +34,7 @@ public class ATM {
         String pin;
         User authenticateUser;
 
+        // The user login loop for authenticating the user.
         do {
             System.out.printf("\n\nWelcome to %s\n\n", bank.getName());
             System.out.print("Enter the user ID: ");
@@ -51,10 +54,16 @@ public class ATM {
         return authenticateUser;
     }
 
+    /**
+     * Gets the user's menu.
+     * @param user The user for this menu.
+     */
     public static void getUserMenu(User user) {
         int choice;
 
         user.printAccountsSummary();
+
+        // User menu loop for dealing with user's accounts.
         do {
             System.out.printf("Welcome %s, what would you like to do?\n", user.getFirstName());
             System.out.println(" 1) Show account transaction history.");
@@ -95,6 +104,10 @@ public class ATM {
         } while (true);
     }
 
+    /**
+     * Shows transaction history for the user.
+     * @param user The user to show the transaction history for.
+     */
     private static void showTransactionHistory(User user) {
         int account;
 
@@ -112,6 +125,10 @@ public class ATM {
         user.printAccountTransactionHistory(account);
     }
 
+    /**
+     * Transfer funds from one account to the other.
+     * @param user The user that transfers the funds.
+     */
     private static void transferFunds(User user) {
         int fromAccount;
         int toAccount;
@@ -154,6 +171,10 @@ public class ATM {
         user.transfer(fromAccount, toAccount, amount);
     }
 
+    /**
+     * Withdraw funds from an account.
+     * @param user The user that withdraws the funds.
+     */
     private static void withdrawFunds(User user) {
         int fromAccount;
         double amount;
@@ -191,6 +212,10 @@ public class ATM {
         user.withdraw(fromAccount, amount, memo);
     }
 
+    /**
+     * Deposits funds.
+     * @param user The user that deposits the funds.
+     */
     private static void depositFunds(User user) {
         int toAccount;
         double amount;

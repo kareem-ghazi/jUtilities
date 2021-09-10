@@ -46,10 +46,18 @@ public class Account {
 
     }
 
+    /**
+     * Gets the uuid of the account.
+     * @return The uuid of the account.
+     */
     public String getUUID() {
         return this.uuid;
     }
 
+    /**
+     * Gets a summary line from the account.
+     * @return A summary line from the account.
+     */
     public String getSummaryLine() {
         
         double balance = this.getBalance();
@@ -61,6 +69,10 @@ public class Account {
         }
     }
 
+    /**
+     * Gets the balance of the account.
+     * @return The balance of the account.
+     */
     public double getBalance() {
         double balance = 0;
 
@@ -71,6 +83,9 @@ public class Account {
         return balance;
     }
 
+    /**
+     * Prints transaction history for the account.
+     */
     public void printTransactionHistory() {
         System.out.printf("\nTransaction history for account %s\n", this.uuid);
         
@@ -81,6 +96,11 @@ public class Account {
         System.out.println();
     }
 
+    /**
+     * Adds a transaction to the transaction history of the account.
+     * @param amount The account in which the transaction took place.
+     * @param memo The memo for the transaction.
+     */
     public void addTransaction(double amount, String memo) {
         Transaction newTransaction = new Transaction(amount, memo, this);
         
