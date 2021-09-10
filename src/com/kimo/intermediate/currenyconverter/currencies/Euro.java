@@ -23,5 +23,5 @@ public class Euro extends Currency {
     public String getISOCode() {
         return "EUR";
     }
-    
+
 }

@@ -23,5 +23,5 @@ public class USDollar extends Currency {
     public String getISOCode() {
         return "USD";
     }
-    
+
 }
