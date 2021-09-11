@@ -8,15 +8,24 @@ public class Stringifier {
 
 	private int uppercaseLetters = 0;
 	private int lowercaseLetters = 0;
+
 	private int numbers = 0;
 	private int spaces = 0;
 	private int other = 0;
 
+	/**
+	 * Creates a new Stringifier object.
+	 * @param string A string.
+	 */
 	public Stringifier(String string) {
 		this.string = string;
 		countCharacters();
 	}
 
+	/**
+	 * Reverses the characters of a string.
+	 * @return The reversed characters of a string.
+	 */
 	public String reverseCharacters() {
 		StringBuilder stringBuilder = new StringBuilder(string);
 		String reversedString = stringBuilder.reverse().toString();
@@ -24,6 +33,10 @@ public class Stringifier {
 		return reversedString;
 	}
 
+	/**
+	 * Reverses the words of a string.
+	 * @return The reversed words of a string.
+	 */
 	public String reverseWords() {
 		ArrayList<String> stringArray = new ArrayList<>();
 		String reversedString = "";
@@ -38,10 +51,17 @@ public class Stringifier {
 		return reversedString;
 	}
 
+	/**
+	 * Checks whether the string is a palindrome or not.
+	 * @return Whether the string is a palindrome or not.
+	 */
 	public boolean isPalindrome() {
 		return string.equals(reverseCharacters());
 	}
 
+	/**
+	 * Counts the characters of a string.
+	 */
 	private void countCharacters() {
 		char[] charArray = string.toCharArray();
 		
@@ -86,4 +106,7 @@ public class Stringifier {
 		return other;
 	}
 
+	public String getString() {
+		return string;
+	}
 }
