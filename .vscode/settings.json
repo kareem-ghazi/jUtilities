@@ -1,0 +1,16 @@
+{
+    "java.project.sourcePaths": [
+        "intermediate/shapesinfo/src",
+        "intermediate/quizmaker/src",
+        "intermediate/currencyconverter/src",
+        "intermediate/atm/src",
+        "intermediate/agecalculator/src",
+        "beginner/salessearcher/src",
+        "beginner/guessthenumber/src",
+        "beginner/collatzconjecture/src",
+        "beginner/coinflipsimulator/src",
+        "archive",
+        "advanced/calculator/src",
+        "beginner/stringifier/src"
+    ]
+}
