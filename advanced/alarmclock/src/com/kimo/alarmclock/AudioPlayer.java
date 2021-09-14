@@ -21,11 +21,8 @@ public class AudioPlayer {
         clip.open(audioInputStream);
     }
 
-    public void setSound(File file) {
-        this.file = file;
-    }
-
     public Clip getClip() {
         return clip;
     }
+
 }
