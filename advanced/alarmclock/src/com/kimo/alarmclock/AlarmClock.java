@@ -28,7 +28,8 @@ public class AlarmClock extends Thread {
         this.clockName = name;
         this.alarms = new ArrayList<Alarm>();
         this.fileSave = new File("src//com//kimo//alarmclock//alarmclocks//" + this.clockName + ".txt");
-    
+        
+        fileSave.createNewFile();
         alarmClocks.add(this);
     }
 
@@ -44,15 +45,23 @@ public class AlarmClock extends Thread {
         return alarmClocks;
     }
 
+    public static void clearAlarmClocks() {
+        alarmClocks = new ArrayList<AlarmClock>();
+    }
+
     public String getClockName() {
         return clockName;
     }
 
-    public void saveAlarms() throws IOException {
-        if (!fileSave.exists()) {
-            fileSave.createNewFile();
-        }
+    public Alarm getCurrentAlarm() {
+        return currentAlarm;
+    }
 
+    public File getFileSave() {
+        return fileSave;
+    }
+
+    public void saveAlarms() throws IOException {
         FileWriter fileWriter = new FileWriter(fileSave);
 
         for (Alarm alarm : alarms) {
@@ -64,11 +73,6 @@ public class AlarmClock extends Thread {
     }
 
     public void loadAlarms() throws FileNotFoundException, UnsupportedAudioFileException, LineUnavailableException {
-        if (!fileSave.exists()) {
-            System.out.println("File does not exist to load alarms from.");
-            return;
-        }
-
         FileReader fileReader = new FileReader(fileSave);
         String line;
 
@@ -98,10 +102,6 @@ public class AlarmClock extends Thread {
         } else {
             return null;
         }
-    }
-
-    public Alarm getCurrentAlarm() {
-        return currentAlarm;
     }
 
     @Override
