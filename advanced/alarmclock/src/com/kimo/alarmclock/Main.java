@@ -13,25 +13,9 @@ public class Main {
     public static void main(String[] args)
             throws UnsupportedAudioFileException, IOException, LineUnavailableException, InterruptedException {
 
-        AlarmClock kimosAlarmClock = new AlarmClock();
-
-        File file = new File("src\\com\\kimo\\alarmclock\\resources\\alarm-sound.wav");
-        LocalDateTime dateTime = LocalDateTime.of(2021, Month.SEPTEMBER, 14, 15, 6, 45);
-
-        File file2 = new File("src\\com\\kimo\\alarmclock\\resources\\ALARMCLOCK.wav");
-        LocalDateTime dateTime2 = LocalDateTime.of(2021, Month.SEPTEMBER, 14, 15, 9, 0);
+        AlarmClock kimosAlarmClock = new AlarmClock("kimo");
         
-        File file3 = new File("src\\com\\kimo\\alarmclock\\resources\\Air-raid-siren.wav");
-        LocalDateTime dateTime3 = LocalDateTime.of(2021, Month.SEPTEMBER, 14, 15, 12, 0);
-
-        Alarm alarm = new Alarm("SAT", dateTime, file);
-        Alarm alarm2 = new Alarm("Work", dateTime2, file2);
-        Alarm alarm3 = new Alarm("Water", dateTime3, file3);
-
-        kimosAlarmClock.addAlarm(alarm);
-        kimosAlarmClock.addAlarm(alarm2);
-        kimosAlarmClock.addAlarm(alarm3);
-
+        kimosAlarmClock.loadAlarms();
         kimosAlarmClock.start();
 
         Scanner scan = new Scanner(System.in);
@@ -40,14 +24,57 @@ public class Main {
             System.out.print("-: ");
             String userInput = scan.nextLine();
 
-            if (userInput.equals("!snooze")) {
-                kimosAlarmClock.getCurrentAlarm().snooze();
+            if (userInput.equals("!alarms")) {
+                for (Alarm alarminClock : kimosAlarmClock.getAlarms()) {
+                    System.out.println(alarminClock.getName());
+                    System.out.println(alarminClock.getTime());
+                    System.out.println(alarminClock.getRingtone() + "\n");
+                }
+            } else if (userInput.equals("!alarmsave")) {
+                kimosAlarmClock.saveAlarms();
             } else if (userInput.equals("!exit")) {
-                System.out.println("Exited program successfully.");
                 scan.close();
-                System.exit(0);
+                System.exit(1);
+            } else if (userInput.equals("!create")) {
+                System.out.println("Enter name: ");
+                String name = scan.nextLine();
+
+                System.out.println("Enter year: ");
+                int year = scan.nextInt();
+
+                System.out.println("Enter day: ");
+                int day = scan.nextInt();
+
+                System.out.println("Enter hour: ");
+                int hour = scan.nextInt();
+
+                System.out.println("Enter minute: ");
+                int minute = scan.nextInt();
+
+                System.out.println("Enter second: ");
+                int second = scan.nextInt();
+                
+                scan.nextLine();
+
+                System.out.println("Enter ringtone: ");
+                File file = new File(scan.nextLine());
+
+                LocalDateTime dateTime = LocalDateTime.of(year, Month.OCTOBER , day, hour, minute, second);
+
+                kimosAlarmClock.addAlarm(new Alarm(name, dateTime, file));
             } else {
                 System.out.println("Invalid input.");
+            }
+        }
+    }
+
+    private static void loadAlarmClocks() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        File folder = new File("src//com//kimo//alarmclock//alarmclocks//");
+        File[] listOfFiles = folder.listFiles();
+
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                new AlarmClock(file.getName());
             }
         }
     }
