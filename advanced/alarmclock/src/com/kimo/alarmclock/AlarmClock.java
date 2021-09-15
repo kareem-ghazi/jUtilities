@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -76,8 +75,6 @@ public class AlarmClock extends Thread {
         try (BufferedReader br = new BufferedReader(fileReader)) {
             while ((line = br.readLine()) != null) {
                 String[] alarmInformation = line.split(" ; ");
-
-                System.out.println(Arrays.toString(alarmInformation));
                 
                 String name = alarmInformation[0];
                 LocalDateTime time = LocalDateTime.parse(alarmInformation[1]);

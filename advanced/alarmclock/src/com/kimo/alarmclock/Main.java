@@ -13,25 +13,31 @@ public class Main {
     public static void main(String[] args)
             throws UnsupportedAudioFileException, IOException, LineUnavailableException, InterruptedException {
 
-        AlarmClock kimosAlarmClock = new AlarmClock("kimo");
-        
-        kimosAlarmClock.loadAlarms();
-        kimosAlarmClock.start();
-
+        loadAlarmClocks();
         Scanner scan = new Scanner(System.in);
-
+        
         while (true) {
             System.out.print("-: ");
             String userInput = scan.nextLine();
-
+            
             if (userInput.equals("!alarms")) {
-                for (Alarm alarminClock : kimosAlarmClock.getAlarms()) {
-                    System.out.println(alarminClock.getName());
-                    System.out.println(alarminClock.getTime());
-                    System.out.println(alarminClock.getRingtone() + "\n");
+                System.out.println("Enter the clock's name: ");
+                String userInputClockName = scan.nextLine();
+                
+                for (AlarmClock alarmClock : AlarmClock.getAlarmClocks()) {
+                    if (!alarmClock.getClockName().equals(userInputClockName)) {
+                        continue;
+                    }
+                    alarmClock.loadAlarms();
+                    System.out.println(alarmClock.getClockName() + " alarm clock: \n");
+                    for (Alarm alarm : alarmClock.getAlarms()) {
+                        System.out.println(alarm.getName());
+                        System.out.println(alarm.getTime());
+                        System.out.println(alarm.getRingtone() + "\n");
+                    }
                 }
             } else if (userInput.equals("!alarmsave")) {
-                kimosAlarmClock.saveAlarms();
+                // kimosAlarmClock.saveAlarms();
             } else if (userInput.equals("!exit")) {
                 scan.close();
                 System.exit(1);
@@ -53,15 +59,15 @@ public class Main {
 
                 System.out.println("Enter second: ");
                 int second = scan.nextInt();
-                
+
                 scan.nextLine();
 
                 System.out.println("Enter ringtone: ");
                 File file = new File(scan.nextLine());
 
-                LocalDateTime dateTime = LocalDateTime.of(year, Month.OCTOBER , day, hour, minute, second);
+                LocalDateTime dateTime = LocalDateTime.of(year, Month.OCTOBER, day, hour, minute, second);
 
-                kimosAlarmClock.addAlarm(new Alarm(name, dateTime, file));
+                // kimosAlarmClock.addAlarm(new Alarm(name, dateTime, file));
             } else {
                 System.out.println("Invalid input.");
             }
@@ -74,7 +80,7 @@ public class Main {
 
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                new AlarmClock(file.getName());
+                new AlarmClock(file.getName().replace(".txt", ""));
             }
         }
     }
