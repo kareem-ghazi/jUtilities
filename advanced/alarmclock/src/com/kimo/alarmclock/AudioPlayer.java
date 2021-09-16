@@ -14,11 +14,20 @@ public class AudioPlayer {
     AudioInputStream audioInputStream;
     File file;
 
-    public AudioPlayer(File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        this.audioInputStream = AudioSystem.getAudioInputStream(file.getAbsoluteFile());
-        this.clip = AudioSystem.getClip();
+    public AudioPlayer(File file) {
+        try {
+            this.audioInputStream = AudioSystem.getAudioInputStream(file.getAbsoluteFile());
+            this.clip = AudioSystem.getClip();
         
-        clip.open(audioInputStream);
+            clip.open(audioInputStream);
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
+        
     }
 
     public Clip getClip() {

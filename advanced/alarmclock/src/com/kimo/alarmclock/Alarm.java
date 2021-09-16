@@ -1,12 +1,9 @@
 package com.kimo.alarmclock;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDateTime;
 
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Alarm {
     private String name;
@@ -17,8 +14,7 @@ public class Alarm {
 
     private AudioPlayer audioPlayer;
 
-    public Alarm(String name, LocalDateTime time, File ringtone)
-            throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public Alarm(String name, LocalDateTime time, File ringtone) {
 
         this.name = name;
         this.time = time;
@@ -27,10 +23,14 @@ public class Alarm {
         this.audioPlayer = new AudioPlayer(ringtone);
     }
 
-    public void play() throws InterruptedException {
+    public void play() {
         audioPlayer.getClip().loop(Clip.LOOP_CONTINUOUSLY);
         while (audioPlayer.getClip().isRunning()) {
-            Thread.sleep(audioPlayer.getClip().getMicrosecondLength() / 1000);
+            try {
+                Thread.sleep(audioPlayer.getClip().getMicrosecondLength() / 1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

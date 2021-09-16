@@ -2,15 +2,11 @@ package com.kimo.alarmclock;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class AlarmClock extends Thread {
 
@@ -24,12 +20,17 @@ public class AlarmClock extends Thread {
 
     private File fileSave;
 
-    public AlarmClock(String name) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public AlarmClock(String name) {
         this.clockName = name;
         this.alarms = new ArrayList<Alarm>();
         this.fileSave = new File("src//com//kimo//alarmclock//alarmclocks//" + this.clockName + ".txt");
+
+        try {
+            fileSave.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         
-        fileSave.createNewFile();
         alarmClocks.add(this);
     }
 
@@ -45,10 +46,6 @@ public class AlarmClock extends Thread {
         return alarmClocks;
     }
 
-    public static void clearAlarmClocks() {
-        alarmClocks = new ArrayList<AlarmClock>();
-    }
-
     public String getClockName() {
         return clockName;
     }
@@ -61,34 +58,68 @@ public class AlarmClock extends Thread {
         return fileSave;
     }
 
-    public void saveAlarms() throws IOException {
-        FileWriter fileWriter = new FileWriter(fileSave);
-
-        for (Alarm alarm : alarms) {
-            fileWriter.write(alarm.getName() + " ; " + alarm.getTime() + " ; "
-                    + alarm.getRingtone().getPath() + "\n");
-        }
-
-        fileWriter.close();
-    }
-
-    public void loadAlarms() throws FileNotFoundException, UnsupportedAudioFileException, LineUnavailableException {
-        FileReader fileReader = new FileReader(fileSave);
-        String line;
-
-        try (BufferedReader br = new BufferedReader(fileReader)) {
-            while ((line = br.readLine()) != null) {
-                String[] alarmInformation = line.split(" ; ");
-                
-                String name = alarmInformation[0];
-                LocalDateTime time = LocalDateTime.parse(alarmInformation[1]);
-                File ringtone = new File(alarmInformation[2]);
-                
-                alarms.add(new Alarm(name, time, ringtone));
+    public void saveAlarms() {
+        FileWriter fileWriter;
+        try {
+            fileWriter = new FileWriter(fileSave);
+            
+            for (Alarm alarm : alarms) {
+                fileWriter.write(alarm.getName() + " ; " + alarm.getTime() + " ; " + alarm.getRingtone().getPath() + "\n");
             }
+    
+            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void loadAlarms() {
+        FileReader fileReader;
+        BufferedReader bufferedReader;
+        String line;
+
+        try {
+            fileReader = new FileReader(fileSave);
+            bufferedReader = new BufferedReader(fileReader);
+
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] alarmInformation = line.split(" ; ");
+
+                String name = alarmInformation[0];
+                LocalDateTime time = LocalDateTime.parse(alarmInformation[1]);
+                File ringtone = new File(alarmInformation[2]);
+
+                alarms.add(new Alarm(name, time, ringtone));
+            }
+
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+    }
+
+    public static void loadAlarmClocks() {
+        File folder = new File("src//com//kimo//alarmclock//alarmclocks//");
+        File[] listOfFiles = folder.listFiles();
+
+        AlarmClock.getAlarmClocks().clear();
+
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                new AlarmClock(file.getName().replace(".txt", ""));
+            }
+        }
+    }
+
+    public static AlarmClock getAlarmClockByName(String name) {
+        for (AlarmClock alarmClock : AlarmClock.getAlarmClocks()) {
+            if (alarmClock.getClockName().equals(name)) {
+                return alarmClock;
+            }
+        }
+
+        return null;
     }
 
     public static LocalDateTime getCurrentTime(String type) {
