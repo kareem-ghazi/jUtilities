@@ -152,6 +152,7 @@ public class AlarmClock extends Thread {
                         this.currentAlarm = currentAlarm;
                         currentAlarm.play();
                         System.out.println();
+                        
                         do {
                             Thread.sleep(10000);
                             timeElapsed += 10;
