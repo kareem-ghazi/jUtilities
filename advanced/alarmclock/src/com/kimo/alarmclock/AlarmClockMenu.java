@@ -30,7 +30,8 @@ public class AlarmClockMenu {
                     deleteAlarm(clock);
                     break;
                 case 3:
-                    // editAlarm(clock);
+                    scan.nextLine();
+                    editAlarm(clock);
                     break;
                 case 4:
                     printClockSummary(clock);
@@ -112,7 +113,7 @@ public class AlarmClockMenu {
     private static void snoozeRunningAlarm(AlarmClock clock) {
         if (clock.getRunningAlarm() != null) {
             clock.getRunningAlarm().snooze();
-            
+
             System.out.println("Snoozed: " + clock.getRunningAlarm().getName());
             System.out.println("Time Elapsed: +" + clock.getRunningAlarm().getTimeElapsed() + "s");
         } else {
@@ -125,7 +126,7 @@ public class AlarmClockMenu {
         String alarmName = scan.nextLine();
 
         Alarm alarm = clock.getAlarmByName(alarmName);
-        
+
         if (alarm != null) {
             clock.getAlarms().remove(alarm);
         } else {
@@ -148,6 +149,62 @@ public class AlarmClockMenu {
         } else {
             System.out.println("Alarm does not exist.");
         }
+    }
+
+    private static void editAlarm(AlarmClock clock) {
+        int choice;
+
+        System.out.print("Enter alarm's name: ");
+        String oldName = scan.nextLine();
+
+        Alarm alarm = clock.getAlarmByName(oldName);
+
+        if (alarm == null) {
+            System.out.println("Alarm does not exist.");
+            return;
+        }
+
+        while (true) {
+            printEditAlarmMenuOptions();
+            System.out.print("-: ");
+            choice = scan.nextInt();
+            scan.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter alarm's new name: ");
+                    String newName = scan.nextLine();
+
+                    alarm.setName(newName);
+                    break;
+                case 2:
+                    System.out.print("Enter alarm's date (yyyy-MM-dd;hh:mm:ss): ");
+                    LocalDateTime date = validateDate(scan.nextLine().split(";"));
+
+                    alarm.setTime(date);
+                    break;
+                case 3:
+                    System.out.print("Enter alarm's ringtone (File path): ");
+                    File ringtone = validateFile(scan.nextLine());
+
+                    alarm.setRingtone(ringtone);
+                    break;
+                case 4:
+                    System.out.println("Exited and saved alarm successfully.");
+                    return;
+                default:
+                    System.out.println("Invalid choice, please try again.");
+                    break;
+            }
+        }
+    }
+
+    private static void printEditAlarmMenuOptions() {
+        System.out.println("---------------------");
+        System.out.println("1. Edit name.");
+        System.out.println("2. Edit date and time.");
+        System.out.println("3. Edit ringtone.");
+        System.out.println("4. Exit.");
     }
 
     private static void printClockMenuOptions() {
