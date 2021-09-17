@@ -2,6 +2,7 @@ package com.kimo.alarmclock;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import javax.sound.sampled.Clip;
 
@@ -38,7 +39,7 @@ public class Alarm {
 
     public void snooze() {
         audioPlayer.getClip().stop();
-    }   
+    }
 
     public AudioPlayer getAudioPlayer() {
         return audioPlayer;
@@ -62,6 +63,31 @@ public class Alarm {
 
     public void incrementTimeElapsed() {
         timeElapsed++;
+    }
+
+    public String calculateRemainingTime() {
+        // Calucalte time difference in milliseconds
+        LocalDateTime tempDateTime = LocalDateTime.from(AlarmClockManager.getNow("FORMAT"));
+
+        long years = tempDateTime.until(getTime(), ChronoUnit.YEARS);
+        tempDateTime = tempDateTime.plusYears(years);
+
+        long months = tempDateTime.until(getTime(), ChronoUnit.MONTHS);
+        tempDateTime = tempDateTime.plusMonths(months);
+
+        long days = tempDateTime.until(getTime(), ChronoUnit.DAYS);
+        tempDateTime = tempDateTime.plusDays(days);
+
+        long hours = tempDateTime.until(getTime(), ChronoUnit.HOURS);
+        tempDateTime = tempDateTime.plusHours(hours);
+
+        long minutes = tempDateTime.until(getTime(), ChronoUnit.MINUTES);
+        tempDateTime = tempDateTime.plusMinutes(minutes);
+
+        long seconds = tempDateTime.until(getTime(), ChronoUnit.SECONDS);
+
+        return years + " years, " + months + " months, " + days + " days, " + hours + " hours, " + minutes
+                + " minutes, " + seconds + " seconds.";
     }
 
 }

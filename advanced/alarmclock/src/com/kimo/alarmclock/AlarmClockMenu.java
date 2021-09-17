@@ -36,9 +36,13 @@ public class AlarmClockMenu {
                     printClockSummary(clock);
                     break;
                 case 5:
-                    snoozeRunningAlarm(clock);
+                    scan.nextLine();
+                    getAlarmSummary(clock);
                     break;
                 case 6:
+                    snoozeRunningAlarm(clock);
+                    break;
+                case 7:
                     System.out.println("Exited clock menu successfully.");
                     clock.saveAlarms();
                     scan.nextLine();
@@ -129,14 +133,32 @@ public class AlarmClockMenu {
         }
     }
 
+    private static void getAlarmSummary(AlarmClock clock) {
+        System.out.println("Enter alarm's name: ");
+        String alarmName = scan.nextLine();
+
+        Alarm alarm = clock.getAlarmByName(alarmName);
+
+        if (alarm != null) {
+            System.out.println("Alarm's Name: " + alarm.getName());
+            System.out.println("Alarm's Time: " + alarm.getTime());
+            System.out.println("Alarm's Ringtone: " + alarm.getRingtone().getName());
+            System.out.println();
+            System.out.println("Time left until alarm rings: " + alarm.calculateRemainingTime());
+        } else {
+            System.out.println("Alarm does not exist.");
+        }
+    }
+
     private static void printClockMenuOptions() {
         System.out.println("---------------------");
         System.out.println("1. Create an alarm.");
         System.out.println("2. Delete an alarm.");
         System.out.println("3. Edit an alarm.");
         System.out.println("4. Print alarm clock's summary.");
-        System.out.println("5. Snooze running alarm.");
-        System.out.println("6. Exit.");
+        System.out.println("5. Get and print alarm summary.");
+        System.out.println("6. Snooze running alarm.");
+        System.out.println("7. Exit.");
     }
 
     private static void printClockSummary(AlarmClock clock) {

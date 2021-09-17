@@ -46,7 +46,7 @@ public class AlarmClockManager {
 
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                new AlarmClock(file.getName().replace(".txt", ""));
+                new AlarmClock(file.getName());
             }
         }
     }

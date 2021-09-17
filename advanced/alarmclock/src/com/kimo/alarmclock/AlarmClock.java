@@ -21,7 +21,7 @@ public class AlarmClock extends Thread {
     public AlarmClock(String name) {
         this.clockName = name;
         this.alarms = new ArrayList<Alarm>();
-        this.fileSave = new File("src//com//kimo//alarmclock//alarmclocks//" + this.clockName + ".txt");
+        this.fileSave = new File("src//com//kimo//alarmclock//alarmclocks//" + this.clockName);
 
         try {
             fileSave.createNewFile();
