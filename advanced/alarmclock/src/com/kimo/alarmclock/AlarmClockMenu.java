@@ -40,6 +40,7 @@ public class AlarmClockMenu {
                     break;
                 case 6:
                     System.out.println("Exited clock menu successfully.");
+                    clock.saveAlarms();
                     scan.nextLine();
                     return;
                 default:

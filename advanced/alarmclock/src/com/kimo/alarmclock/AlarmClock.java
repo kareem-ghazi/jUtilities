@@ -87,6 +87,7 @@ public class AlarmClock extends Thread {
         try {
             fileReader = new FileReader(fileSave);
             bufferedReader = new BufferedReader(fileReader);
+            
             this.getAlarms().clear();
             
             while ((line = bufferedReader.readLine()) != null) {
@@ -96,9 +97,11 @@ public class AlarmClock extends Thread {
                 LocalDateTime time = LocalDateTime.parse(alarmInformation[1]);
                 File ringtone = new File(alarmInformation[2]);
 
-                alarms.add(new Alarm(name, time, ringtone));
+                if (time.isAfter(AlarmClockManager.getNow("FORMAT"))) {
+                    alarms.add(new Alarm(name, time, ringtone));   
+                }
             }
-
+            
             bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -108,10 +111,8 @@ public class AlarmClock extends Thread {
     @Override
     public void run() {
         LocalDateTime now;
-        ArrayList<Alarm> oldAlarms;
-
+        
         do {
-            oldAlarms = new ArrayList<Alarm>();
             now = AlarmClockManager.getNow("FORMAT");
 
             for (Alarm currentAlarm : alarms) {
@@ -125,19 +126,13 @@ public class AlarmClock extends Thread {
                             Thread.sleep(1000);
                             currentAlarm.incrementTimeElapsed();
                         } while (currentAlarm.getAudioPlayer().getClip().isRunning());
-                    
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
-                    oldAlarms.add(currentAlarm);
                     break;
-                } else if (currentAlarm.getTime().isBefore(now)) {
-                    oldAlarms.add(currentAlarm);
                 }
             }
-
-            this.getAlarms().removeAll(oldAlarms);
 
             try {
                 Thread.sleep(850);
