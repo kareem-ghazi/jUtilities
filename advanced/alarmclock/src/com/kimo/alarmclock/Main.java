@@ -6,7 +6,7 @@ public class Main {
     private static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        AlarmClock.loadAlarmClocks();
+        AlarmClockManager.loadAlarmClocks();
         getMainMenu();
     }
 
@@ -16,7 +16,7 @@ public class Main {
         AlarmClock clock;
 
         while (true) {
-            AlarmClock.loadAlarmClocks();
+            AlarmClockManager.loadAlarmClocks();
             printMainMenuOptions();
 
             System.out.print("-: ");
@@ -35,7 +35,7 @@ public class Main {
                     System.out.println("Enter clock's name: ");
                     clockName = scan.nextLine();
 
-                    clock = AlarmClock.getAlarmClockByName(clockName);
+                    clock = AlarmClockManager.getAlarmClockByName(clockName);
                     if (clock != null) {
                         clock.getFileSave().delete();
                     } else {
@@ -47,10 +47,8 @@ public class Main {
                     System.out.print("Enter clock's name: ");
                     clockName = scan.nextLine();
 
-                    clock = AlarmClock.getAlarmClockByName(clockName);
+                    clock = AlarmClockManager.getAlarmClockByName(clockName);
                     if (clock != null ) {
-                        clock.loadAlarms();
-                    
                         AlarmClockMenu.getClockMenu(clock);
                     } else {
                         System.out.println("Alarm clock does not exist, please try again.");
@@ -73,5 +71,4 @@ public class Main {
         System.out.println("3. Enter an alarm clock's menu.");
         System.out.println("4. Exit.");
     }
-
 }

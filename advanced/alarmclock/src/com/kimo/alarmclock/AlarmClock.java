@@ -12,8 +12,6 @@ public class AlarmClock extends Thread {
 
     private String clockName;
 
-    private static ArrayList<AlarmClock> alarmClocks = new ArrayList<AlarmClock>();
-
     private ArrayList<Alarm> alarms;
 
     private Alarm currentAlarm;
@@ -31,7 +29,7 @@ public class AlarmClock extends Thread {
             e.printStackTrace();
         }
         
-        alarmClocks.add(this);
+        AlarmClockManager.getAlarmClocks().add(this);
     }
 
     public void addAlarm(Alarm alarm) {
@@ -40,10 +38,6 @@ public class AlarmClock extends Thread {
 
     public ArrayList<Alarm> getAlarms() {
         return alarms;
-    }
-
-    public static ArrayList<AlarmClock> getAlarmClocks() {
-        return alarmClocks;
     }
 
     public String getClockName() {
@@ -60,6 +54,7 @@ public class AlarmClock extends Thread {
 
     public void saveAlarms() {
         FileWriter fileWriter;
+
         try {
             fileWriter = new FileWriter(fileSave);
             
@@ -82,7 +77,8 @@ public class AlarmClock extends Thread {
         try {
             fileReader = new FileReader(fileSave);
             bufferedReader = new BufferedReader(fileReader);
-
+            this.getAlarms().clear();
+            
             while ((line = bufferedReader.readLine()) != null) {
                 String[] alarmInformation = line.split(" ; ");
 
@@ -99,42 +95,6 @@ public class AlarmClock extends Thread {
         } 
     }
 
-    public static void loadAlarmClocks() {
-        File folder = new File("src//com//kimo//alarmclock//alarmclocks//");
-        File[] listOfFiles = folder.listFiles();
-
-        AlarmClock.getAlarmClocks().clear();
-
-        for (File file : listOfFiles) {
-            if (file.isFile()) {
-                new AlarmClock(file.getName().replace(".txt", ""));
-            }
-        }
-    }
-
-    public static AlarmClock getAlarmClockByName(String name) {
-        for (AlarmClock alarmClock : AlarmClock.getAlarmClocks()) {
-            if (alarmClock.getClockName().equals(name)) {
-                return alarmClock;
-            }
-        }
-
-        return null;
-    }
-
-    public static LocalDateTime getCurrentTime(String type) {
-        LocalDateTime now = LocalDateTime.now();
-
-        if (type.toUpperCase().equals("FORMAT")) {
-            return LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), now.getHour(), now.getMinute(),
-                    now.getSecond());
-        } else if (type.toUpperCase().equals("REGULAR")) {
-            return LocalDateTime.now();
-        } else {
-            return null;
-        }
-    }
-
     @Override
     public void run() {
         LocalDateTime now;
@@ -143,7 +103,7 @@ public class AlarmClock extends Thread {
 
         do {
             oldAlarms = new ArrayList<Alarm>();
-            now = getCurrentTime("FORMAT");
+            now = AlarmClockManager.getCurrentTime("FORMAT");
             timeElapsed = 0;
 
             for (Alarm currentAlarm : alarms) {

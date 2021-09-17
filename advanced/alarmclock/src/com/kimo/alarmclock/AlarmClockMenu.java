@@ -12,6 +12,7 @@ public class AlarmClockMenu {
         int choice;
 
         while (true) {
+            clock.loadAlarms();
             printClockMenuOptions();
 
             System.out.print("-: ");
@@ -32,17 +33,18 @@ public class AlarmClockMenu {
                     printClockSummary(clock);
                     break;
                 case 5:
-                    // snoozeRunningAlarm(clock);
+                    snoozeRunningAlarm(clock);
                     break;
                 case 6:
                     System.out.println("Exited clock menu successfully.");
                     scan.nextLine();
-                    clock.saveAlarms();
                     return;
                 default:
                     System.out.println("Invalid choice, please try again.");
                     break;
             }
+
+            clock.saveAlarms();
         }
     }
 
@@ -84,7 +86,7 @@ public class AlarmClockMenu {
         while (true) {
             validFile = new File(filePath);
 
-            if (getExtensionByStringHandling(validFile.getName()).get().equals("wav")) {
+            if (getExtensionByString(validFile.getName()).get().equals("wav")) {
                 return validFile;
             } else {
                 System.out.println("Invalid file, please try again.");
@@ -94,12 +96,21 @@ public class AlarmClockMenu {
         }
     }
 
-    private static Optional<String> getExtensionByStringHandling(String filename) {
+    private static Optional<String> getExtensionByString(String filename) {
         return Optional.ofNullable(filename).filter(f -> f.contains("."))
                 .map(f -> f.substring(filename.lastIndexOf(".") + 1));
     }
 
-    public static void printClockMenuOptions() {
+    private static void snoozeRunningAlarm(AlarmClock clock) {
+        if (clock.getCurrentAlarm() != null) {
+            clock.getCurrentAlarm().snooze();
+            System.out.println("Snoozed: " + clock.getCurrentAlarm().getName());
+        } else {
+            System.out.println("There's no running alarm currently.");
+        }
+    }
+
+    private static void printClockMenuOptions() {
         System.out.println("---------------------");
         System.out.println("1. Create an alarm.");
         System.out.println("2. Delete an alarm.");
@@ -109,7 +120,7 @@ public class AlarmClockMenu {
         System.out.println("6. Exit.");
     }
 
-    public static void printClockSummary(AlarmClock clock) {
+    private static void printClockSummary(AlarmClock clock) {
         for (Alarm alarm : clock.getAlarms()) {
             System.out.println("Alarm's name: " + alarm.getName());
             System.out.println("Alarm's time: " + alarm.getTime());
