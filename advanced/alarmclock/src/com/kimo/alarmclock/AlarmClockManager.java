@@ -25,7 +25,7 @@ public class AlarmClockManager {
         return null;
     }
 
-    public static LocalDateTime getCurrentTime(String type) {
+    public static LocalDateTime getNow(String type) {
         LocalDateTime now = LocalDateTime.now();
 
         if (type.toUpperCase().equals("FORMAT")) {

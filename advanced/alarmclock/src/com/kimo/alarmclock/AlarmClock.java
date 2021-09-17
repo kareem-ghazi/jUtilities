@@ -44,12 +44,22 @@ public class AlarmClock extends Thread {
         return clockName;
     }
 
-    public Alarm getCurrentAlarm() {
+    public Alarm getRunningAlarm() {
         return currentAlarm;
     }
 
     public File getFileSave() {
         return fileSave;
+    }
+
+    public Alarm getAlarmByName(String name) {
+        for (Alarm alarm : this.alarms) {
+            if (alarm.getName().equals(name)) {
+                return alarm;
+            }
+        }
+
+        return null;
     }
 
     public void saveAlarms() {
@@ -99,25 +109,23 @@ public class AlarmClock extends Thread {
     public void run() {
         LocalDateTime now;
         ArrayList<Alarm> oldAlarms;
-        int timeElapsed;
 
         do {
             oldAlarms = new ArrayList<Alarm>();
-            now = AlarmClockManager.getCurrentTime("FORMAT");
-            timeElapsed = 0;
+            now = AlarmClockManager.getNow("FORMAT");
 
             for (Alarm currentAlarm : alarms) {
                 if (currentAlarm.getTime().equals(now)) {
                     try {
                         this.currentAlarm = currentAlarm;
                         currentAlarm.play();
-                        System.out.println();
-                        
+                        System.out.print(currentAlarm.getName() + " is running!\n-: ");
+
                         do {
-                            Thread.sleep(10000);
-                            timeElapsed += 10;
-                            System.out.println("Time Elapsed: +" + timeElapsed + "s");
+                            Thread.sleep(1000);
+                            currentAlarm.incrementTimeElapsed();
                         } while (currentAlarm.getAudioPlayer().getClip().isRunning());
+                    
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

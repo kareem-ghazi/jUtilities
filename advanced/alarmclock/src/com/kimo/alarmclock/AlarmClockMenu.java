@@ -11,6 +11,8 @@ public class AlarmClockMenu {
     public static void getClockMenu(AlarmClock clock) {
         int choice;
 
+        clock.start();
+
         while (true) {
             clock.loadAlarms();
             printClockMenuOptions();
@@ -24,7 +26,8 @@ public class AlarmClockMenu {
                     createAlarm(clock);
                     break;
                 case 2:
-                    // deleteAlarm(clock);
+                    scan.nextLine();
+                    deleteAlarm(clock);
                     break;
                 case 3:
                     // editAlarm(clock);
@@ -102,11 +105,26 @@ public class AlarmClockMenu {
     }
 
     private static void snoozeRunningAlarm(AlarmClock clock) {
-        if (clock.getCurrentAlarm() != null) {
-            clock.getCurrentAlarm().snooze();
-            System.out.println("Snoozed: " + clock.getCurrentAlarm().getName());
+        if (clock.getRunningAlarm() != null) {
+            clock.getRunningAlarm().snooze();
+            
+            System.out.println("Snoozed: " + clock.getRunningAlarm().getName());
+            System.out.println("Time Elapsed: +" + clock.getRunningAlarm().getTimeElapsed() + "s");
         } else {
             System.out.println("There's no running alarm currently.");
+        }
+    }
+
+    private static void deleteAlarm(AlarmClock clock) {
+        System.out.println("Enter alarm's name: ");
+        String alarmName = scan.nextLine();
+
+        Alarm alarm = clock.getAlarmByName(alarmName);
+        
+        if (alarm != null) {
+            clock.getAlarms().remove(alarm);
+        } else {
+            System.out.println("Alarm does not exist.");
         }
     }
 

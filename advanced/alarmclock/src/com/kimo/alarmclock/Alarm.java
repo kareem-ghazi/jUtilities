@@ -8,6 +8,8 @@ import javax.sound.sampled.Clip;
 public class Alarm {
     private String name;
 
+    private int timeElapsed;
+
     private LocalDateTime time;
 
     private File ringtone;
@@ -52,6 +54,14 @@ public class Alarm {
 
     public LocalDateTime getTime() {
         return time;
+    }
+
+    public int getTimeElapsed() {
+        return timeElapsed;
+    }
+
+    public void incrementTimeElapsed() {
+        timeElapsed++;
     }
 
 }
