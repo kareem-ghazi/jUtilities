@@ -1,6 +1,7 @@
 package com.kimo.alarmclock;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.sound.sampled.AudioInputStream;
@@ -14,14 +15,16 @@ public class AudioPlayer {
     AudioInputStream audioInputStream;
     File file;
 
-    public AudioPlayer(File file) {
+    public AudioPlayer(File file, Alarm alarm) {
         try {
             this.audioInputStream = AudioSystem.getAudioInputStream(file.getAbsoluteFile());
             this.clip = AudioSystem.getClip();
-        
+            
             clip.open(audioInputStream);
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occured, please update the ringtone for '" + alarm.getName() + "'.");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (LineUnavailableException e) {

@@ -94,8 +94,9 @@ public class AlarmClockMenu {
 
         while (true) {
             validFile = new File(filePath);
-
-            if (getExtensionByString(validFile.getName()).get().equals("wav")) {
+            
+            if (getExtensionByString(validFile.getName()).isPresent()
+                    && getExtensionByString(validFile.getName()).get().equals("wav")) {
                 return validFile;
             } else {
                 System.out.println("Invalid file, please try again.");

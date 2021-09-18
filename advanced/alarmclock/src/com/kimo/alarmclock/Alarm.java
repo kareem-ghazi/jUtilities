@@ -23,7 +23,7 @@ public class Alarm {
         this.time = time;
         this.ringtone = ringtone;
 
-        this.audioPlayer = new AudioPlayer(ringtone);
+        this.audioPlayer = new AudioPlayer(ringtone, this);
     }
 
     public void play() {
