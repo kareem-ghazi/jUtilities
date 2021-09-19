@@ -1,4 +1,4 @@
-# <img src="java-icon.png" alt="banner" width="24"/> jUtilities 
+# <img src="duke-icon.png" alt="banner" width="24"/> jUtilities 
 
 [![CodeFactor](https://www.codefactor.io/repository/github/kareem-ghazi/jutilities/badge)](https://www.codefactor.io/repository/github/kareem-ghazi/jutilities)
 [![MIT License](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
