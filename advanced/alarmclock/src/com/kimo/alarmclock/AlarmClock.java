@@ -78,7 +78,7 @@ public class AlarmClock extends Thread {
 
             for (Alarm alarm : alarms) {
                 fileWriter.write(
-                        alarm.getName() + " ; " + alarm.getTime() + " ; " + alarm.getRingtone().getPath() + "\n");
+                        alarm.getName() + " ; " + alarm.getTime() + " ; " + alarm.getRingtone().getPath() + " ; " + alarm.getRepeat() + "\n");
             }
 
             fileWriter.close();
@@ -96,6 +96,7 @@ public class AlarmClock extends Thread {
         String name;
         LocalDateTime time = LocalDateTime.of(1970, Month.JANUARY, 1, 0, 0, 0);
         File ringtone;
+        int repeat;
 
         try {
             fileReader = new FileReader(fileSave);
@@ -115,12 +116,13 @@ public class AlarmClock extends Thread {
                 }
 
                 ringtone = new File(alarmInformation[2]);
+                repeat = Integer.parseInt(alarmInformation[3]);
 
                 if (time.isAfter(AlarmClockManager.getNow("FORMAT"))) {
-                    alarms.add(new Alarm(name, time, ringtone));
+                    alarms.add(new Alarm(name, time, ringtone, repeat));
                 } else if (time.isEqual(LocalDateTime.of(1970, Month.JANUARY, 1, 0, 0, 0))) {
                     System.out.println("An error has occured, please update the time for '" + name + "'.");
-                    alarms.add(new Alarm(name, time, ringtone));
+                    alarms.add(new Alarm(name, time, ringtone, repeat));
                 }
             }
 
@@ -144,6 +146,11 @@ public class AlarmClock extends Thread {
                         this.currentAlarm = currentAlarm;
                         currentAlarm.play();
                         System.out.print(currentAlarm.getName() + " is running!\n-: ");
+
+                        if (currentAlarm.getRepeat() >= 1) {
+                            currentAlarm.setTime(currentAlarm.getTime().plusDays(1));
+                            currentAlarm.setRepeat(currentAlarm.getRepeat() - 1);
+                        }
 
                         do {
                             Thread.sleep(1000);

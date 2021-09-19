@@ -15,13 +15,16 @@ public class Alarm {
 
     private File ringtone;
 
+    private int repeat;
+
     private AudioPlayer audioPlayer;
 
-    public Alarm(String name, LocalDateTime time, File ringtone) {
+    public Alarm(String name, LocalDateTime time, File ringtone, int repeat) {
 
         this.name = name;
         this.time = time;
         this.ringtone = ringtone;
+        this.repeat = repeat;
 
         this.audioPlayer = new AudioPlayer(ringtone, this);
     }
@@ -73,6 +76,14 @@ public class Alarm {
         return timeElapsed;
     }
 
+    public int getRepeat() {
+        return repeat;
+    }
+
+    public void setRepeat(int repeat) {
+        this.repeat = repeat;
+    }
+    
     public void incrementTimeElapsed() {
         timeElapsed++;
     }
