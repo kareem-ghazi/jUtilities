@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Scanner;
 
+import com.kimo.alarmclock.utils.InputUtils;
+
 public class AlarmClockMenu {
     private static Scanner scan = new Scanner(System.in);
 
@@ -18,7 +20,7 @@ public class AlarmClockMenu {
             printClockMenuOptions();
 
             System.out.print("-: ");
-            choice = scan.nextInt();
+            choice = InputUtils.getValidInput(scan, "INT");
 
             switch (choice) {
                 case 1:
@@ -44,8 +46,9 @@ public class AlarmClockMenu {
                     snoozeRunningAlarm(clock);
                     break;
                 case 7:
-                    System.out.println("Exited clock menu successfully.");
+                    System.out.println("Exited clock menu and stopped clock successfully.");
                     clock.saveAlarms();
+                    clock.terminate();
                     scan.nextLine();
                     return;
                 default:
@@ -123,7 +126,7 @@ public class AlarmClockMenu {
     }
 
     private static void deleteAlarm(AlarmClock clock) {
-        System.out.println("Enter alarm's name: ");
+        System.out.print("Enter alarm's name: ");
         String alarmName = scan.nextLine();
 
         Alarm alarm = clock.getAlarmByName(alarmName);
@@ -136,7 +139,7 @@ public class AlarmClockMenu {
     }
 
     private static void getAlarmSummary(AlarmClock clock) {
-        System.out.println("Enter alarm's name: ");
+        System.out.print("Enter alarm's name: ");
         String alarmName = scan.nextLine();
 
         Alarm alarm = clock.getAlarmByName(alarmName);

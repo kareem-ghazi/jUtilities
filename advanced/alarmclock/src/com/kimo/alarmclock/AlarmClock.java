@@ -20,6 +20,8 @@ public class AlarmClock extends Thread {
 
     private File fileSave;
 
+    private boolean isRunning;
+
     public AlarmClock(String name) {
         this.clockName = name;
         this.alarms = new ArrayList<Alarm>();
@@ -62,6 +64,10 @@ public class AlarmClock extends Thread {
         }
 
         return null;
+    }
+
+    public void terminate() {
+        isRunning = false;
     }
 
     public void saveAlarms() {
@@ -127,8 +133,9 @@ public class AlarmClock extends Thread {
     @Override
     public void run() {
         LocalDateTime now;
+        isRunning = true;
 
-        do {
+        while (isRunning) {
             now = AlarmClockManager.getNow("FORMAT");
 
             for (Alarm currentAlarm : alarms) {
@@ -155,6 +162,6 @@ public class AlarmClock extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        } while (!this.getAlarms().isEmpty());
+        }
     }
 }

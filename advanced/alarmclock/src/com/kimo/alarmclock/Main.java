@@ -2,6 +2,8 @@ package com.kimo.alarmclock;
 
 import java.util.Scanner;
 
+import com.kimo.alarmclock.utils.InputUtils;
+
 public class Main {
     private static Scanner scan = new Scanner(System.in);
 
@@ -20,19 +22,19 @@ public class Main {
             printMainMenuOptions();
 
             System.out.print("-: ");
-            choice = scan.nextInt();
+            choice = InputUtils.getValidInput(scan, "INT");
 
-            scan.nextLine();
-            
             switch (choice) {
                 case 1:
+                    scan.nextLine();
                     System.out.print("Enter alarm clock's name: ");
                     clockName = scan.nextLine();
 
                     new AlarmClock(clockName);
                     break;
                 case 2:
-                    System.out.println("Enter clock's name: ");
+                    scan.nextLine();
+                    System.out.print("Enter clock's name: ");
                     clockName = scan.nextLine();
 
                     clock = AlarmClockManager.getAlarmClockByName(clockName);
@@ -44,11 +46,12 @@ public class Main {
 
                     break;
                 case 3:
+                    scan.nextLine();
                     System.out.print("Enter clock's name: ");
                     clockName = scan.nextLine();
 
                     clock = AlarmClockManager.getAlarmClockByName(clockName);
-                    if (clock != null ) {
+                    if (clock != null) {
                         AlarmClockMenu.getClockMenu(clock);
                     } else {
                         System.out.println("Alarm clock does not exist, please try again.");
