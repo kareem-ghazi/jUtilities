@@ -2,6 +2,7 @@ package com.kimo.alarmclock;
 
 import java.util.Scanner;
 
+import com.kimo.alarmclock.utils.FormatUtils;
 import com.kimo.alarmclock.utils.InputUtils;
 
 public class Main {
@@ -23,14 +24,19 @@ public class Main {
 
             System.out.print("-: ");
             choice = InputUtils.getValidInput(scan, "INT");
-
+            
             switch (choice) {
                 case 1:
                     scan.nextLine();
                     System.out.print("Enter alarm clock's name: ");
                     clockName = scan.nextLine();
 
-                    new AlarmClock(clockName);
+                    if (AlarmClockManager.getAlarmClockByName(clockName) == null) {
+                        new AlarmClock(clockName);
+                    } else if (AlarmClockManager.getAlarmClockByName(clockName) != null) {
+                        System.out.println("Alarm clock exists, please try a different name.");
+                    }
+                    
                     break;
                 case 2:
                     scan.nextLine();
@@ -68,7 +74,7 @@ public class Main {
     }
 
     private static void printMainMenuOptions() {
-        System.out.println("---------------------");
+        System.out.println(FormatUtils.getSeparator("QUARTER") + " (MAIN MENU) " + FormatUtils.getSeparator("QUARTER"));
         System.out.println("1. Create an alarm clock.");
         System.out.println("2. Delete an alarm clock.");
         System.out.println("3. Enter an alarm clock's menu.");

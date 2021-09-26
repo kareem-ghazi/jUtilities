@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Scanner;
 
+import com.kimo.alarmclock.utils.FormatUtils;
 import com.kimo.alarmclock.utils.InputUtils;
 
 public class AlarmClockMenu {
@@ -17,7 +18,7 @@ public class AlarmClockMenu {
 
         while (true) {
             clock.loadAlarms();
-            printClockMenuOptions();
+            printClockMenuOptions(clock);
 
             System.out.print("-: ");
             choice = InputUtils.getValidInput(scan, "INT");
@@ -62,7 +63,7 @@ public class AlarmClockMenu {
 
     private static void createAlarm(AlarmClock clock) {
         System.out.print("Enter alarm's name: ");
-        String name = scan.nextLine();
+        String name = validateName(scan.nextLine(), clock);
 
         System.out.print("Enter alarm's date (yyyy-MM-dd;hh:mm:ss): ");
         LocalDateTime date = validateDate(scan.nextLine().split(";"));
@@ -70,12 +71,24 @@ public class AlarmClockMenu {
         System.out.print("Enter alarm's ringtone (File path): ");
         File file = validateFile(scan.nextLine());
 
-        System.out.println("Enter how many times to repeat: ");
+        System.out.print("Enter how many times to repeat: ");
         int repeat = InputUtils.getValidInput(scan, "INT");
 
         clock.addAlarm(new Alarm(name, date, file, repeat));
 
         System.out.println("Successfully added alarm.");
+    }
+
+    private static String validateName(String name, AlarmClock clock) {
+        while (true) {
+            if (clock.getAlarmByName(name) == null) {
+                return name;
+            } else if (clock.getAlarmByName(name) != null) {
+                System.out.println("Alarm exists, please try a different name.");
+                System.out.print("-: ");
+                name = scan.nextLine();
+            }
+        }
     }
 
     private static LocalDateTime validateDate(String[] splitDate) {
@@ -148,12 +161,13 @@ public class AlarmClockMenu {
         Alarm alarm = clock.getAlarmByName(alarmName);
 
         if (alarm != null) {
-            System.out.println("Alarm's Name: " + alarm.getName());
-            System.out.println("Alarm's Time: " + alarm.getTime());
-            System.out.println("Alarm's Ringtone: " + alarm.getRingtone().getName());
-            System.out.println();
-            System.out.println("Repeat times remaining: " + alarm.getRepeat());
+            System.out.println(FormatUtils.getSeparator("QUARTER") + " (ALARM: " + alarm.getName() + ") "
+                    + FormatUtils.getSeparator("QUARTER"));
+            System.out.println("Time: " + alarm.getTime());
+            System.out.println("Ringtone: " + alarm.getRingtone().getName());
+            System.out.println("Remaining repeats: " + alarm.getRepeat());
             System.out.println("Time left until alarm rings: " + alarm.calculateRemainingTime());
+            System.out.println();
         } else {
             System.out.println("Alarm does not exist.");
         }
@@ -173,7 +187,7 @@ public class AlarmClockMenu {
         }
 
         while (true) {
-            printEditAlarmMenuOptions();
+            printEditAlarmMenuOptions(alarm);
             System.out.print("-: ");
             choice = InputUtils.getValidInput(scan, "INT");
 
@@ -183,7 +197,11 @@ public class AlarmClockMenu {
                     System.out.print("Enter alarm's new name: ");
                     String newName = scan.nextLine();
 
-                    alarm.setName(newName);
+                    if (clock.getAlarmByName(newName) == null) {
+                        alarm.setName(newName);
+                    } else if (clock.getAlarmByName(newName) != null) {
+                        System.out.println("Alarm exists, please try a different name.");
+                    }
                     break;
                 case 2:
                     scan.nextLine();
@@ -215,8 +233,9 @@ public class AlarmClockMenu {
         }
     }
 
-    private static void printEditAlarmMenuOptions() {
-        System.out.println("---------------------");
+    private static void printEditAlarmMenuOptions(Alarm alarm) {
+        System.out.println(FormatUtils.getSeparator("QUARTER") + " (EDITING ALARM: " + alarm.getName() + ") "
+                + FormatUtils.getSeparator("QUARTER"));
         System.out.println("1. Edit name.");
         System.out.println("2. Edit date and time.");
         System.out.println("3. Edit ringtone.");
@@ -224,8 +243,9 @@ public class AlarmClockMenu {
         System.out.println("5. Exit.");
     }
 
-    private static void printClockMenuOptions() {
-        System.out.println("---------------------");
+    private static void printClockMenuOptions(AlarmClock clock) {
+        System.out.println(FormatUtils.getSeparator("QUARTER") + " (CLOCK: " + clock.getClockName() + ") "
+                + FormatUtils.getSeparator("QUARTER"));
         System.out.println("1. Create an alarm.");
         System.out.println("2. Delete an alarm.");
         System.out.println("3. Edit an alarm.");
@@ -238,9 +258,12 @@ public class AlarmClockMenu {
     private static void printClockSummary(AlarmClock clock) {
         if (!clock.getAlarms().isEmpty()) {
             for (Alarm alarm : clock.getAlarms()) {
-                System.out.println("Alarm's name: " + alarm.getName());
-                System.out.println("Alarm's time: " + alarm.getTime());
-                System.out.println("Alarm's ringtone: " + alarm.getRingtone() + "\n");
+                System.out.println(FormatUtils.getSeparator("QUARTER") + " (ALARM: " + alarm.getName() + ") "
+                        + FormatUtils.getSeparator("QUARTER"));
+                System.out.println("Time: " + alarm.getTime());
+                System.out.println("Ringtone: " + alarm.getRingtone());
+                System.out.println("Remaining repeats: " + alarm.getRepeat());
+                System.out.println();
             }
         } else if (clock.getAlarms().isEmpty()) {
             System.out.println("There are no alarms in the clock.");
