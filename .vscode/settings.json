@@ -12,6 +12,7 @@
         "beginner/coinflipsimulator/src",
         "archive",
         "advanced/calculator/src",
-        "advanced/alarmclock/src"
+        "advanced/alarmclock/src",
+        "intermediate/tictactoe/src"
     ]
 }
