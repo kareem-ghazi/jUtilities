@@ -58,6 +58,7 @@ public class Main {
 
                     clock = AlarmClockManager.getAlarmClockByName(clockName);
                     if (clock != null) {
+                        System.out.println("Successfully logged in!");
                         AlarmClockMenu.getClockMenu(clock);
                     } else {
                         System.out.println("Alarm clock does not exist, please try again.");

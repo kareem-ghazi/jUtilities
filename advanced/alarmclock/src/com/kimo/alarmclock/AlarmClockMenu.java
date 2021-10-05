@@ -2,6 +2,7 @@ package com.kimo.alarmclock;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -76,7 +77,7 @@ public class AlarmClockMenu {
 
         clock.addAlarm(new Alarm(name, date, file, repeat));
 
-        System.out.println("Successfully added alarm.");
+        System.out.println("Successfully created alarm.");
     }
 
     private static String validateName(String name, AlarmClock clock) {
@@ -148,6 +149,7 @@ public class AlarmClockMenu {
         Alarm alarm = clock.getAlarmByName(alarmName);
 
         if (alarm != null) {
+            System.out.println("Successfully deleted alarm.");
             clock.getAlarms().remove(alarm);
         } else {
             System.out.println("Alarm does not exist.");
@@ -159,11 +161,12 @@ public class AlarmClockMenu {
         String alarmName = scan.nextLine();
 
         Alarm alarm = clock.getAlarmByName(alarmName);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-M-yyyy hh:mm:ss");
 
         if (alarm != null) {
             System.out.println(FormatUtils.getSeparator("QUARTER") + " (ALARM: " + alarm.getName() + ") "
                     + FormatUtils.getSeparator("QUARTER"));
-            System.out.println("Time: " + alarm.getTime());
+            System.out.println("Time: " + alarm.getTime().format(dateTimeFormatter));
             System.out.println("Ringtone: " + alarm.getRingtone().getName());
             System.out.println("Remaining repeats: " + alarm.getRepeat());
             System.out.println("Time left until alarm rings: " + alarm.calculateRemainingTime());
@@ -256,11 +259,13 @@ public class AlarmClockMenu {
     }
 
     private static void printClockSummary(AlarmClock clock) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-M-yyyy hh:mm:ss");
+
         if (!clock.getAlarms().isEmpty()) {
             for (Alarm alarm : clock.getAlarms()) {
                 System.out.println(FormatUtils.getSeparator("QUARTER") + " (ALARM: " + alarm.getName() + ") "
                         + FormatUtils.getSeparator("QUARTER"));
-                System.out.println("Time: " + alarm.getTime());
+                System.out.println("Time: " + alarm.getTime().format(dateTimeFormatter));
                 System.out.println("Ringtone: " + alarm.getRingtone());
                 System.out.println("Remaining repeats: " + alarm.getRepeat());
                 System.out.println();
