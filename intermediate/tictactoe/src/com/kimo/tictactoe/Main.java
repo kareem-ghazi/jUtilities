@@ -1,14 +1,13 @@
 package com.kimo.tictactoe;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        Player kimo = new Player("Kareem", 'x');
-        Player michael = new Player("Michael", 'o');
-        
-        Game game = new Game(kimo, michael);
-        game.start();
-        
-        System.out.println();
+        Scanner scanner = new Scanner(System.in);
+
+        UserInterface userInterface = new UserInterface(scanner);
+        userInterface.start();
     }
 }

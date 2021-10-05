@@ -9,6 +9,8 @@ public class Player {
 
     private ArrayList<String> positions;
 
+    private int wins;
+
     public Player(String name, char symbol) {
         this.name = name;
         this.symbol = symbol;
@@ -25,5 +27,21 @@ public class Player {
 
     public ArrayList<String> getPositions() {
         return positions;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void incrementWins() {
+        this.wins++;
+    }
+
+    public void clearPositions() {
+        this.positions.clear();
+    }
+
+    public void clearWins() {
+        this.wins = 0;
     }
 }

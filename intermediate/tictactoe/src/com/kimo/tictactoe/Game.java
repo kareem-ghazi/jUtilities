@@ -15,6 +15,10 @@ public class Game {
 
     private Player secondPlayer;
 
+    private final Player noWinner = new Player("null", ' ');
+
+    private Player winner;
+
     public Game(Player firstPlayer, Player secondPlayer) {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
@@ -123,7 +127,11 @@ public class Game {
         }
     }
 
-    public String getWinner() {
+    public Player getWinner() {
+        return winner;
+    }
+
+    public Player checkWinner() {
         List<String> topRow = Arrays.asList("1A", "2A", "3A");
         List<String> middleRow = Arrays.asList("1B", "2B", "3B");
         List<String> bottomRow = Arrays.asList("1C", "2C", "3C");
@@ -142,31 +150,46 @@ public class Game {
 
         for (List<String> list : winningConditions) {
             if (firstPlayer.getPositions().containsAll(list)) {
-                return "Congratulations " + firstPlayer.getName() + ", you won!";
+                winner = firstPlayer;
+
+                return winner;
             } else if (secondPlayer.getPositions().containsAll(list)) {
-                return "Congratulations " + secondPlayer.getName() + ", you won!";
+                winner = secondPlayer;
+
+                return winner;
             }
         }
 
         if (firstPlayer.getPositions().size() + secondPlayer.getPositions().size() == 9) {
-            return "TIE!";
+            winner = noWinner;
+
+            return winner;
         }
 
-        return "";
+        return null;
     }
 
-    public void start(boolean restart) {
+    @Override
+    public String toString() {
+        return "(" + firstPlayer.getName() + ") " + firstPlayer.getWins() + " - " + secondPlayer.getWins() + " ("
+                + secondPlayer.getName() + ")";
+    }
+
+    public void start() {
         Player playerTurn = firstPlayer;
 
-        String position;
-        String roundResult;
+        firstPlayer.clearPositions();
+        secondPlayer.clearPositions();
+        firstPlayer.clearWins();
+        secondPlayer.clearWins();
+        resetBoard();
 
         while (true) {
             printBoard();
-            
+
             System.out.print("Enter a position (" + playerTurn.getSymbol() + "): ");
-            position = scan.nextLine();
-            
+            String position = scan.nextLine();
+
             if (position.equals("")) {
                 break;
             }
@@ -179,26 +202,20 @@ public class Game {
                 playerTurn = firstPlayer;
             }
 
-            roundResult = getWinner();
+            Player roundWinner = checkWinner();
 
-            if (roundResult.length() > 0) {
-                printBoard();
-                System.out.println(roundResult);
-                break;
+            if (roundWinner != null) {
+                if (roundWinner.equals(firstPlayer) || roundWinner.equals(secondPlayer)) {
+                    printBoard();
+                    System.out.println("Congratulations " + roundWinner.getName() + ", you won!");
+                    roundWinner.incrementWins();
+                    break;
+                } else if (roundWinner.equals(noWinner)) {
+                    printBoard();
+                    System.out.println("Unfortunately, the game ended as a tie!");
+                    break;
+                }
             }
         }
-
-        if (restart) {
-            System.out.print("Restart (Y/N): ");
-            String response = scan.nextLine();
-
-            if (response.toUpperCase().equals("Y")) {
-                this.start();
-            }
-        }
-    }
-
-    public void start() {
-        start(false);
     }
 }
