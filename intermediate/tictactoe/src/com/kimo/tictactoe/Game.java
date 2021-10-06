@@ -9,6 +9,8 @@ import java.util.Scanner;
 public class Game {
     private Scanner scan;
 
+    private Music music;
+
     private char[][] gameBoard;
 
     private Player firstPlayer;
@@ -28,7 +30,13 @@ public class Game {
                 { ' ', '|', ' ', '|', ' ' }, { '-', '+', '-', '+', '-' }, { ' ', '|', ' ', '|', ' ' } };
     }
 
-    public void printBoard() {
+    public Game(Player firstPlayer, Player secondPlayer, Music music) {
+        this(firstPlayer, secondPlayer);
+
+        this.music = music;
+    }
+
+    private void printBoard() {
         System.out.println("  A   B   C");
 
         int rowIndex = 0;
@@ -53,12 +61,12 @@ public class Game {
         }
     }
 
-    public void resetBoard() {
+    private void resetBoard() {
         this.gameBoard = new char[][] { { ' ', '|', ' ', '|', ' ' }, { '-', '+', '-', '+', '-' },
                 { ' ', '|', ' ', '|', ' ' }, { '-', '+', '-', '+', '-' }, { ' ', '|', ' ', '|', ' ' } };
     }
 
-    public void place(Player player, String position) {
+    private void place(Player player, String position) {
         while (firstPlayer.getPositions().contains(position) || secondPlayer.getPositions().contains(position)) {
             System.out.print("Taken position! Try again: ");
             position = scan.nextLine();
@@ -131,7 +139,7 @@ public class Game {
         return winner;
     }
 
-    public Player checkWinner() {
+    private Player checkWinner() {
         List<String> topRow = Arrays.asList("1A", "2A", "3A");
         List<String> middleRow = Arrays.asList("1B", "2B", "3B");
         List<String> bottomRow = Arrays.asList("1C", "2C", "3C");
@@ -169,6 +177,27 @@ public class Game {
         return null;
     }
 
+    private void printGameResult(Player roundWinner) {
+        if (roundWinner.equals(firstPlayer) || roundWinner.equals(secondPlayer)) {
+            printBoard();
+            System.out.println("Congratulations " + roundWinner.getName() + ", you won!");
+            roundWinner.incrementWins();
+        } else if (roundWinner.equals(noWinner)) {
+            printBoard();
+            System.out.println("Unfortunately, the game ended as a tie!");
+        }
+    }
+
+    private void initialize() {
+        firstPlayer.clearPositions();
+        secondPlayer.clearPositions();
+        
+        firstPlayer.clearWins();
+        secondPlayer.clearWins();
+        
+        resetBoard();
+    }
+
     @Override
     public String toString() {
         return "(" + firstPlayer.getName() + ") " + firstPlayer.getWins() + " - " + secondPlayer.getWins() + " ("
@@ -178,21 +207,17 @@ public class Game {
     public void start() {
         Player playerTurn = firstPlayer;
 
-        firstPlayer.clearPositions();
-        secondPlayer.clearPositions();
-        firstPlayer.clearWins();
-        secondPlayer.clearWins();
-        resetBoard();
+        initialize();
+
+        if (music != null) {
+            music.play();
+        }
 
         while (true) {
             printBoard();
 
             System.out.print("Enter a position (" + playerTurn.getSymbol() + "): ");
             String position = scan.nextLine();
-
-            if (position.equals("")) {
-                break;
-            }
 
             place(playerTurn, position);
 
@@ -202,20 +227,16 @@ public class Game {
                 playerTurn = firstPlayer;
             }
 
-            Player roundWinner = checkWinner();
+            Player gameWinner = checkWinner();
 
-            if (roundWinner != null) {
-                if (roundWinner.equals(firstPlayer) || roundWinner.equals(secondPlayer)) {
-                    printBoard();
-                    System.out.println("Congratulations " + roundWinner.getName() + ", you won!");
-                    roundWinner.incrementWins();
-                    break;
-                } else if (roundWinner.equals(noWinner)) {
-                    printBoard();
-                    System.out.println("Unfortunately, the game ended as a tie!");
-                    break;
-                }
+            if (gameWinner != null) {
+                printGameResult(gameWinner);
+                break;
             }
+        }
+
+        if (music != null) {
+            music.stop();
         }
     }
 }
