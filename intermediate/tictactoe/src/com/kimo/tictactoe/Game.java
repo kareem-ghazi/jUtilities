@@ -29,13 +29,15 @@ public class Game {
         this.gameBoard = new char[][] { { ' ', '|', ' ', '|', ' ' }, { '-', '+', '-', '+', '-' },
                 { ' ', '|', ' ', '|', ' ' }, { '-', '+', '-', '+', '-' }, { ' ', '|', ' ', '|', ' ' } };
     }
-
+    
+    // Constructor for instantiating a music object
     public Game(Player firstPlayer, Player secondPlayer, Music music) {
         this(firstPlayer, secondPlayer);
 
         this.music = music;
     }
 
+    // Print a formatted board
     private void printBoard() {
         System.out.println("  A   B   C");
 
@@ -61,11 +63,13 @@ public class Game {
         }
     }
 
+    // Clears the board
     private void resetBoard() {
         this.gameBoard = new char[][] { { ' ', '|', ' ', '|', ' ' }, { '-', '+', '-', '+', '-' },
                 { ' ', '|', ' ', '|', ' ' }, { '-', '+', '-', '+', '-' }, { ' ', '|', ' ', '|', ' ' } };
     }
 
+    // Places a position on the board for a player
     private void place(Player player, String position) {
         while (firstPlayer.getPositions().contains(position) || secondPlayer.getPositions().contains(position)) {
             System.out.print("Taken position! Try again: ");
@@ -139,6 +143,7 @@ public class Game {
         return winner;
     }
 
+    // Checks if there's a winner. If there is, returns the winning player (returns noWinner object incase of no winners)
     private Player checkWinner() {
         List<String> topRow = Arrays.asList("1A", "2A", "3A");
         List<String> middleRow = Arrays.asList("1B", "2B", "3B");
@@ -177,6 +182,7 @@ public class Game {
         return null;
     }
 
+    // Prints the results of the game according to the winning status
     private void printGameResult(Player roundWinner) {
         if (roundWinner.equals(firstPlayer) || roundWinner.equals(secondPlayer)) {
             printBoard();
@@ -188,6 +194,7 @@ public class Game {
         }
     }
 
+    // Clears and sets up the game
     private void initialize() {
         firstPlayer.clearPositions();
         secondPlayer.clearPositions();
@@ -204,6 +211,7 @@ public class Game {
                 + secondPlayer.getName() + ")";
     }
 
+    // Starts the game
     public void start() {
         Player playerTurn = firstPlayer;
 

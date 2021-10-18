@@ -34,6 +34,7 @@ public class Music {
         }
     }
 
+    // Plays the clip from the start
     public void play() {
         this.clip.setFramePosition(0);
         this.clip.start();
