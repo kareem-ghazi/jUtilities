@@ -37,6 +37,8 @@ These are currently the **only completed** features of jUtilities (ordered from 
 
 [**ATM**](https://github.com/kareem-ghazi/jUtilities/tree/master/intermediate/atm) - Bank Account Manager through an ATM interface. (*Last Updated: **September 10th, 2021***)
 
+[**TicTacToe**](https://github.com/kareem-ghazi/jUtilities/tree/master/intermediate/tictactoe) - Classic TicTacToe but with some cool optional tunes. (*Last Updated: **October 19th, 2021***)
+
 ## Advanced
 
 Empty for now...
