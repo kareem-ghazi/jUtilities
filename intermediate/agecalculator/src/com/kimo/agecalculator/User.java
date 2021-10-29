@@ -7,27 +7,26 @@ public class User {
 	private String nationality;
 	private LocalDate birthdate;
 
-	// User constructor.
-	public User(String username, String nationality, int birthYear, int birthMonth, int birthDay) {
+	public User(String username, String nationality, LocalDate birthdate) {
 		this.username = username;
 		this.nationality = nationality;
+		this.birthdate = birthdate;
+	}
 
-		birthdate = LocalDate.of(birthYear, birthMonth, birthDay);
+	public User(String username, String nationality, int birthYear, int birthMonth, int birthDay) {
+		this(username, nationality, LocalDate.of(birthYear, birthMonth, birthDay));
 	}
 
 	public String getUsername() {
 		return username;
-
 	}
 
 	public String getNationality() {
 		return nationality;
-
 	}
 
 	public LocalDate getBirthdate() {
 		return birthdate;
-
 	}
 
 }
